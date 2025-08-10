@@ -1,8 +1,7 @@
-# Ignore API data
-api/
-api/*
-*.tsv
-*.json
+# Don't ignore the public API data
+!pokedex-website/public/api/
+!pokedex-website/public/api/*.json
+!pokedex-website/public/api/*.tsv
 
 # Ignore system files
 .DS_Store

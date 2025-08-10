@@ -1,0 +1,10 @@
+{
+    "Overgrow": {
+        "name": "Overgrow",
+        "description": "Boosts Grass-type moves by 50% when HP is low."
+    },
+    "Chlorophyll": {
+        "name": "Chlorophyll",
+        "description": "Doubles Speed in harsh sunlight."
+    }
+}
