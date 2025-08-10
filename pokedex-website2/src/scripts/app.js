@@ -449,7 +449,9 @@ async function fetchPokemonList(filter = '', typeFilterArr = null, typingFilterA
     let filtered = [];
     try {
         if (!allPokemonData) {
-            const res = await fetch('/api/data.tsv');
+            // Check if we're running on GitHub Pages
+            const baseUrl = window.location.hostname === 'sky-lynx.github.io' ? '/pokedex-website' : '';
+            const res = await fetch(`${baseUrl}/api/data.tsv`);
             if (!res.ok) {
                 throw new Error(`Failed to fetch data.tsv: ${res.status}`);
             }
@@ -664,7 +666,9 @@ async function fetchPokemonList(filter = '', typeFilterArr = null, typingFilterA
 async function fetchAbilitiesData() {
     if (!allAbilitiesData) {
         try {
-            const res = await fetch('/api/abilities.tsv');
+            // Check if we're running on GitHub Pages
+            const baseUrl = window.location.hostname === 'sky-lynx.github.io' ? '/pokedex-website' : '';
+            const res = await fetch(`${baseUrl}/api/abilities.tsv`);
             if (!res.ok) {
                 throw new Error(`Failed to fetch abilities.tsv: ${res.status}`);
             }
