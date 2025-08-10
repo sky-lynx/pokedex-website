@@ -812,6 +812,7 @@ async function showPokemonDetails(pokemonName) {
     const availabilityHTML = `
         <div class="info-section" style="grid-column: 1 / -1; margin-top: 16px;">
             <h4>Game Availability</h4>
+            <h5>TFO: Transfer Only</h5>
             <div style="overflow-x: auto;">
                 <div style="margin-bottom: 8px;">
                     <div style="display: grid; grid-template-columns: repeat(23, minmax(24px, 1fr)); gap: 2px; font-size: 0.8em; text-align: center;">
@@ -821,8 +822,14 @@ async function showPokemonDetails(pokemonName) {
                     </div>
                     <div style="display: grid; grid-template-columns: repeat(23, minmax(24px, 1fr)); gap: 2px; font-size: 0.8em; text-align: center; margin-top: 1px;">
                         ${pokemon.availability.slice(0, 23).map(available => `
-                            <div style="padding: 4px 2px; background: ${available === 'TRUE' ? '#e8f5e9' : '#ffebee'}; border-radius: 4px;">
-                                ${available === 'TRUE' ? '✓' : '×'}
+                            <div style="padding: 4px 2px; background: ${
+                                available === 'TRUE' ? '#e8f5e9' : 
+                                available === 'FALSE' ? '#fff3e0' : 
+                                '#ffebee'
+                            }; border-radius: 4px;">
+                                ${available === 'TRUE' ? '✔' : 
+                                  available === 'FALSE' ? 'TFO' : 
+                                  '✖'}
                             </div>
                         `).join('')}
                     </div>
@@ -835,8 +842,14 @@ async function showPokemonDetails(pokemonName) {
                     </div>
                     <div style="display: grid; grid-template-columns: repeat(23, minmax(24px, 1fr)); gap: 2px; font-size: 0.8em; text-align: center; margin-top: 1px;">
                         ${pokemon.availability.slice(23, 46).map(available => `
-                            <div style="padding: 4px 2px; background: ${available === 'TRUE' ? '#e8f5e9' : '#ffebee'}; border-radius: 4px;">
-                                ${available === 'TRUE' ? '✓' : '×'}
+                            <div style="padding: 4px 2px; background: ${
+                                available === 'TRUE' ? '#e8f5e9' : 
+                                available === 'FALSE' ? '#fff3e0' : 
+                                '#ffebee'
+                            }; border-radius: 4px;">
+                                ${available === 'TRUE' ? '✔' : 
+                                  available === 'FALSE' ? 'TFO' : 
+                                  '✖'}
                             </div>
                         `).join('')}
                     </div>
