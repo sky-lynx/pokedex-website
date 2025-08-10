@@ -1,0 +1,15 @@
+# Ignore API data
+api/
+api/*
+*.tsv
+*.json
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
