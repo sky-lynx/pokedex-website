@@ -1,0 +1,938 @@
+				Main Stats										TM #																
+Moves	Dex #	Type	Category	Min PP	Max PP	Base Power	Accuracy	Base Crit Rate	Speed Priority	Targeted Pokemon	Secondary Effect	Secondary Stats	Secondary Chance	RGBY	GSC	RSE	FRLG	DPPL	HGSS	BWB2W2	XY	ORAS	SM	USUM	LGPE	SWSH	SWSH (TR)	BDSP	PLA	SV
+Pound	1	Normal	Physical	35	56	40	100%	4.17	0	Selected																				
+Karate Chop	2	Fighting	Physical	25	40	50	100%	12.5	0	Selected																				
+Double Slap	3	Normal	Physical	10	16	15	85%	4.17	0	Selected	HIts 2-5 Times		100%																	
+Comet Punch	4	Normal	Physical	15	24	18	85%	4.17	0	Selected	HIts 2-5 Times		100%																	
+Mega Punch	5	Normal	Physical	20	32	80	85%	4.17	0	Selected				1												0				
+Pay Day	6	Normal	Physical	20	32	40	100%	4.17	0	Selected				16											57	2				
+Fire Punch	7	Fire	Physical	15	24	75	100%	4.17	0	Selected	Burns Foe		10%		48										31	3				67
+Ice Punch	8	Ice	Physical	15	24	75	100%	4.17	0	Selected	Freezes Foe		10%		33										35	4				69
+Thunder Punch	9	Electric	Physical	15	24	75	100%	4.17	0	Selected	Paralyzes Foe		10%		41										23	5				68
+Scratch	10	Normal	Physical	35	56	40	100%	4.17	0	Selected																				
+Vise Grip	11	Normal	Physical	30	48	55	100%	4.17	0	Selected																				
+Guillotine	12	Normal	Physical	5	8	∞	30%	4.17	0	Selected	1-Hit KO	(Level Difference + 30)%	100%																	
+Razor Wind	13	Normal	Special	10	16	80	100%	12.5	0	Adjacent Foes				2																
+Swords Dance	14	Normal	Status	20	32	0	101%	None	0	Selected	Raises User's Atk by 2		100%	3				75	75	75	75	75	75				0	75		88
+Cut	15	Normal	Physical	30	48	50	95%	4.17	0	Selected																				
+Gust	16	Flying	Special	35	56	40	100%	4.17	0	Selected	Hits Foe Using Gust		100%																	
+Wing Attack	17	Flying	Physical	35	56	60	100%	4.17	0	Selected																				
+Whirlwind	18	Normal	Status	20	32	0	101%	None	-6	Selected				4																
+Fly	19	Flying	Physical	15	24	90	95%	4.17	0	Selected	User is Protected, then Attacks Next Turn		100%										76		14	6		94		97
+Bind	20	Normal	Physical	20	32	15	85%	4.17	0	Selected	Traps Foe		100%																	
+Slam	21	Normal	Physical	20	32	80	75%	4.17	0	Selected																				
+Vine Whip	22	Grass	Physical	25	40	45	100%	4.17	0	Selected																				
+Stomp	23	Normal	Physical	20	32	65	100%	4.17	0	Selected	Flinches Foe		30%																	
+Double Kick	24	Fighting	Physical	30	48	30	100%	4.17	0	Selected	Hits 2 Times		100%																	
+Mega Kick	25	Normal	Physical	5	8	120	75%	4.17	0	Selected				5												1				
+Jump Kick	26	Fighting	Physical	10	16	100	95%	4.17	0	Selected	50% Recoil if Miss																			
+Rolling Kick	27	Fighting	Physical	15	24	60	85%	4.17	0	Selected	Flinches Foe		30%																	
+Sand Attack	28	Ground	Status	15	24	0	100%	None	0	Selected	Lowers Foe's Accuracy by 1		100%																	
+Headbutt	29	Normal	Physical	15	24	70	100%	4.17	0	Selected	Flinches Foe		30%		2										1					
+Horn Attack	30	Normal	Physical	25	40	65	100%	4.17	0	Selected																				
+Fury Attack	31	Normal	Physical	20	32	15	85%	4.17	0	Selected	HIts 2-5 Times		100%																	
+Horn Drill	32	Normal	Physical	5	8	∞	30%	4.17	0	Selected	1-Hit KO	(Level Difference + 30)%	100%																	
+Tackle	33	Normal	Physical	35	56	40	100%	4.17	0	Selected																				
+Body Slam	34	Normal	Physical	15	24	85	100%	4.17	0	Selected	Paralyzes Foe		30%	8													1			66
+Wrap	35	Normal	Physical	20	32	15	90%	4.17	0	Selected																				
+Take Down	36	Normal	Physical	20	32	90	85%	4.17	0	Selected				9																1
+Thrash	37	Normal	Physical	10	16	120	100%	4.17	0	Selected	Uses Same Move for 2-3 Turns; Confuses User After		100%																	
+Double-Edge	38	Normal	Physical	15	24	120	100%	4.17	0	Selected	33% Recoil		100%	10																204
+Tail Whip	39	Normal	Status	30	48	0	100%	None	0	Adjacent Foes	Lowers Foe's Def by 1		100%																	
+Poison Sting	40	Poison	Physical	35	56	15	100%	4.17	0	Selected	Poisons Foe		30%																	
+Twineedle	41	Bug	Physical	20	32	25	100%	4.17	0	Selected	Hits 2 Times; Poisons Foe		20%																	
+Pin Missile	42	Bug	Physical	20	32	25	95%	4.17	0	Selected	HIts 2-5 Times		100%													7				
+Leer	43	Normal	Status	30	48	0	100%	None	0	Adjacent Foes	Lowers Foe's Def by 1		100%																	
+Bite	44	Dark	Physical	25	40	60	100%	4.17	0	Selected	Flinches Foe		30%																	
+Growl	45	Normal	Status	40	64	0	100%	None	0	Adjacent Foes	Lowers Foe's Atk by 1		100%																	
+Roar	46	Normal	Status	20	32	0	101%	None	-6	Selected					5	5	5	5	5	5	5	5	5					5		172
+Sing	47	Normal	Status	15	24	0	55%	None	0	Selected																				
+Supersonic	48	Normal	Status	20	32	0	55%	None	0	Selected																				
+Sonic Boom	49	Normal	Special	20	32	0	90%	4.17	0	Selected																				
+Disable	50	Normal	Status	20	32	0	100%	None	0	Selected	Disables Foe's Last Move		100%																	
+Acid	51	Poison	Special	30	48	40	100%	4.17	0	Adjacent Foes	Lowers Foe's Sp. Def by 1		10%																	
+Ember	52	Fire	Special	25	40	40	100%	4.17	0	Selected	Burns Foe		10%																	
+Flamethrower	53	Fire	Special	15	24	90	100%	4.17	0	Selected	Burns Foe		10%			35	35	35	35	35	35	35	35		37		2	35		125
+Mist	54	Ice	Status	30	48	0	101%	None	0	All Allies	Prevents Stats from Being Lowered		100%																	
+Water Gun	55	Water	Special	25	40	40	100%	4.17	0	Selected				12																
+Hydro Pump	56	Water	Special	5	8	110	80%	4.17	0	Selected																	3			142
+Surf	57	Water	Special	15	24	90	100%	4.17	0	All Adjacent													94		47		4	95		123
+Ice Beam	58	Ice	Special	10	16	90	100%	4.17	0	Selected	Freezes Foe		10%	13		13	13	13	13	13	13	13	13		55		5	13		135
+Blizzard	59	Ice	Special	5	8	110	70%	4.17	0	Adjacent Foes	Freezes Foe		10%	14	14	14	14	14	14	14	14	14	14		51		6	14		143
+Psybeam	60	Psychic	Special	20	32	65	100%	4.17	0	Selected	Confuses Foe		10%																	16
+Bubble Beam	61	Water	Special	20	32	65	100%	4.17	0	Selected	Lowers Foe's Spd by 1		10%	11																
+Aurora Beam	62	Ice	Special	20	32	65	100%	4.17	0	Selected	Lowers Foe's Atk by 1		10%																	
+Hyper Beam	63	Normal	Special	5	8	150	90%	4.17	0	Selected	User Can Not Attack Next Turn			15	15	15	15	15	15	15	15	15	15		48	8		15		163
+Peck	64	Flying	Physical	35	56	35	100%	4.17	0	Selected																				
+Drill Peck	65	Flying	Physical	20	32	80	100%	4.17	0	Selected																				
+Submission	66	Fighting	Physical	20	32	80	80%	4.17	0	Selected				17																
+Low Kick	67	Fighting	Physical	20	32	0	100%	4.17	0	Selected	Higher Power the Heavier the Foe		100%							47	47	47	47				7			12
+Counter	68	Fighting	Physical	20	32	0	100%	4.17	-5	Selected	If Hit by a Physical Attack, 100% Damage Recieved		100%																	
+Seismic Toss	69	Fighting	Physical	20	32	0	100%	4.17	0	Selected				19											15					
+Strength	70	Normal	Physical	15	24	80	100%	4.17	0	Selected																		96		
+Absorb	71	Grass	Special	25	40	20	100%	4.17	0	Selected	50% Lifesteal																			
+Mega Drain	72	Grass	Special	15	24	40	100%	4.17	0	Selected	50% Lifesteal		100%	21											53					
+Leech Seed	73	Grass	Status	10	16	0	90%	None	0	Selected	Seeds Foe		100%																	
+Growth	74	Normal	Status	20	32	0	101%	None	0	Selected	Raises User's Atk and Sp. Atk by 1. Raises by 2 if in Sun or Drought		100%																	
+Razor Leaf	75	Grass	Physical	25	40	55	95%	12.5	0	Adjacent Foes																				
+Solar Beam	76	Grass	Special	10	16	120	100%	4.17	0	Selected				22	22	22	22	22	22	22	22	22	22		45	11		22		168
+Poison Powder	77	Poison	Status	35	56	0	75%	None	0	Selected																				
+Stun Spore	78	Grass	Status	30	48	0	75%	None	0	Selected																				
+Sleep Powder	79	Grass	Status	15	24	0	75%	None	0	Selected																				
+Petal Dance	80	Grass	Special	10	16	120	100%	4.17	0	Selected	Uses Same Move for 2-3 Turns; Confuses User After		100%																	
+String Shot	81	Bug	Status	40	64	0	95%	None	0	Adjacent Foes	Lowers Foe's Spd by 2		100%																	
+Dragon Rage	82	Dragon	Special	10	16	0	100%	4.17	0	Selected	Deals 40 HP Damage		100%	23																
+Fire Spin	83	Fire	Special	15	24	35	85%	4.17	0	Selected	Traps Foe		100%													13				24
+Thunder Shock	84	Electric	Special	30	48	40	100%	4.17	0	Selected	Paralyzes Foe		10%																	
+Thunderbolt	85	Electric	Special	15	24	90	100%	4.17	0	Selected	Paralyzes Foe		10%	24		24	24	24	24	24	24	24	24				8	24		126
+Thunder Wave	86	Electric	Status	20	32	0	90%	None	0	Selected				45				73	73	73	73	73	73		16	14		73		82
+Thunder	87	Electric	Special	10	16	110	70%	4.17	0	Selected	100% Accuracy in Rain; 50% Accuracy in Sunshine; Paralyzes Foe		30%	25	25	25	25	25	25	25	25	25	25		38		9	25		166
+Rock Throw	88	Rock	Physical	15	24	50	90%	4.17	0	Selected																				
+Earthquake	89	Ground	Physical	10	16	100	100%	4.17	0	All Adjacent	100% Damage if Foe is Using Dig		100%	26	26	26	26	26	26	26	26	26	26		41		10	26		149
+Fissure	90	Ground	Physical	5	8	∞	30%	4.17	0	Selected	1-Hit KO	(Level Difference + 30)%	100%	27																
+Dig	91	Ground	Physical	10	16	80	100%	4.17	0	Selected	User is Protected, then Attacks Next Turn		100%	28	28	28	28	28	28	28	28	28			10	15		28		55
+Toxic	92	Poison	Status	10	16	0	90%	None	0	Selected				6	6	6	6	6	6	6	6	6	6		27			6		175
+Confusion	93	Psychic	Special	25	40	50	100%	4.17	0	Selected	Confuses Foe		10%																	
+Psychic	94	Psychic	Special	10	16	90	100%	4.17	0	Selected	Lowers Foe's Sp. Def by 1		10%	29	29	29	29	29	29	29	29	29	29		40		11	29		120
+Hypnosis	95	Psychic	Status	20	32	0	60%	None	0	Selected	Sleeps Foe		100%																	
+Meditate	96	Psychic	Status	40	64	0	101%	None	0	Selected	Raises User's Atk by 1		100%																	
+Agility	97	Psychic	Status	30	48	0	101%	None	0	Self	Raises User's Spd by 2		100%														12			4
+Quick Attack	98	Normal	Physical	30	48	40	100%	4.17	1	Selected																				
+Rage	99	Normal	Physical	20	32	20	100%	4.17	0	Selected				20																
+Teleport	100	Psychic	Status	20	32	0	101%	None	0	Selected				30											4					
+Night Shade	101	Ghost	Special	15	24	0	100%	4.17	0	Selected	Power is Equal to User's Level		100%																	42
+Mimic	102	Normal	Status	10	16	0	101%	None	0	Selected	Copies Foe's Last Move		100%	31																
+Screech	103	Normal	Status	40	64	0	85%	None	0	Selected	Lowers Foe's Def by 2		100%													16				
+Double Team	104	Normal	Status	15	24	0	101%	None	0	Selected	Raises User's Evasion by 1		100%	32	32	32	32	32	32	32	32	32	32					32		
+Recover	105	Normal	Status	5	8	0	101%	None	0	Selected																				
+Harden	106	Normal	Status	30	48	0	101%	None	0	Selected	Raises User's Def by 1		100%																	
+Minimize	107	Normal	Status	10	16	0	101%	None	0	Selected	Raises User's Evasion by 2		100%																	
+Smokescreen	108	Normal	Status	20	32	0	100%	None	0	Selected	Lowers Foe's Accuracy by 1		100%																	
+Confuse Ray	109	Ghost	Status	10	16	0	100%	None	0	Selected	Confuses Foe		100%																	
+Withdraw	110	Water	Status	40	64	0	101%	None	0	Selected	Raises User's Def by 1		100%																	
+Defense Curl	111	Normal	Status	40	64	0	101%	None	0	Selected	Raises User's Def by 1; 100% Damage for Rollout and Ice Ball		100%		40															
+Barrier	112	Psychic	Status	20	32	0	101%	None	0	Self	Raises User's Def by 2		100%																	
+Light Screen	113	Psychic	Status	30	48	0	101%	None	0	All Allies	Activates Light Screen		100%			16	16	16	16	16	16	16	16		6	17		16		75
+Haze	114	Ice	Status	30	48	0	101%	None	0	All	Resets All Stat Changes		100%																	174
+Reflect	115	Psychic	Status	20	32	0	101%	None	0	All Allies	Activates Reflect		100%	33		33	33	33	33	33	33	33	33		9	18		33		74
+Focus Energy	116	Normal	Status	30	48	0	101%	None	0	Selected	Increases User's Critical Hit Rate by 1		100%														13			
+Bide	117	Normal	Physical	10	16	1	101%	4.17	1	Self	User Takes Hits for 2 Turns; Damage is 100% Damage Recieved		100%	34																
+Metronome	118	Normal	Status	10	16	0	101%	None	0	Selected	Uses a Random Move		100%	35													14			80
+Mirror Move	119	Flying	Status	20	32	0	101%	None	0	Selected	Uses Foe's Last Move																			
+Self-Destruct	120	Normal	Physical	5	8	200	100%	4.17	0	All Adjacent				36											42	20				
+Egg Bomb	121	Normal	Physical	10	16	100	75%	4.17	0	Selected				37																
+Lick	122	Ghost	Physical	30	48	30	100%	4.17	0	Selected	Paralyzes Foe		30%																	
+Smog	123	Poison	Special	20	32	30	70%	4.17	0	Selected	Poisons Foe		40%																	
+Sludge	124	Poison	Special	20	32	65	100%	4.17	0	Selected	Poisons Foe		30%																	
+Bone Club	125	Ground	Physical	20	32	65	85%	4.17	0	Selected	Flinches Foe		10%																	
+Fire Blast	126	Fire	Special	5	8	110	85%	4.17	0	Selected	Burns Foe		10%	38	38	38	38	38	38	38	38	38	38		46		15	38		141
+Waterfall	127	Water	Physical	15	24	80	100%	4.17	0	Selected	Flinches Foe		20%										98		25		16	99		77
+Clamp	128	Water	Physical	15	24	35	85%	4.17	0	Selected	Traps Foe		100%																	
+Swift	129	Normal	Special	20	32	60	101%	4.17	0	Adjacent Foes	Can Not Miss		100%	39	39											40				32
+Skull Bash	130	Normal	Physical	10	16	130	100%	4.17	0	Selected	Raises User's Def by 1; Attacks Next Turn		100%	40																
+Spike Cannon	131	Normal	Physical	15	24	20	100%	4.17	0	Selected	HIts 2-5 Times		100%																	
+Constrict	132	Normal	Physical	35	56	10	100%	4.17	0	Selected	Lowers Foe's Spd by 1		10%																	
+Amnesia	133	Psychic	Status	20	32	0	101%	None	0	Self	Raises User's Sp. Def by 2		100%														17			128
+Kinesis	134	Psychic	Status	15	24	0	80%	None	0	Selected	Lowers Foe's Accuracy by 1		100%																	
+Soft-Boiled	135	Normal	Status	5	8	0	101%	None	0	Selected				41																
+High Jump Kick	136	Fighting	Physical	10	16	130	90%	4.17	0	Selected	50% Recoil if Miss		100%																	
+Glare	137	Normal	Status	30	48	0	100%	None	0	Selected	Paralyzes Foe		100%																	
+Dream Eater	138	Psychic	Special	15	24	100	100%	4.17	0	Selected	50% Lifesteal; Fails if Foe is Not Asleep		100%	42	42			85	85	85	85	85	85		59			85		
+Poison Gas	139	Poison	Status	40	64	0	90%	None	0	Adjacent Foes																				
+Barrage	140	Normal	Physical	20	32	15	85%	4.17	0	Selected	Hits 2-5 Times in a Row	37.5% for 2 37.5% for 3 12.5% for 4 12.5% for 5	--%																	
+Leech Life	141	Bug	Physical	10	16	80	100%	4.17	0	Selected	50% Lifesteal		100%										28				18			95
+Lovely Kiss	142	Normal	Status	10	16	0	75%	None	0	Selected	Sleeps Foe		100%																	
+Sky Attack	143	Flying	Physical	5	8	140	90%	12.5	0	Selected	Flinches Foe		30%	43																
+Transform	144	Normal	Status	10	16	0	101%	None	0	Selected																				
+Bubble	145	Water	Special	30	48	40	100%	4.17	0	Adjacent Foes	Lowers Foe's Spd by 1		10%																	
+Dizzy Punch	146	Normal	Physical	10	16	70	100%	4.17	0	Selected	Confuses Foe		20%																	
+Spore	147	Grass	Status	15	24	0	100%	None	0	Selected																				
+Flash	148	Normal	Status	20	32	0	100%	None	0	Selected	Lowers Foe's Accuracy		100%					70	70	70	70	70						70		
+Psywave	149	Psychic	Special	15	24	0	100%	4.17	0	Selected				46																
+Splash	150	Normal	Status	40	64	0	101%	None	0	Selected																				
+Acid Armor	151	Poison	Status	20	32	0	101%	None	0	Self	Raises User's Def by 2																			
+Crabhammer	152	Water	Physical	10	16	100	90%	12.5	0	Selected																				
+Explosion	153	Normal	Physical	5	8	250	100%	4.17	0	All Adjacent	User Faints		100%	47				64	64	64	64	64	64					64		
+Fury Swipes	154	Normal	Physical	15	24	18	80%	4.17	0	Selected	HIts 2-5 Times		100%																	
+Bonemerang	155	Ground	Physical	10	16	50	90%	4.17	0	Selected	Hits 2 Times		100%																	
+Rest	156	Psychic	Status	5	8	0	101%	None	0	Selected				44	44	44	44	44	44	44	44	44	44		5	21		44		85
+Rock Slide	157	Rock	Physical	10	16	75	90%	4.17	0	Adjacent Foes	Flinches Foe		30%	48				39	39	80	80	80	80		22	22		39		86
+Hyper Fang	158	Normal	Physical	15	24	80	90%	4.17	0	Selected	Flinches Foe		10%																	
+Sharpen	159	Normal	Status	30	48	0	101%	None	0	Selected	Raises User' Atk by 1		100%																	
+Conversion	160	Normal	Status	30	48	0	101%	None	0	Selected	Changes Type to User's First Move's Type		100%																	
+Tri Attack	161	Normal	Special	10	16	80	100%	4.17	0	Selected	Burns, Freezes, or Paralyzes Foe		20%	49											28		19			
+Super Fang	162	Normal	Physical	10	16	0	90%	4.17	0	Selected	Foe Loses 50% of Current HP		100%																	183
+Slash	163	Normal	Physical	20	32	70	100%	12.5	0	Selected																				
+Substitute	164	Normal	Status	10	16	0	101%	None	0	Selected				50				90	90	90	90	90	90		8		20	90		103
+Struggle	165	Normal	Physical	1	1	50	101%	4.17	0	Selected																				
+Sketch	166	Normal	Status	1	1	0	101%	None	0	Selected																				
+Triple Kick	167	Fighting	Physical	10	16	10	90%	4.17	0	Selected																				
+Thief	168	Dark	Physical	25	40	60	100%	4.17	0	Selected					46	46	46	46	46	46	46	46	46			23		46		18
+Spider Web	169	Bug	Status	10	16	0	101%	None	0	Selected																				
+Mind Reader	170	Normal	Status	5	8	0	101%	None	0	Selected	User's Next Move will Not Fail		100%																	
+Nightmare	171	Ghost	Status	15	24	0	100%	None	0	Selected	Sleeping Foes Lose 1/4 HP Every Turn		100%		50															
+Flame Wheel	172	Fire	Physical	25	40	60	100%	4.17	0	Selected	Burns Foe		10%																	
+Snore	173	Normal	Special	15	24	50	100%	4.17	0	Selected	Fails if User is Not Asleep				13											24				
+Curse	174	Ghost	Status	10	16	0	101%	None	0	Selected	Raises User's Atk and Def by 1; Lowers User's Spd by 1		100%		3															224
+Curse (Ghost)	174										User Loses 50% HP; Foe Recieves Effects of Nightmare		100%		3															224
+Flail	175	Normal	Physical	15	24	0	100%	4.17	0	Selected	Higher Power the Lower the User's HP		100%																	
+Conversion 2	176	Normal	Status	30	48	0	101%	None	0	Selected	User Changes Type to be Resistant to Foe's Last Move		100%																	
+Aeroblast	177	Flying	Special	5	8	100	95%	12.5	0	Selected																				
+Cotton Spore	178	Grass	Status	40	64	0	100%	None	0	Adjacent Foes	Lowers Foe's Spd by 2		100%																	
+Reversal	179	Fighting	Physical	15	24	0	100%	4.17	0	Selected																	21			134
+Spite	180	Ghost	Status	10	16	0	100%	None	0	Selected																				177
+Powder Snow	181	Ice	Special	25	40	40	100%	4.17	0	Adjacent Foes	Freezes Foe		10%																	
+Protect	182	Normal	Status	10	16	0	101%	None	4	Selected					17	17	17	17	17	17	17	17	17		7	25		17		7
+Mach Punch	183	Fighting	Physical	30	48	40	100%	4.17	1	Selected																				
+Scary Face	184	Normal	Status	10	16	0	100%	None	0	Selected	Lowers Foe's Spd by 2		100%													26				6
+Feint Attack	185	Dark	Physical	20	32	60	101%	4.17	0	Selected	Can Not Miss		100%																	
+Sweet Kiss	186	Fairy	Status	10	16	0	75%	None	0	Selected																				
+Belly Drum	187	Normal	Status	10	16	0	101%	None	0	Self	User Loses 50% HP; Raises User's Atk by 8																			
+Sludge Bomb	188	Poison	Special	10	16	90	100%	4.17	0	Selected	Poisons Foe		30%		36	36	36	36	36	36	36	36	36		52		22	36		148
+Mud-Slap	189	Ground	Special	10	16	20	100%	4.17	0	Selected	Lowers Foe's Accuracy by 1		100%		31															5
+Octazooka	190	Water	Special	10	16	65	85%	4.17	0	Selected	Lowers Foe's Accuracy by 1		50%																	
+Spikes	191	Ground	Status	20	32	0	101%	None	0	All Foes																	23			90
+Zap Cannon	192	Electric	Special	5	8	120	50%	4.17	0	Selected	Paralyzes Foe		100%		7															
+Foresight	193	Normal	Status	40	64	0	101%	None	0	Selected	Ignores High Evasion; Ghost-Types Can be Hit with Normal-Type Moves		100%																	
+Destiny Bond	194	Ghost	Status	5	8	0	101%	None	0	Selected	If User Faints, Foe that Knocked Out User Faints; Fails on Successive Uses		100%																	
+Perish Song	195	Normal	Status	5	8	0	101%	None	0	All																				
+Icy Wind	196	Ice	Special	15	24	55	95%	4.17	0	Adjacent Foes	Lowers Foe's Spd by 1		100%		16											27				34
+Detect	197	Fighting	Status	5	8	0	101%	None	4	Selected	Protects User from Attacks	Success: 1 / ((Successive Use)-1)^3)	100%		43															
+Bone Rush	198	Ground	Physical	10	16	25	90%	4.17	0	Selected	HIts 2-5 Times		100%																	
+Lock-On	199	Normal	Status	5	8	0	101%	None	0	Selected	User's Next Move will Not Fail		100%																	
+Outrage	200	Dragon	Physical	10	16	120	100%	4.17	0	Selected	Uses Same Move for 2-3 Turns; Confuses User After		100%												39		24			156
+Sandstorm	201	Rock	Status	10	16	0	101%	None	0	All	Activates Sandstorm		100%		37	37	37	37	37	37	37	37	37			32		37		51
+Giga Drain	202	Grass	Special	10	16	75	100%	4.17	0	Selected	50% Lifesteal		100%		19	19	19	19	19							28		19		111
+Endure	203	Normal	Status	10	16	0	101%	None	4	Selected	Endures Any Attack with At Least 1 HP	Success: 1 / ((Successive Use)-1)^3)	100%		20			58	58								26	58		47
+Charm	204	Fairy	Status	20	32	0	100%	None	0	Selected	Lowers Foe's Atk by 2		100%													29				2
+Rollout	205	Rock	Physical	20	32	30	90%	4.17	0	Selected					4															
+False Swipe	206	Normal	Physical	40	64	40	100%	4.17	0	Selected	Leaves Foe with At Least 1 HP		100%					54	54	54	54	54	54			94		54		57
+Swagger	207	Normal	Status	15	24	0	85%	None	0	Selected	Confuses Foe; Raises Foe's Atk by 2		100%		34			87	87	87	87	87	87					87		
+Milk Drink	208	Normal	Status	5	8	0	101%	None	0	Selected	Heals 50% HP		100%																	
+Spark	209	Electric	Physical	20	32	65	100%	4.17	0	Selected	Paralyzes Foe		30%																	
+Fury Cutter	210	Bug	Physical	20	32	40	95%	4.17	0	Selected	Power Increases on Successive Uses		100%		49															
+Steel Wing	211	Steel	Physical	25	40	70	90%	4.17	0	Selected	Raises User's Def by 1		10%		47	47	47	47	47		51	51	51			30		47		
+Mean Look	212	Normal	Status	5	8	0	101%	None	0	Selected	Traps Foe		100%																	
+Attract	213	Normal	Status	15	24	0	100%	None	0	Selected	Infatuates Foe if they are Opposite Gender		100%		45	45	45	45	45	45	45	45	45			31		45		
+Sleep Talk	214	Normal	Status	10	16	0	101%	None	0	Selected					35			82	82		88	88	88				27	82		70
+Heal Bell	215	Normal	Status	5	8	0	—%	None	0	All Allies	Heals Party's Statuses		100%																	
+Return	216	Normal	Physical	20	32	0	100%	4.17	0	Selected	BP = Happiness / 2.5		100%		27	27	27	27	27	27	27	27	27							
+Present	217	Normal	Physical	15	24	0	90%	4.17	0	Selected	80% to Attack, 20% to Heal		100%																	
+Frustration	218	Normal	Physical	20	32	0	100%	4.17	0	Selected	BP = (255 - Happiness) / 2.5		100%		21	21	21	21	21	21	21	21	21							
+Safeguard	219	Normal	Status	25	40	0	101%	None	0	All Allies						20	20	20	20	20	20	20	20			19		20		
+Pain Split	220	Normal	Status	20	32	0	101%	None	0	Selected	Evenly Distributes HP with User and Foe		100%																	202
+Sacred Fire	221	Fire	Physical	5	8	100	95%	4.17	0	Selected	Burns Foe		50%																	
+Magnitude	222	Ground	Physical	30	48	0	100%	4.17	0	All Adjacent	Chooses a Random BP Between 10-150		100%																	
+Dynamic Punch	223	Fighting	Physical	5	8	100	50%	4.17	0	Selected	Confuses Foe		100%		1															
+Megahorn	224	Bug	Physical	10	16	120	85%	4.17	0	Selected															60		28			
+Dragon Breath	225	Dragon	Special	20	32	60	100%	4.17	0	Selected	Paralyzes Foe		30%		24															
+Baton Pass	226	Normal	Status	40	64	0	101%	None	0	Self	User Switches Out; Passes All Stat Changes		100%														29			132
+Encore	227	Normal	Status	5	8	0	100%	None	0	Selected	Foe Uses the Same Move for 3 Turns		100%														30			122
+Pursuit	228	Dark	Physical	20	32	40	100%	4.17	0	Selected																				
+Rapid Spin	229	Normal	Physical	40	64	50	100%	4.17	0	Selected	Raises User's Spd by 1; Removes Trapping Moves		100%																	
+Sweet Scent	230	Normal	Status	20	32	0	100%	None	0	Adjacent Foes	Lowers Foe's Evasion by 2		100%		12															
+Iron Tail	231	Steel	Physical	15	24	100	75%	4.17	0	Selected	Lowers Foe's Def by 1		10%		23	23	23	23	23						19		31	23		
+Metal Claw	232	Steel	Physical	35	56	50	95%	4.17	0	Selected	Raises User's Atk by 1		10%																	31
+Vital Throw	233	Fighting	Physical	10	16	70	101%	4.17	-1	Selected	Can Not Miss		100%																	
+Morning Sun	234	Normal	Status	5	8	0	101%	None	0	Selected	Heals 50% HP; 66.66% in Sunshine; 25% in Rain, Hail, Sandstorm		100%																	
+Synthesis	235	Grass	Status	5	8	0	101%	None	0	Selected	Heals 50% HP; 66.66% in Sunshine; 25% in Rain, Hail, Sandstorm		100%																	
+Moonlight	236	Fairy	Status	5	8	0	101%	None	0	Selected	Heals 50% HP; 66.66% in Sunshine; 25% in Rain, Hail, Sandstorm		100%																	
+Hidden Power	237	Normal	Special	15	24	60	100%	4.17	0	Selected	Move Type Depends on User's IVs		100%		10	10	10	10	10	10	10	10	10							
+Cross Chop	238	Fighting	Physical	5	8	100	80%	12.5	0	Selected																				
+Twister	239	Dragon	Special	20	32	40	100%	4.17	0	Adjacent Foes	Flinches Foe; 100% Damage if Foe is Using Fly		20%																	
+Rain Dance	240	Water	Status	5	8	0	101%	None	0	All	Activates Rain		100%		18	18	18	18	18	18	18	18	18			33		18		50
+Sunny Day	241	Fire	Status	5	8	0	101%	None	0	All	Activates Sunshine		100%		11	11	11	11	11	11	11	11	11			34		11		49
+Crunch	242	Dark	Physical	15	24	80	100%	4.17	0	Selected	Lowers Foe's Def by 1		20%														32			108
+Mirror Coat	243	Psychic	Special	20	32	0	100%	4.17	-5	Selected	If Hit by a Special Attack, 100% Damage Recieved																			
+Psych Up	244	Normal	Status	10	16	0	101%	None	0	Selected					9			77	77	77	77	77	77					77		203
+Extreme Speed	245	Normal	Physical	5	8	80	100%	4.17	2	Selected																				
+Ancient Power	246	Rock	Special	5	8	60	100%	4.17	0	Selected	Raises All of User's Stats by 1		10%																	
+Shadow Ball	247	Ghost	Special	15	24	80	100%	4.17	0	Selected	Lowers Foe's Sp. Def by 1		20%		30	30	30	30	30	30	30	30	30		43		33	30		114
+Future Sight	248	Psychic	Special	10	16	120	100%	4.17	0	Selected	Hits Foe After 2 Turns		100%														34			217
+Rock Smash	249	Fighting	Physical	15	24	40	100%	4.17	0	Selected	Lowers Foe's Def by 1		50%		8					94	94							98		
+Whirlpool	250	Water	Special	15	24	35	85%	4.17	0	Selected																36				208
+Beat Up	251	Dark	Physical	10	16	1	100%	4.17	0	Selected	More Damage Per Healthy Party Member	BaseAtk/10 + 5	--%													37				
+Fake Out	252	Normal	Physical	10	16	40	100%	4.17	3	Selected	Works Only on the First Turn Out; Flinches Foe		100%																	3
+Uproar	253	Normal	Special	10	16	90	100%	4.17	0	Selected																	35			191
+Stockpile	254	Normal	Status	20	32	0	101%	None	0	Selected	Raises User's Def and Sp. Def by 1; Can Stack up to 3 Times		100																	
+Spit Up	255	Normal	Special	10	16	0	100%	4.17	0	Selected																				
+Swallow	256	Normal	Status	10	16	0	101%	None	0	Selected																				
+Heat Wave	257	Fire	Special	10	16	95	90%	4.17	0	Adjacent Foes	Burns Foe		10%														36			118
+Hail	258	Ice	Status	10	16	0	101%	None	0	All	Activates Hail		100%			7	7	7	7	7	7	7	7			35		7		
+Torment	259	Dark	Status	15	24	0	100%	None	0	Selected						41	41	41	41	41	41	41	41					41		
+Flatter	260	Dark	Status	15	24	0	100%	None	0	Selected	Confuses Foe; Raises Foe's Sp. Atk by 1		100%																	
+Will-O-Wisp	261	Fire	Status	15	24	0	85%	None	0	Selected								61	61	61	61	61	61		11	38		61		107
+Memento	262	Dark	Status	10	16	0	100%	None	0	Selected	Lowers Foe's Atk and Sp. Atk by 2; User Faints		100%																	
+Facade	263	Normal	Physical	20	32	70	100%	4.17	0	Selected	100% Damage if User is Statused; Ignores Burn Damage Reduction		100%			42	42	42	42	42	42	42	42		42	42	42	42		42
+Focus Punch	264	Fighting	Physical	20	32	150	100%	4.17	-3	Selected	User Flinches if Hit Before Attack		100%			1	1	1	1									1		192
+Smelling Salts	265	Normal	Physical	10	16	70	100%	4.17	0	Selected																				
+Follow Me	266	Normal	Status	20	32	0	101%	None	2	Selected	User Recieves Attacks Rather Than Allies		100%																	
+Nature Power	267	Normal	Status	20	32	0	101%	None	0	Selected	Changes Move Depending on Location		100%								96	96	96							
+Charge	268	Electric	Status	20	32	0	101%	None	0	Selected	Raises User's Sp. Def by 1; User's Next Electric Attack does 100% Damage		100%																	172
+Taunt	269	Dark	Status	20	32	0	100%	None	0	Selected						12	12	12	12	12	12	12	12		2		37	12		87
+Helping Hand	270	Normal	Status	20	32	0	101%	None	5	Selected	Target's Next Move Deals 50% Damage		100%												3	41				130
+Trick	271	Psychic	Status	10	16	0	100%	None	0	Selected																	38			109
+Role Play	272	Psychic	Status	10	16	0	101%	None	0	Selected																				
+Wish	273	Normal	Status	10	16	0	101%	None	0	Selected	Heals Pokemon in User's Position 50% HP After 1 Turn		100%																	
+Assist	274	Normal	Status	20	32	0	101%	None	0	Self	Uses a Random Move Known by a Party Member		100%																	
+Ingrain	275	Grass	Status	20	32	0	101%	None	0	Selected	Recovers 1/16 HP; Can Not Switch Out		100%																	
+Superpower	276	Fighting	Physical	5	8	120	100%	4.17	0	Selected	Lowers User's Atk and Def by 1		100%												49		39			
+Magic Coat	277	Psychic	Status	15	24	0	101%	None	4	Selected	Any Statuses or Stat Reductions Given by Foe Happen to Foe		100%																	
+Recycle	278	Normal	Status	10	16	0	101%	None	0	Selected								67	67									67		
+Revenge	279	Fighting	Physical	10	16	60	100%	4.17	-4	Selected																42				
+Brick Break	280	Fighting	Physical	15	24	75	100%	4.17	0	Selected	Destroys All Screens		100%			31	31	31	31	31	31	31	31		13	43		31		58
+Yawn	281	Normal	Status	10	16	0	101%	None	0	Selected																				
+Knock Off	282	Dark	Physical	20	32	65	100%	4.17	0	Selected	Removes Foe's Held Item		100%																	181
+Endeavor	283	Normal	Physical	5	8	0	100%	4.17	0	Selected	Reduces Foe's HP to Match the User's		100%																	205
+Eruption	284	Fire	Special	5	8	150	100%	4.17	0	Adjacent Foes	BP = 120 * (Foe's HP / Foe's Max HP)		100%																	
+Skill Swap	285	Psychic	Status	10	16	0	101%	None	0	Selected						48	48	48	48								40	48		98
+Imprison	286	Psychic	Status	10	16	0	101%	None	0	Selected	Foe an Not Use Moves that the User Knows		100%													44				92
+Refresh	287	Normal	Status	20	32	0	101%	None	0	Selected																				
+Grudge	288	Ghost	Status	5	8	0	101%	None	0	Selected	If User Faints, Foe's Move that Knocked Out User Loses All PP		100%																	
+Snatch	289	Dark	Status	10	16	0	101%	None	4	Selected						49	49	49	49											
+Secret Power	290	Normal	Physical	20	32	70	100%	4.17	0	Selected	Different Effect Depending on Location					43	43	43	43			94								
+Dive	291	Water	Physical	10	16	80	100%	4.17	0	Selected	User is Protected, then Attacks Next Turn		100%													45				
+Arm Thrust	292	Fighting	Physical	20	32	15	100%	4.17	0	Selected	Hits 2-5 Times in a Row	37.5% for 2 37.5% for 3 12.5% for 4 12.5% for 5	--%																	
+Camouflage	293	Normal	Status	20	32	0	101%	None	0	Selected	Changes User's Type Depending on Location		100%																	
+Tail Glow	294	Bug	Status	20	32	0	101%	None	0	Selected	Raises User's Sp. Atk by 3		100%																	
+Luster Purge	295	Psychic	Special	5	8	95	100%	4.17	0	Selected	Lowers Foe's Sp. Def by 1		50%																	
+Mist Ball	296	Psychic	Special	5	8	95	100%	4.17	0	Selected	Lowers Foe's Sp. Atk by 1		50%																	
+Feather Dance	297	Flying	Status	15	24	0	100%	None	0	Selected	Lowers Foe's Atk by 2		100%																	216
+Teeter Dance	298	Normal	Status	20	32	0	100%	None	0	All Adjacent																				
+Blaze Kick	299	Fire	Physical	10	16	85	90%	12.5	0	Selected	Burns Foe		10%														41			
+Mud Sport	300	Ground	Status	15	24	0	101%	None	0	All	Electric-Type Moves do -67% Damage for 5 Turns		100%																	
+Ice Ball	301	Ice	Physical	20	32	30	90%	4.17	0	Selected	Uses Same Move for 5 Turns; Power Raises Per Hit		100%																	
+Needle Arm	302	Grass	Physical	15	24	60	100%	4.17	0	Selected	Flinches Foe		30%																	
+Slack Off	303	Normal	Status	5	8	0	101%	None	0	Selected																				
+Hyper Voice	304	Normal	Special	10	16	90	100%	4.17	0	Adjacent Foes																	42			117
+Poison Fang	305	Poison	Physical	15	24	50	100%	4.17	0	Selected	Badly Poisons Foe		50%																	
+Crush Claw	306	Normal	Physical	10	16	75	95%	4.17	0	Selected	Lowers Foe's Def by 1		50%																	
+Blast Burn	307	Fire	Special	5	8	150	90%	4.17	0	Selected	User Can Not Attack Next Turn		100%																	153
+Hydro Cannon	308	Water	Special	5	8	150	90%	4.17	0	Selected	User Can Not Attack Next Turn		100%																	154
+Meteor Mash	309	Steel	Physical	10	16	90	90%	4.17	0	Selected	Raises User's Atk by 1		20%																	
+Astonish	310	Ghost	Physical	15	24	30	100%	4.17	0	Selected	Flinches Foe		30%																	
+Weather Ball	311	Normal	Special	10	16	50	100%	4.17	0	Selected																46				193
+Aromatherapy	312	Grass	Status	5	8	0	101%	None	0	All Allies	Heals Party's Statuses		100%																	
+Fake Tears	313	Dark	Status	20	32	0	100%	None	0	Selected	Lowers Foe's Sp. Def by 2		100%													47				
+Air Cutter	314	Flying	Special	25	40	60	95%	12.5	0	Adjacent																				40
+Overheat	315	Fire	Special	5	8	130	90%	4.17	0	Selected	Lowers User's Sp. Atk by 2		100%			50	50	50	50	50	50	50	50				43	50		157
+Odor Sleuth	316	Normal	Status	40	64	0	101%	None	0	Selected	Ignores High Evasion; Ghost-Types Can be Hit with Normal-Type Moves		100%																	
+Rock Tomb	317	Rock	Physical	15	24	60	95%	4.17	0	Selected	Lowers Foe's Spd by 1		100%			39	39			39	39	39	39			48				36
+Silver Wind	318	Bug	Special	5	8	60	100%	4.17	0	Selected	Raises All of User's Stats by 1		10%					62	62											
+Metal Sound	319	Steel	Status	40	64	0	85%	None	0	Selected	Lowers Foe's Sp. Def by 2		100%																	223
+Grass Whistle	320	Grass	Status	15	24	0	55%	None	0	Selected	Sleeps Foe		100%																	
+Tickle	321	Normal	Status	20	32	0	100%	None	0	Selected	Lowers Foe's Atk and Def by 1		100%																	
+Cosmic Power	322	Psychic	Status	20	32	0	101%	None	0	Selected	Raises User's Def and Sp. Def by 1		100%														44			
+Water Spout	323	Water	Special	5	8	150	100%	4.17	0	Adjacent Foes																				
+Signal Beam	324	Bug	Special	15	24	75	100%	4.17	0	Selected	Confuses Foe		10%																	
+Shadow Punch	325	Ghost	Physical	20	32	60	101%	4.17	0	Selected	Can Not Miss		100%																	
+Extrasensory	326	Psychic	Special	20	32	80	100%	4.17	0	Selected	Flinches Foe		10%																	
+Sky Uppercut	327	Fighting	Physical	15	24	85	90%	4.17	0	Selected																				
+Sand Tomb	328	Ground	Physical	15	24	35	85%	4.17	0	Selected																49				176
+Sheer Cold	329	Ice	Special	5	8	∞	30%	4.17	0	Selected	1-Hit KO	(Level Difference + 30)%	100%																	
+Muddy Water	330	Water	Special	10	16	90	85%	4.17	0	Adjacent Foes	Lowers Foe's Accuracy by 1		30%														45			209
+Bullet Seed	331	Grass	Physical	30	48	25	100%	4.17	0	Selected	HIts 2-5 Times		100%			9	9	9	9							50		9		56
+Aerial Ace	332	Flying	Physical	20	32	60	101%	4.17	0	Selected	Can Not Miss		100%			40	40	40	40	40	40	40	40					40		27
+Icicle Spear	333	Ice	Physical	30	48	25	100%	4.17	0	Selected	HIts 2-5 Times		100%													51				187
+Iron Defense	334	Steel	Status	15	24	0	101%	None	0	Selected	Raises User's Def by 2		100%														46			104
+Block	335	Normal	Status	5	8	0	101%	None	0	Selected	Traps Foe		100%																	
+Howl	336	Normal	Status	40	64	0	101%	None	0	All Allies	Raises Team's Atk by 1		100%																	
+Dragon Claw	337	Dragon	Physical	15	24	80	100%	4.17	0	Selected						2	2	2	2	2	2	2	2				47	2		78
+Frenzy Plant	338	Grass	Special	5	8	150	90%	4.17	0	Selected	User Can Not Attack Next Turn		100%																	155
+Bulk Up	339	Fighting	Status	20	32	0	101%	None	0	Selected	Raises User's Atk and Def by 1		100%			8	8	8	8	8	8	8	8		30		48	8		64
+Bounce	340	Flying	Physical	5	8	85	85%	4.17	0	Selected	User is Protected, then Attacks Next Turn; Paralyzes Foe		30%													52				
+Mud Shot	341	Ground	Special	15	24	55	95%	4.17	0	Selected	Lowers Foe's Spd by 1		100%													53				35
+Poison Tail	342	Poison	Physical	25	40	50	100%	12.5	0	Selected	Poisons Foe		10%																	26
+Covet	343	Normal	Physical	25	40	60	100%	4.17	0	Selected	Steals Foe's Held Item		100%																	
+Volt Tackle	344	Electric	Physical	15	24	120	100%	4.17	0	Selected	33% Recoil; Paralyzes Foe		30%																	
+Magical Leaf	345	Grass	Special	20	32	60	101%	4.17	0	Selected	Can Not Miss		100%													10				33
+Water Sport	346	Water	Status	15	24	0	101%	None	0	All																				
+Calm Mind	347	Psychic	Status	20	32	0	101%	None	0	Selected	Raises User's Sp. Atk and Sp. Def by 1		100%			4	4	4	4	4	4	4	4		33		49	4		129
+Leaf Blade	348	Grass	Physical	15	24	90	100%	12.5	0	Selected																	50			
+Dragon Dance	349	Dragon	Status	20	32	0	101%	None	0	Selected	Raises User's Atk and Spd by 1		100%														51			100
+Rock Blast	350	Rock	Physical	10	16	25	90%	4.17	0	Selected	HIts 2-5 Times		100%													54				76
+Shock Wave	351	Electric	Special	20	32	60	101%	4.17	0	Selected	Can Not Miss		100%			34	34	34	34									34		
+Water Pulse	352	Water	Special	20	32	60	100%	4.17	0	Selected	Confuses Foe		20%			3	3	3	3									3		11
+Doom Desire	353	Steel	Special	5	8	140	100%	4.17	0	Selected	Foe is Damaged After 2 Turns		100%																	
+Psycho Boost	354	Psychic	Special	5	8	140	90%	4.17	0	Selected	Lowers User's Sp. Atk by 2		100%																	
+Roost	355	Flying	Status	5	8	0	101%	None	0	Selected	Heals 50%; Loses Flying-Type That Turn		100%					51	51		19	19	19		50			51		
+Gravity	356	Psychic	Status	5	8	0	101%	None	0	All	Removes Ground Immunity; Lowers All Pokemon's Evasion by 2		100%																	178
+Miracle Eye	357	Psychic	Status	40	64	0	101%	None	0	Selected	Ignores High Evasion; Removes Psychic-Type's Immunity to Dark-Type		100%																	
+Wake-Up Slap	358	Fighting	Physical	10	16	70	100%	4.17	0	Selected																				
+Hammer Arm	359	Fighting	Physical	10	16	100	90%	4.17	0	Selected	Lowers User's Spd by 1		100%																	
+Gyro Ball	360	Steel	Physical	5	8	0	100%	4.17	0	Selected	BP = FLOOR( (25 * Foe Speed / User Speed) + 1)		100%					74	74	74	74	74	74				52	74		180
+Healing Wish	361	Psychic	Status	10	16	0	101%	None	0	Selected	Fully Heals a Party Ally; User Faints		100%																	
+Brine	362	Water	Special	10	16	65	100%	4.17	0	Selected	100% Damage if Foe has Less Than 50% HP		100%					55	55							55		55		
+Natural Gift	363	Normal	Physical	15	24	0	100%	4.17	0	Selected	Move Type and Power Depends on Berry Held by User		100%					83	83											
+Feint	364	Normal	Physical	10	16	30	100%	4.17	2	Selected	Ignores and Removes Protect Moves		100%																	
+Pluck	365	Flying	Physical	20	32	60	100%	4.17	0	Selected								88	88	88								88		
+Tailwind	366	Flying	Status	15	24	0	101%	None	0	All Allies																				113
+Acupressure	367	Normal	Status	30	48	0	101%	None	0	Self/Ally	Raises User's Random Stat by 2		100%																	
+Metal Burst	368	Steel	Physical	10	16	0	100%	4.17	0	Selected	150% Damage to Foe Who Last Damaged user		100%																	
+U-turn	369	Bug	Physical	20	32	70	100%	4.17	0	Selected								89	89	89	89	89	89		18	56		89		60
+Close Combat	370	Fighting	Physical	5	8	120	100%	4.17	0	Selected	Lowers User's Def and Sp. Def by 1		100%														53			167
+Payback	371	Dark	Physical	10	16	50	100%	4.17	0	Selected								66	66	66	66	66	66			57		66		
+Assurance	372	Dark	Physical	10	16	60	100%	4.17	0	Selected	100% Damage if Target Already Recieved Damage This Turn		100%													58				
+Embargo	373	Dark	Status	15	24	0	100%	None	0	Selected	Negates the Effect of Foe's Held Item for 5 Turns		100%					63	63	63	63	63	63							
+Fling	374	Dark	Physical	10	16	0	100%	4.17	0	Selected	User Flings Its Held Item		100%					56	56	56	56	56	56			59		56		43
+Psycho Shift	375	Psychic	Status	10	16	0	100%	None	0	Selected																				
+Trump Card	376	Normal	Special	5	8	0	101%	4.17	0	Selected																				
+Heal Block	377	Psychic	Status	15	24	0	100%	None	0	Adjacent Foes	Foe Can Not Use Healing Moves, Items, Abilities for 5 Turns		100%																	
+Wring Out	378	Normal	Special	5	8	0	100%	4.17	0	Selected																				
+Power Trick	379	Psychic	Status	10	16	0	101%	None	0	Selected																				
+Gastro Acid	380	Poison	Status	10	16	0	100%	None	0	Selected	Negates Foe's Ability		100%																	
+Lucky Chant	381	Normal	Status	30	48	0	101%	None	0	All Allies	Foe Can Not Deal Critical Hits for 5 Turns		100%																	
+Me First	382	Normal	Status	20	32	0	101%	None	0	Selected	Uses Foe's Move; Fails if Foe Moves Faster		100%																	
+Copycat	383	Normal	Status	20	32	0	101%	None	0	Selected	Uses Move Used Just Before		100%																	
+Power Swap	384	Psychic	Status	10	16	0	101%	None	0	Selected																60				
+Guard Swap	385	Psychic	Status	10	16	0	101%	None	0	Selected	Swaps Def and Sp. Def Stat with Foe		100%													61				
+Punishment	386	Dark	Physical	5	8	0	100%	4.17	0	Selected																				
+Last Resort	387	Normal	Physical	5	8	140	100%	4.17	0	Selected	Fails if User did Not Already Use its Other Moves		100%																	
+Worry Seed	388	Grass	Status	10	16	0	100%	None	0	Selected																				
+Sucker Punch	389	Dark	Physical	5	8	70	100%	4.17	1	Selected																				
+Toxic Spikes	390	Poison	Status	20	32	0	101%	None	0	All Foes																	54			91
+Heart Swap	391	Psychic	Status	10	16	0	101%	None	0	Selected	Swaps Stat Changes with Foe		100%																	
+Aqua Ring	392	Water	Status	20	32	0	101%	None	0	Self	Heals 1/16 HP Every Turn		100%																	
+Magnet Rise	393	Electric	Status	10	16	0	101%	None	0	Selected	User is Immune to Ground-Type Moves for 5 Turns		100%																	
+Flare Blitz	394	Fire	Physical	15	24	120	100%	4.17	0	Selected	33% Recoil; Burns Foe		10%														55			165
+Force Palm	395	Fighting	Physical	10	16	60	100%	4.17	0	Selected	Paralyzes Foe		30%																	
+Aura Sphere	396	Fighting	Special	20	32	80	101%	4.17	0	Selected	Can Not Miss		100%														56			112
+Rock Polish	397	Rock	Status	20	32	0	101%	None	0	Selected	Raises User's Spd by 2		100%					69	69	69	69	69	69					69		
+Poison Jab	398	Poison	Physical	20	32	80	100%	4.17	0	Selected	Poisons Foe		30%					84	84	84	84	84	84		26		57	84		83
+Dark Pulse	399	Dark	Special	15	24	80	100%	4.17	0	Selected	Flinches Foe		20%					79	79		97	97	97		20		58	79		94
+Night Slash	400	Dark	Physical	15	24	70	100%	12.5	0	Selected																				
+Aqua Tail	401	Water	Physical	10	16	90	90%	4.17	0	Selected																				
+Seed Bomb	402	Grass	Physical	15	24	80	100%	4.17	0	Selected																	59			71
+Air Slash	403	Flying	Special	15	24	75	95%	4.17	0	Selected	Flinches Foe		30%													95				65
+X-Scissor	404	Bug	Physical	15	24	80	100%	4.17	0	Selected								81	81	81	81	81	81		24		60	81		105
+Bug Buzz	405	Bug	Special	10	16	90	100%	4.17	0	Selected	Lowers Foe's Sp. Def by 1		10%														61	62		162
+Dragon Pulse	406	Dragon	Special	10	16	85	100%	4.17	0	Selected								59	59						34		62	59		115
+Dragon Rush	407	Dragon	Physical	10	16	100	75%	4.17	0	Selected	Flinches Foe		20%																	
+Power Gem	408	Rock	Special	20	32	80	100%	4.17	0	Selected																	63			101
+Drain Punch	409	Fighting	Physical	10	16	75	100%	4.17	0	Selected	50% Lifesteal		100%					60	60							63		60		73
+Vacuum Wave	410	Fighting	Special	30	48	40	100%	4.17	1	Selected																				184
+Focus Blast	411	Fighting	Special	5	8	120	70%	4.17	0	Selected	Lowers Foe's Sp. Def by 1		10%					52	52	52	52	52	52				64	52		158
+Energy Ball	412	Grass	Special	10	16	90	100%	4.17	0	Selected	Lowers Foe's Sp. Def by 1		10%					53	53	53	53	53	53				65	53		119
+Brave Bird	413	Flying	Physical	15	24	120	100%	4.17	0	Selected	33% Recoil		100%														66			164
+Earth Power	414	Ground	Special	10	16	90	100%	4.17	0	Selected	Lowers Foe's Sp. Def by 1		10%														67			133
+Switcheroo	415	Dark	Status	10	16	0	100%	None	0	Selected																				
+Giga Impact	416	Normal	Physical	5	8	150	90%	4.17	0	Selected	User Can Not Attack Next Turn		100%					68	68	68	68	68	68			9		68		152
+Nasty Plot	417	Dark	Status	20	32	0	101%	None	0	Selected	Raises User's Sp. Atk by 2		100%														68	63		140
+Bullet Punch	418	Steel	Physical	30	48	40	100%	4.17	1	Selected																				
+Avalanche	419	Ice	Physical	10	16	60	100%	4.17	-4	Selected	100% Damage if User was Hit This Turn		100%					72	72							64		72		46
+Ice Shard	420	Ice	Physical	30	48	40	100%	4.17	1	Selected																				
+Shadow Claw	421	Ghost	Physical	15	24	70	100%	12.5	0	Selected								65	65							65		65		61
+Thunder Fang	422	Electric	Physical	15	24	65	95%	4.17	0	Selected	Paralyzes or Flinches Foe		10%													66				9
+Ice Fang	423	Ice	Physical	15	24	65	95%	4.17	0	Selected	Freezes or Flinches Foe		10%													67				10
+Fire Fang	424	Fire	Physical	15	24	65	95%	4.17	0	Selected	Burns or Flinches Foe		10%													68				8
+Shadow Sneak	425	Ghost	Physical	30	48	40	100%	4.17	1	Selected																				
+Mud Bomb	426	Ground	Special	10	16	65	85%	4.17	0	Selected	Lowers Foe's Accuracy by 1		30%																	
+Psycho Cut	427	Psychic	Physical	20	32	70	100%	12.5	0	Selected																69				
+Zen Headbutt	428	Psychic	Physical	15	24	80	90%	4.17	0	Selected	Flinches Foe		20%														69			59
+Mirror Shot	429	Steel	Special	10	16	65	85%	4.17	0	Selected	Lowers Foe's Accuracy by 1		30%																	
+Flash Cannon	430	Steel	Special	10	16	80	100%	4.17	0	Selected	Lowers Foe's Sp. Def by 1		10%					91	91	91	91	91	91		54		70	91		93
+Rock Climb	431	Normal	Physical	20	32	90	85%	4.17	0	Selected	Confuses Foe		20%															100		
+Defog	432	Flying	Status	15	24	0	101%	None	0	Selected	Removes Screens; Lowers Foe's Evasion by 1		100%															97		
+Trick Room	433	Psychic	Status	5	8	0	101%	None	-7	All								92	92	92	92	92	92			70		92		161
+Draco Meteor	434	Dragon	Special	5	8	130	90%	4.17	0	Selected	Lowers User's Sp. Atk by 2		100%																	169
+Discharge	435	Electric	Special	15	24	80	100%	4.17	0	All Adjacent	Paralyzes Foe		30%																	
+Lava Plume	436	Fire	Special	15	24	80	100%	4.17	0	All Adjacent	Burns Foe		30%																	
+Leaf Storm	437	Grass	Special	5	8	130	90%	4.17	0	Selected	Lowers User's Sp. Atk by 2		100%														71			159
+Power Whip	438	Grass	Physical	10	16	120	85%	4.17	0	Selected																	72			
+Rock Wrecker	439	Rock	Physical	5	8	150	90%	4.17	0	Selected																				
+Cross Poison	440	Poison	Physical	20	32	70	100%	12.5	0	Selected	Poisons Foe		10%													73				
+Gunk Shot	441	Poison	Physical	5	8	120	80%	4.17	0	Selected	Poisons Foe		30%														73			102
+Iron Head	442	Steel	Physical	15	24	80	100%	4.17	0	Selected	Flinches Foe		30%														74			99
+Magnet Bomb	443	Steel	Physical	20	32	60	101%	4.17	0	Selected	Can Not Miss		100%																	
+Stone Edge	444	Rock	Physical	5	8	100	80%	12.5	0	Selected								71	71	71	71	71	71				75	71		150
+Captivate	445	Normal	Status	20	32	0	100%	None	0	Adjacent Foes	Lowers Foe's Sp. Atk by 2 if Opposite Gender		100%					78	78											
+Stealth Rock	446	Rock	Status	20	32	0	101%	None	0	All Foes								76	76						56		76	76		116
+Grass Knot	447	Grass	Special	20	32	0	100%	4.17	0	Selected	Higher Power the Heavier the Foe		100%					86	86	86	86	86	86				77	86		81
+Chatter	448	Flying	Special	20	32	65	100%	4.17	0	Selected	Confuses Foe		100%																	
+Judgment	449	Normal	Special	10	16	100	100%	4.17	0	Selected	Move Type Depends on Plate Held		100%																	
+Bug Bite	450	Bug	Physical	20	32	60	100%	4.17	0	Selected	Steals Foe's Berry and Eats it		100%																	182
+Charge Beam	451	Electric	Special	10	16	50	90%	4.17	0	Selected	Raises User's Sp. Atk by 1		70%					57	57	57	57	57	57					57		23
+Wood Hammer	452	Grass	Physical	15	24	120	100%	4.17	0	Selected																				
+Aqua Jet	453	Water	Physical	20	32	40	100%	4.17	1	Selected																				
+Attack Order	454	Bug	Physical	15	24	90	100%	12.5	0	Selected																				
+Defend Order	455	Bug	Status	10	16	0	101%	None	0	Selected	Raises User's Def and Sp. Def by 1		100%																	
+Heal Order	456	Bug	Status	10	16	0	101%	None	0	Selected	Heals 50% HP		100%																	
+Head Smash	457	Rock	Physical	5	8	150	80%	4.17	0	Selected	50% Recoil		100%																	
+Double Hit	458	Normal	Physical	10	16	35	90%	4.17	0	Selected	Hits 2 Times		100%																	
+Roar of Time	459	Dragon	Special	5	8	150	90%	4.17	0	Selected																				
+Spacial Rend	460	Dragon	Special	5	8	100	95%	12.5	0	Selected																				
+Lunar Dance	461	Psychic	Status	10	16	0	101%	None	0	Selected	Completely Heals a Party Ally; User Faints		100%																	
+Crush Grip	462	Normal	Physical	5	8	0	100%	4.17	0	Selected	BP = 120 * (Foe's HP / Foe's Max HP)		100%																	
+Magma Storm	463	Fire	Special	5	8	100	75%	4.17	0	Selected	Traps Foe		100%																	
+Dark Void	464	Dark	Status	10	16	0	50%	None	0	Adjacent Foes	Sleeps Foe		100%																	
+Seed Flare	465	Grass	Special	5	8	120	85%	4.17	0	Selected	Lowers Foe's Sp. Def by 2		40%																	
+Ominous Wind	466	Ghost	Special	5	8	60	100%	4.17	0	Selected	Raises All of User's Stats by 1		10%																	
+Shadow Force	467	Ghost	Physical	5	8	120	100%	4.17	0	Selected																				
+Hone Claws	468	Dark	Status	15	24	0	101%	None	0	Selected	Raises User's Atk and Accuracy by 1		100%							1	1	1								
+Wide Guard	469	Rock	Status	10	16	0	101%	None	3	All Allies																				
+Guard Split	470	Psychic	Status	10	16	0	101%	None	0	Selected	Evenly Distributes Def and Sp. Def with User and Foe		100%																	
+Power Split	471	Psychic	Status	10	16	0	101%	None	0	Selected																				
+Wonder Room	472	Psychic	Status	10	16	0	101%	None	0	All																71				
+Psyshock	473	Psychic	Special	10	16	80	100%	4.17	0	Selected										3	3	3	3				25			54
+Venoshock	474	Poison	Special	10	16	65	100%	4.17	0	Selected										9	9	9	9			74				45
+Autotomize	475	Steel	Status	15	24	0	101%	None	0	Self	Raises User's Spd by 2; Reduces Weight by 100kg		100%																	
+Rage Powder	476	Bug	Status	20	32	0	101%	None	2	Selected																				
+Telekinesis	477	Psychic	Status	15	24	0	101%	None	0	Selected										19										
+Magic Room	478	Psychic	Status	10	16	0	101%	None	0	All	Negates All Held Items		100%													72				
+Smack Down	479	Rock	Physical	15	24	50	100%	4.17	0	Selected										23	23	23	23							179
+Storm Throw	480	Fighting	Physical	10	16	60	100%	100	0	Selected																				
+Flame Burst	481	Fire	Special	15	24	70	100%	4.17	0	Selected	Deals 1/16 HP to Foe Every Turn		100%																	
+Sludge Wave	482	Poison	Special	10	16	95	100%	4.17	0	All Adjacent	Poisons Foe		10%							34	34	34	34				78			214
+Quiver Dance	483	Bug	Status	20	32	0	101%	None	0	Selected	Raises User's Sp. Atk, Ap. Def, Spd by 1		100%																	
+Heavy Slam	484	Steel	Physical	10	16	0	100%	4.17	0	Selected	Power Increases the Heavier the User is than the Foe		100%														79			121
+Synchronoise	485	Psychic	Special	10	16	120	100%	4.17	0	All Adjacent																				
+Electro Ball	486	Electric	Special	10	16	0	100%	4.17	0	Selected	Power Increases the Faster the User is than the Foe		100%														80			72
+Soak	487	Water	Status	20	32	0	100%	None	0	Selected	Foe Gains the Water-Type																			
+Flame Charge	488	Fire	Physical	20	32	50	100%	4.17	0	Selected	Raises User's Spd by 1		100%							43	43	43	43							38
+Coil	489	Poison	Status	20	32	0	101%	None	0	Selected	Raises User's Atk, Def, Accuracy by 1		100%																	
+Low Sweep	490	Fighting	Physical	20	32	65	100%	4.17	0	Selected	Lowers Foe's Spd by 1		100%													75		27		39
+Acid Spray	491	Poison	Special	20	32	40	100%	4.17	0	Selected	Lowers Foe's Sp. Def by 2		100%																	13
+Foul Play	492	Dark	Physical	15	24	95	100%	4.17	0	Selected	Uses Foe's Atk Stat for Damage Instead of Atk Stat		100%												21		81			62
+Simple Beam	493	Normal	Status	15	24	0	100%	None	0	Selected																				
+Entrainment	494	Normal	Status	15	24	0	100%	None	0	Selected	Changes Foe's Ability to Match the User's		100%																	
+After You	495	Normal	Status	15	24	0	101%	None	0	Selected	Target Moves Right After User		100%																	
+Round	496	Normal	Special	15	24	60	100%	4.17	0	Selected										48	48	48	48			76				
+Echoed Voice	497	Normal	Special	15	24	40	100%	4.17	0	Selected	Power Increases if Used Consecutively by Any Pokemon		100%							49	49	49	49							
+Chip Away	498	Normal	Physical	20	32	70	100%	4.17	0	Selected	Ignores Stat Changes		100%																	
+Clear Smog	499	Poison	Special	15	24	50	101%	4.17	0	Selected	Resets All Stat Changes		100%																	
+Stored Power	500	Psychic	Special	10	16	20	100%	4.17	0	Selected																	82			41
+Quick Guard	501	Fighting	Status	15	24	0	101%	None	3	All Allies																				
+Ally Switch	502	Psychic	Status	15	24	0	101%	None	2	Self	Switches Place With Ally	Success: 1 / ((Successive Use)-1)^3)	--%							51							83			
+Scald	503	Water	Special	15	24	80	100%	4.17	0	Selected	Burns Foe		30%							55	55	55	55		29		84	49		188
+Shell Smash	504	Normal	Status	15	24	0	101%	None	0	Selected	Lowers User's Def and Sp. Def by 1; Raises User's Atk, Sp. Atk, Spd by 2		100%																	
+Heal Pulse	505	Psychic	Status	10	16	0	101%	None	0	Selected	Heals Target 50% HP		100%																	
+Hex	506	Ghost	Special	10	16	65	100%	4.17	0	Selected	100% if Foe is Statused		100%													77				29
+Sky Drop	507	Flying	Physical	10	16	60	100%	4.17	0	Selected										58	58	58	58							
+Shift Gear	508	Steel	Status	10	16	0	101%	None	0	Selected	Raises User's Atk by 1, Spd by 2		100%																	
+Circle Throw	509	Fighting	Physical	10	16	60	90%	4.17	-6	Selected	Foe Switches Out		100%																	
+Incinerate	510	Fire	Special	15	24	60	100%	4.17	0	Adjacent Foes	Removes Foe's Held Berry		100%							59	59	59								
+Quash	511	Dark	Status	15	24	0	100%	None	0	Selected										60	60	60	60							
+Acrobatics	512	Flying	Physical	15	24	55	100%	4.17	0	Selected	100% Damage if User is Not Holding an Item									62	62	62	62			78				14
+Reflect Type	513	Normal	Status	15	24	0	101%	None	0	Selected																				
+Retaliate	514	Normal	Physical	5	8	70	100%	4.17	0	Selected										67	67	67				79				
+Final Gambit	515	Fighting	Special	5	8	0	100%	4.17	0	Selected	User Faints; Damage is Equal to User's HP		100%																	
+Bestow	516	Normal	Status	15	24	0	101%	None	0	Selected	Passes Held Item to Target		100%																	
+Inferno	517	Fire	Special	5	8	100	50%	4.17	0	Selected	Burns Foe		100%																	
+Water Pledge	518	Water	Special	10	16	80	100%	4.17	0	Selected	If Used with Grass Pledge, Activates Swamp; If Used with Fire Pledge, Activates Rainbow		100%																	145
+Fire Pledge	519	Fire	Special	10	16	80	100%	4.17	0	Selected	If Used with Water Pledge, Activates Rainbow; If Used with Grass Pledge, Activates Sea of FIre		100%																	144
+Grass Pledge	520	Grass	Special	10	16	80	100%	4.17	0	Selected	If Used with Water Pledge, Activates Swamp; If Used with Fire Pledge, Activates Sea of FIre		100%																	146
+Volt Switch	521	Electric	Special	20	32	70	100%	4.17	0	Selected										72	72	72	72			80		43		48
+Struggle Bug	522	Bug	Special	20	32	50	100%	4.17	0	Adjacent Foes	Lowers Foe's Sp. Atk by 1		100%							76	76	76								15
+Bulldoze	523	Ground	Physical	20	32	60	100%	4.17	0	All Adjacent	Lowers Foe's Spd by 1		100%							78	78	78	78			81		83		28
+Frost Breath	524	Ice	Special	10	16	60	90%	100	0	Selected										79	79	79	79							
+Dragon Tail	525	Dragon	Physical	10	16	60	90%	4.17	-6	Selected	Foe Switches Out		100%							82	82	82	82		17					44
+Work Up	526	Normal	Status	30	48	0	101%	None	0	Selected	Raises User's Atk and Sp. Atk by 1		100%							83			1				85	10		
+Electroweb	527	Electric	Special	15	24	55	95%	4.17	0	Adjacent Foes	Lowers Foe's Spd by 1		100%													82				211
+Wild Charge	528	Electric	Physical	15	24	90	100%	4.17	0	Selected										93	93	93	93				86			147
+Drill Run	529	Ground	Physical	10	16	80	95%	12.5	0	Selected															58		87			106
+Dual Chop	530	Dragon	Physical	15	24	40	90%	4.17	0	Selected	Hits 2 Times		100%																	
+Heart Stamp	531	Psychic	Physical	25	40	60	100%	4.17	0	Selected	Flinches Foe		30%																	
+Horn Leech	532	Grass	Physical	10	16	75	100%	4.17	0	Selected	50% Lifesteal		100%																	
+Sacred Sword	533	Fighting	Physical	15	24	90	100%	4.17	0	Selected																				
+Razor Shell	534	Water	Physical	10	16	75	95%	4.17	0	Selected	Lowers Foe's Def by 1		50%													83				
+Heat Crash	535	Fire	Physical	10	16	0	100%	4.17	0	Selected	Power Increases the Heavier the User is than the Foe		100%														88			189
+Leaf Tornado	536	Grass	Special	10	16	65	90%	4.17	0	Selected	Lowers Foe's Accuracy by 1		30%																	
+Steamroller	537	Bug	Physical	20	32	65	100%	4.17	0	Selected	Flinches Foe		30%																	
+Cotton Guard	538	Grass	Status	10	16	0	101%	None	0	Selected	Raises User's Def by 3		100%																	
+Night Daze	539	Dark	Special	10	16	85	95%	4.17	0	Selected	Lowers Foe's Accuracy by 1		40%																	
+Psystrike	540	Psychic	Special	10	16	100	100%	4.17	0	Selected																				
+Tail Slap	541	Normal	Physical	10	16	25	85%	4.17	0	Selected	HIts 2-5 Times		100%													84				
+Hurricane	542	Flying	Special	10	16	110	70%	4.17	0	Selected	100% Accuracy in Rain; 50% Accuracy in Harsh Sunlight; Confuses Foe		30%														89			160
+Head Charge	543	Normal	Physical	15	24	120	100%	4.17	0	Selected	25% Recoil		100%																	
+Gear Grind	544	Steel	Physical	15	24	50	85%	4.17	0	Selected	Hits 2 Times		100%																	
+Searing Shot	545	Fire	Special	5	8	100	100%	4.17	0	All Adjacent	Burns Foe		30%																	
+Techno Blast	546	Normal	Special	5	8	120	100%	4.17	0	Selected																				
+Relic Song	547	Normal	Special	10	16	75	100%	4.17	0	Adjacent Foes	Sleeps Foe; Changes Meloetta's Form		10%																	
+Secret Sword	548	Fighting	Special	10	16	85	100%	4.17	0	Selected																				
+Glaciate	549	Ice	Special	10	16	65	95%	4.17	0	Adjacent Foes	Lowers Foe's Spd by 1		100%																	
+Bolt Strike	550	Electric	Physical	5	8	130	85%	4.17	0	Selected	Paralyzes Foe		20%																	
+Blue Flare	551	Fire	Special	5	8	130	85%	4.17	0	Selected	Burns Foe		20%																	
+Fiery Dance	552	Fire	Special	10	16	80	100%	4.17	0	Selected	Raises User's Sp. Atk by 1		50%																	
+Freeze Shock	553	Ice	Physical	5	8	140	90%	4.17	0	Selected	Paralyzes Foe		30%																	
+Ice Burn	554	Ice	Special	5	8	140	90%	4.17	0	Selected	Burns Foe		30%																	
+Snarl	555	Dark	Special	15	24	55	95%	4.17	0	Adjacent Foes	Lowers Foe's Sp. Atk by 1		100%							95	95	95	95			85		78		30
+Icicle Crash	556	Ice	Physical	10	16	85	90%	4.17	0	Selected	Flinches Foe		30%																	
+V-create	557	Fire	Physical	5	8	180	95%	4.17	0	Selected	Lowers User's Def, Sp. Def, Spd by 1		100%																	
+Fusion Flare	558	Fire	Special	5	8	100	100%	4.17	0	Selected	100% Damage if Ally Used Fusion Bolt		100%																	
+Fusion Bolt	559	Electric	Physical	5	8	100	100%	4.17	0	Selected	100% Damage if Ally Used Fusion Flare		100%																	
+Flying Press	560	Fighting	Physical	10	16	100	95%	4.17	0	Selected	This Move is Fighting and Flying-Type		100%																	
+Mat Block	561	Fighting	Status	10	16	0	101%	None	0	All Allies	Protects Allies from Damaging Moves; Works Only on the First Turn Out		100%																	
+Belch	562	Poison	Special	10	16	120	90%	4.17	0	Selected	Consumes a Held Berry; Fails if User is Not Holding a Berry		100%																	
+Rototiller	563	Ground	Status	10	16	0	101%	None	0	All	Raises Atk and Sp. Atk by 1 for all Grass-Types		100%																	
+Sticky Web	564	Bug	Status	20	32	0	101%	None	0	All Foes	Activates Sticky Web		100%																	
+Fell Stinger	565	Bug	Physical	25	40	50	100%	4.17	0	Selected	Raises User's Atk by 3 if Foe is Knocked Out		100%																	
+Phantom Force	566	Ghost	Physical	10	16	90	100%	4.17	0	Selected																86				151
+Trick-or-Treat	567	Ghost	Status	20	32	0	100%	None	0	Selected																				
+Noble Roar	568	Normal	Status	30	48	0	100%	None	0	Selected	Lowers Foe's Atk and Sp. Atk by 1		100%																	
+Ion Deluge	569	Electric	Status	25	40	0	101%	None	1	All	Changes Foe's Normal-Type to Electric-Type		100%																	
+Parabolic Charge	570	Electric	Special	20	32	65	100%	4.17	0	All Adjacent	50% Lifesteal		100%																	
+Forest's Curse	571	Grass	Status	20	32	0	100%	None	0	Selected	Foe Gains the Grass-Type		100%																	
+Petal Blizzard	572	Grass	Physical	15	24	90	100%	4.17	0	All Adjacent																				206
+Freeze-Dry	573	Ice	Special	20	32	70	100%	4.17	0	Selected	Super Effective to Water-Types; Freezes Foe		10%																	
+Disarming Voice	574	Fairy	Special	15	24	40	101%	4.17	0	Adjacent Foes																				19
+Parting Shot	575	Dark	Status	20	32	0	100%	None	0	Selected	Lowers Foe's Atk and Sp. Atk by 1; User Switches Out		100%																	
+Topsy-Turvy	576	Dark	Status	20	32	0	101%	None	0	Selected																				
+Draining Kiss	577	Fairy	Special	10	16	50	100%	4.17	0	Selected	75% Lifesteal		100%													87				37
+Crafty Shield	578	Fairy	Status	10	16	0	101%	None	3	All Allies	Prevents All Pokemon from Using Status Moves		100%																	
+Flower Shield	579	Fairy	Status	10	16	0	101%	None	0	All	Raises Grass-Type Pokemon's Def by 1		100%																	
+Grassy Terrain	580	Grass	Status	10	16	0	101%	None	0	All	Activates Grassy Terrain		100%													88				137
+Misty Terrain	581	Fairy	Status	10	16	0	101%	None	0	All	Activates Misty Terrain		100%													89				139
+Electrify	582	Electric	Status	20	32	0	101%	None	0	Selected	Foe Becomes Electric-Type This Turn		100%																	
+Play Rough	583	Fairy	Physical	10	16	90	90%	4.17	0	Selected	Lowers Foe's Atk by 1		10%												44		90			127
+Fairy Wind	584	Fairy	Special	30	48	40	100%	4.17	0	Selected																				
+Moonblast	585	Fairy	Special	15	24	95	100%	4.17	0	Selected	Lowers Foe's Sp. Atk by 1		30%																	
+Boomburst	586	Normal	Special	10	16	140	100%	4.17	0	All Adjacent																				
+Fairy Lock	587	Fairy	Status	10	16	0	101%	None	0	All	Foe Can Not Switch Out This Turn		100%																	
+King's Shield	588	Steel	Status	10	16	0	101%	None	4	Selected	Protects User from Attacks; Lowers Foe's Atk if Direct Contact is Made	Success: 1 / ((Successive Use)-1)^3)																		
+Play Nice	589	Normal	Status	20	32	0	101%	None	0	Selected	Lowers Foe's Atk by 1		100%																	
+Confide	590	Normal	Status	20	32	0	101%	None	0	Selected	Lowers Foe's Sp. Atk by 1		100%								100	100	100							
+Diamond Storm	591	Rock	Physical	5	8	100	95%	4.17	0	Adjacent Foes	Raises User's Def by 2		50%																	
+Steam Eruption	592	Water	Special	5	8	110	95%	4.17	0	Selected	Burns Foe		30%																	
+Hyperspace Hole	593	Psychic	Special	5	8	80	101%	4.17	0	Selected	Ignores Any Protect Moves		100%																	
+Water Shuriken	594	Water	Special	20	32	15	100%	4.17	1	Selected	Hits 2-5 Times; Hits 2 Times in Battle Bond		100%																	
+Mystical Fire	595	Fire	Special	10	16	75	100%	4.17	0	Selected	Lowers Foe's Sp. Atk by 1		100%													92				
+Spiky Shield	596	Grass	Status	10	16	0	101%	None	4	Selected																				
+Aromatic Mist	597	Fairy	Status	20	32	0	101%	None	0	Adjacent Ally	Raises Ally's Sp. Def by 1		100%																	
+Eerie Impulse	598	Electric	Status	15	24	0	100%	None	0	Selected	Lowers Foe's Sp. Atk by 2		100%													93				96
+Venom Drench	599	Poison	Status	20	32	0	100%	None	0	Adjacent Foes	Lowers Foe's Atk, Sp. Atk, Spd if Foe is Poisoned		100%														91			
+Powder	600	Bug	Status	20	32	0	100%	None	1	Selected																				
+Geomancy	601	Fairy	Status	10	16	0	101%	None	0	Selected	On the Second Turn, Raises User's Sp. Atk, Sp. Def, Spd by 2		100%																	
+Magnetic Flux	602	Electric	Status	20	32	0	101%	None	0	All Allies	Raises Ally's Def and Sp. Def by 1 if it has Plus or Minus Ability																			
+Happy Hour	603	Normal	Status	30	48	0	101%	None	0	All Allies	Doubles Prize Money		100%																	
+Electric Terrain	604	Electric	Status	10	16	0	101%	None	0	All	Activates Electric Terrain		100%													90				136
+Dazzling Gleam	605	Fairy	Special	10	16	80	100%	4.17	0	Adjacent Foes											99	99	99		32		92	21		79
+Celebrate	606	Normal	Status	40	64	0	101%	None	0	Selected																				
+Hold Hands	607	Normal	Status	40	64	0	101%	None	0	Selected																				
+Baby-Doll Eyes	608	Fairy	Status	30	48	0	100%	None	1	Selected	Lowers Foe's Atk by 1		100%																	
+Nuzzle	609	Electric	Physical	20	32	20	100%	4.17	0	Selected	Paralyzes Foe		100%																	
+Hold Back	610	Normal	Physical	40	64	40	100%	4.17	0	Selected	Leaves Foe with At Least 1 HP		100%																	
+Infestation	611	Bug	Special	20	32	20	100%	4.17	0	Selected	Traps Foe		100%								83	83	83							
+Power-Up Punch	612	Fighting	Physical	20	32	40	100%	4.17	0	Selected	Raises User's Atk by 1		100%								98	98								
+Oblivion Wing	613	Flying	Special	10	16	80	100%	4.17	0	Selected	75% Lifesteal		100%																	
+Thousand Arrows	614	Ground	Physical	10	16	90	100%	4.17	0	Adjacent Foes																				
+Thousand Waves	615	Ground	Physical	10	16	90	100%	4.17	0	Adjacent Foes																				
+Land's Wrath	616	Ground	Physical	10	16	90	100%	4.17	0	Adjacent Foes																				
+Light of Ruin	617	Fairy	Special	5	8	140	90%	4.17	0	Selected	50% Recoil		100%																	
+Origin Pulse	618	Water	Special	10	16	110	85%	4.17	0	Adjacent Foes																				
+Precipice Blades	619	Ground	Physical	10	16	120	85%	4.17	0	Adjacent Foes																				
+Dragon Ascent	620	Flying	Physical	5	8	120	100%	4.17	0	Selected	Lowers User's Def and Sp. Def by 1		100%																	
+Hyperspace Fury	621	Dark	Physical	5	8	100	101%	4.17	0	Selected	Ignores Any Protect Moves; Lowers User's Def by 1		100%																	
+Breakneck Blitz	622	Normal		1	1	--	--%	4.17	0	Selected																				
+All-Out Pummeling	624	Fighting		1	1	--	--%	4.17	0	Selected																				
+Supersonic Skystrike	626	Flying		1	1	--	--%	4.17	0	Selected																				
+Acid Downpour	628	Poison		1	1	--	--%	4.17	0	Selected																				
+Tectonic Rage	630	Ground		1	1	--	--%	4.17	0	Selected																				
+Continental Crush	632	Rock		1	1	--	--%	4.17	0	Selected																				
+Savage Spin-Out	634	Bug		1	1	--	--%	4.17	0	Selected																				
+Never-Ending Nightmare	636	Ghost		1	1	--	--%	4.17	0	Selected																				
+Corkscrew Crash	638	Steel		1	1	--	--%	4.17	0	Selected																				
+Inferno Overdrive	640	Fire		1	1	--	--%	4.17	0	Selected																				
+Hydro Vortex	642	Water		1	1	--	--%	4.17	0	Selected																				
+Bloom Doom	644	Grass		1	1	--	--%	4.17	0	Selected																				
+Gigavolt Havoc	646	Electric		1	1	--	--%	4.17	0	Selected																				
+Shattered Psyche	648	Psychic		1	1	--	--%	4.17	0	Selected																				
+Subzero Slammer	650	Ice		1	1	--	--%	4.17	0	Selected																				
+Devastating Drake	652	Dragon		1	1	--	--%	4.17	0	Selected																				
+Black Hole Eclipse	654	Dark		1	1	--	--%	4.17	0	Selected																				
+Twinkle Tackle	656	Fairy		1	1	--	--%	4.17	0	Selected																				
+Catastropika	658	Electric	Physical	1	1	210	--%	4.17	0	Selected																				
+Shore Up	659	Ground	Status	5	8	0	101%	None	0	Selected																				
+First Impression	660	Bug	Physical	10	16	90	100%	4.17	2	Selected	Works Only on the First Turn Out		100%																	
+Baneful Bunker	661	Poison	Status	10	16	0	101%	None	4	Self	Protects User from Attacks; Poisons Foe if Direct Contact is Made	Success: 1 / ((Successive Use)-1)^3)	--%																	
+Spirit Shackle	662	Ghost	Physical	10	16	80	100%	4.17	0	Selected	Traps Foe		100%																	
+Darkest Lariat	663	Dark	Physical	10	16	85	100%	4.17	0	Selected	Ignores Stat Changes		100%														93			
+Sparkling Aria	664	Water	Special	10	16	90	100%	4.17	0	All Adjacent	Heals Target's Burn		100%																	
+Ice Hammer	665	Ice	Physical	10	16	100	90%	4.17	0	Selected	Lowers User's Spd by 1		100%																	
+Floral Healing	666	Fairy	Status	10	16	0	101%	None	0	Selected	Heals 50% HP; Heals 66% HP in Grassy Terrain		100%																	
+High Horsepower	667	Ground	Physical	10	16	95	95%	4.17	0	Selected																	94			186
+Strength Sap	668	Grass	Status	10	16	0	100%	None	0	Selected	User Heals HP Equal to Foe's Atk; Lowers Foe's Atk by 1		100%																	
+Solar Blade	669	Grass	Physical	10	16	125	100%	4.17	0	Selected																12				190
+Leafage	670	Grass	Physical	40	64	40	100%	4.17	0	Selected																				
+Spotlight	671	Normal	Status	15	24	0	101%	None	3	Selected																				
+Toxic Thread	672	Poison	Status	20	32	0	100%	None	0	Selected	Poisons Foe; Lowers Foe's Spd by 1		100%																	
+Laser Focus	673	Normal	Status	30	48	0	101%	None	0	Selected	User's Next Move will be a Critical Hit																			
+Gear Up	674	Steel	Status	20	32	0	101%	None	0	All Allies	Raises Ally's Atk and Sp. Atk by 1 if it has Plus or Minus Ability		100%																	
+Throat Chop	675	Dark	Physical	15	24	80	100%	4.17	0	Selected	Prevents Foe From Using Sound Moves for 2 Turns		100%														95			221
+Pollen Puff	676	Bug	Special	15	24	90	100%	4.17	0	Selected	If Used on Ally, Heals 50% HP		100%														96			131
+Anchor Shot	677	Steel	Physical	20	32	80	100%	4.17	0	Selected	Traps Foe		100%																	
+Psychic Terrain	678	Psychic	Status	10	16	0	101%	None	0	All	Activates Psychic Terrain		100%													91				138
+Lunge	679	Bug	Physical	15	24	80	100%	4.17	0	Selected	Lowers Foe's Atk by 1		100%																	185
+Fire Lash	680	Fire	Physical	15	24	80	100%	4.17	0	Selected	Lowers Foe's Def by 1		100%																	
+Power Trip	681	Dark	Physical	10	16	20	100%	4.17	0	Selected																				
+Burn Up	682	Fire	Special	5	8	130	100%	4.17	0	Selected	User Loses Fire-Type; Fails if User is Not a Fire-Type		100%																	
+Speed Swap	683	Psychic	Status	10	16	0	101%	None	0	Selected																62				
+Smart Strike	684	Steel	Physical	10	16	70	101%	4.17	0	Selected													67			96				53
+Purify	685	Poison	Status	20	32	0	101%	None	0	Selected																				
+Revelation Dance	686	Normal	Special	15	24	90	100%	4.17	0	Selected																				
+Core Enforcer	687	Dragon	Special	10	16	100	100%	4.17	0	Adjacent Foes	If Foe Already Used a Move This Turn, Negates Foe's Ability		100%																	
+Trop Kick	688	Grass	Physical	15	24	70	100%	4.17	0	Selected	Lowers Foe's Atk by 1		100%																	
+Instruct	689	Psychic	Status	15	24	0	101%	None	0	Selected	Target Uses its Last Move Again		100%																	
+Beak Blast	690	Flying	Physical	15	24	100	100%	4.17	-3	Selected	Burns Foe if Direct Contact is Made		100%																	
+Clanging Scales	691	Dragon	Special	5	8	110	100%	4.17	0	Adjacent Foes	Lowers User's Def by 1		100%																	
+Dragon Hammer	692	Dragon	Physical	15	24	90	100%	4.17	0	Selected																				
+Brutal Swing	693	Dark	Physical	20	32	60	100%	4.17	0	All Adjacent													59			97				
+Aurora Veil	694	Ice	Status	20	32	0	101%	None	0	All Allies	Activates Aurora Veil; Fails if Not in Hail		100%										70							
+Sinister Arrow Raid	695	Ghost	Physical	1	1	180	--%	4.17	0	Selected																				
+Malicious Moonsault	696	Dark	Physical	1	1	180	--%	4.17	0	Selected																				
+Oceanic Operetta	697	Water	Special	1	1	195	--%	4.17	0	Selected																				
+Guardian of Alola	698	Fairy	Special	1	1	--	--%	4.17	0	Selected																				
+Soul-Stealing 7-Star Strike	699	Ghost	Physical	1	1	195	--%	4.17	0	Selected																				
+Stoked Sparksurfer	700	Electric	Special	1	1	175	--%	4.17	0	Selected	Paralyzes Foe		--%																	
+Pulverizing Pancake	701	Normal	Physical	1	1	210	--%	4.17	0	Selected																				
+Extreme Evoboost	702	Normal	Status	1	1	--	--%	None	0	Selected	Raises All of User's Stats by 2		100%																	
+Genesis Supernova	703	Psychic	Special	1	1	185	--%	4.17	0	Selected	Activates Psychic Terrain		--%																	
+Shell Trap	704	Fire	Special	5	8	150	100%	4.17	-3	Adjacent Foes																				
+Fleur Cannon	705	Fairy	Special	5	8	130	90%	4.17	0	Selected	Lowers User's Sp. Atk by 2		100%																	
+Psychic Fangs	706	Psychic	Physical	10	16	85	100%	4.17	0	Selected																	97			63
+Stomping Tantrum	707	Ground	Physical	10	16	75	100%	4.17	0	Selected																98				84
+Shadow Bone	708	Ghost	Physical	10	16	85	100%	4.17	0	Selected	Lowers Foe's Def by 1		20%																	
+Accelerock	709	Rock	Physical	20	32	40	100%	4.17	1	Selected																				
+Liquidation	710	Water	Physical	10	16	85	100%	4.17	0	Selected	Lowers Foe's Def by 1		20%														98			110
+Prismatic Laser	711	Psychic	Special	10	16	160	100%	4.17	0	Selected																				
+Spectral Thief	712	Ghost	Physical	10	16	90	100%	4.17	0	Selected																				
+Sunsteel Strike	713	Steel	Physical	5	8	100	100%	4.17	0	Selected	Ignores Abilities		100%																	
+Moongeist Beam	714	Ghost	Special	5	8	100	100%	4.17	0	Selected	Uses Foe's Last Move		100%																	
+Tearful Look	715	Normal	Status	20	32	0	101%	None	0	Selected	Lowers Foe's Atk and Sp. Atk by 1		100%																	
+Zing Zap	716	Electric	Physical	10	16	80	100%	4.17	0	Selected	Flinches Foe		30%																	
+Nature's Madness	717	Fairy	Special	10	16	0	90%	4.17	0	Selected	Foe Loses 50% of Current HP		100%																	
+Multi-Attack	718	Normal	Physical	10	16	120	100%	4.17	0	Selected	Move Type Depends on Memory Held		100%																	
+10,000,000 Volt Thunderbolt	719	Electric	Special	1	1	195	--%	50	0	Selected																				
+Mind Blown	720	Fire	Special	5	8	150	100%	4.17	0	All Adjacent	50% HP Recoil		100%																	
+Plasma Fists	721	Electric	Physical	15	24	100	100%	4.17	0	Selected																				
+Photon Geyser	722	Psychic	Special	5	8	100	100%	4.17	0	Selected	Ignores Abilities; Inflicts Higher of Physical or Special		100%																	
+Light That Burns the Sky	723	Psychic	Special	1	1	200	--%	4.17	0	Selected	Ignores Abilities; Inflicts Higher of Physical or Special		--%																	
+Searing Sunraze Smash	724	Steel	Physical	1	1	200	--%	4.17	0	Selected	Ignores Abilities		100%																	
+Menacing Moonraze Maelstrom	725	Ghost	Special	1	1	200	--%	4.17	0	Selected	Ignores Abilities		--%																	
+Let's Snuggle Forever	726	Fairy	Physical	1	1	190	--%	4.17	0	Selected																				
+Splintered Stormshards	727	Rock	Physical	1	1	190	--%	4.17	0	Selected	Destroys Terrains		--%																	
+Clangorous Soulblaze	728	Dragon	Special	1	1	185	--%	4.17	0	Adjacent Foes	Raises All of User's Stats by 1		100%																	
+Zippy Zap	729	Electric	Physical	10	16	80	100%	4.17	2	Selected	Always Inflicts a Critical Hit		--%																	
+Splishy Splash	730	Water	Special	15	24	90	100%	4.17	0	Adjacent Foes	Paralyzes Foe		30%																	
+Floaty Fall	731	Flying	Physical	15	24	90	95%	4.17	0	Selected	Flinches Foe		30%																	
+Pika Papow	732	Electric	Special	20	32	1	101%	4.17	0	Selected	More Damage the Higher the Happiness	Happiness / 2.5	--%																	
+Bouncy Bubble	733	Water	Special	20	32	60	100%	4.17	0	Selected	50% Lifesteal																			
+Buzzy Buzz	734	Electric	Special	20	32	60	100%	4.17	0	Selected	Paralyzes Foe		100%																	
+Sizzly Slide	735	Fire	Physical	20	32	60	100%	4.17	0	Selected	Burns Foe		--%																	
+Glitzy Glow	736	Psychic	Special	15	24	80	95%	4.17	0	Selected	Activates Reflect		--%																	
+Baddy Bad	737	Dark	Special	15	24	80	95%	4.17	0	Selected	Activates Reflect		100%																	
+Sappy Seed	738	Grass	Physical	10	16	100	90%	4.17	0	Selected	Seeds Foe		--%																	
+Freezy Frost	739	Ice	Special	10	16	100	90%	4.17	0	Selected	Resets All Stat Changes		--%																	
+Sparkly Swirl	740	Fairy	Special	5	8	120	85%	4.17	0	Selected	Heals Party's Status Conditions		--%																	
+Veevee Volley	741	Normal	Physical	20	32	1	101%	4.17	0	Selected	More Damage the Higher the Happiness	Happiness / 2.5	--%																	
+Double Iron Bash	742	Steel	Physical	5	8	60	100%	4.17	0	Selected	Hits 2 Times; Flinches Foe		30%																	
+Max Geyser	743	Water	Physical	10	16	1	101%	4.17	0	Opponent	Activates Rain		--%																	
+Dynamax Cannon	744	Dragon	Special	5	8	100	100%	4.17	0	Selected	100% Damage if Foe is Dynamaxed		100%																	
+Snipe Shot	745	Water	Special	15	24	80	100%	12.5	0	Selected																				
+Jaw Lock	746	Dark	Physical	10	16	80	100%	4.17	0	Selected	Traps User and Foe Until Either Faints or Leaves the Field		100%																	
+Stuff Cheeks	747	Normal	Status	10	16	0	101%	None	0	Selected	Raises User's Def by 2		100%																	
+No Retreat	748	Fighting	Status	5	8	0	101%	None	0	Selected	Traps User; Raises All of User's Stats by 1		100%																	
+Tar Shot	749	Rock	Status	15	24	0	100%	None	0	Selected	Lowers Foe's Spd by 1; Foe Recieves Fire Weakness		100%																	
+Magic Powder	750	Psychic	Status	20	32	0	100%	None	0	Selected	Foe Gains the Psychic-Type		100%																	
+Dragon Darts	751	Dragon	Physical	10	16	50	100%	4.17	0	Selected	Hits 2 Times		100%																	
+Teatime	752	Normal	Status	10	16	0	101%	None	0	All																				
+Octolock	753	Fighting	Status	15	24	0	100%	None	0	Selected	Lowers Foe's Def and Sp. Def by 1 Every Turn; Traps Foe		100%																	
+Bolt Beak	754	Electric	Physical	10	16	85	100%	4.17	0	Selected	100% Damage if User Moves Before Foe		100%																	
+Fishious Rend	755	Water	Physical	10	16	85	100%	4.17	0	Selected	100% if User Moves Before Foe		100%																	
+Court Change	756	Normal	Status	10	16	0	100%	None	0	All	Swaps Barriers, Screens, and Other Effects		100%																	
+Max Flare	757	Fire	Physical	10	16	1	101%	4.17	0	Opponent	Causes Sunshine		--%																	
+Max Flutterby	758	Bug	Physical	10	16	1	101%	4.17	0	Opponent	Lowers All Foe's Sp. Atk by 1		--%																	
+Max Lightning	759	Electric	Physical	10	16	1	101%	4.17	0	Opponent	Activates Electric Terrain		--%																	
+Max Strike	760	Normal	Physical	10	16	1	101%	4.17	0	Opponent	Lowers All Foe's Spd by 1		--%																	
+Max Knuckle	761	Fighting	Physical	10	16	1	101%	4.17	0	Opponent	Raises Team's Atk by 1		--%																	
+Max Phantasm	762	Ghost	Physical	10	16	1	101%	4.17	0	Opponent	Lowers All Foe's Def by 1		--%																	
+Max Hailstorm	763	Ice	Physical	10	16	1	101%	4.17	0	Opponent	Activates Hailstorm		--%																	
+Max Ooze	764	Poison	Physical	10	16	1	101%	4.17	0	Opponent	Raises Team's Sp. Atk by 1		--%																	
+Max Guard	765	Normal	Status	10	16	1	101%	None	4	Self			--%																	
+Max Airstream	766	Flying	Physical	10	16	1	101%	4.17	0	Opponent	Raises Team's Spd by 1		--%																	
+Max Starfall	767	Fairy	Physical	10	16	1	101%	4.17	0	Opponent	Activates Misty Terrain		--%																	
+Max Wyrmwind	768	Dragon	Physical	10	16	1	101%	4.17	0	Opponent	Lowers All Foe's Atk by 1		--%																	
+Max Mindstorm	769	Psychic	Physical	10	16	1	101%	4.17	0	Opponent	Activates Psychic Terrain		--%																	
+Max Rockfall	770	Rock	Physical	10	16	1	101%	4.17	0	Opponent	Activates Sandstorm		--%																	
+Max Quake	771	Ground	Physical	10	16	1	101%	4.17	0	Opponent	Raises Team's Sp. Def by 1		--%																	
+Max Darkness	772	Dark	Physical	10	16	1	101%	4.17	0	Opponent	Lowers All Foe's Sp. Def by 1		--%																	
+Max Overgrowth	773	Grass	Physical	10	16	1	101%	4.17	0	Opponent	Activates Grassy Terrain		--%																	
+Max Steelspike	774	Steel	Physical	10	16	1	101%	4.17	0	Opponent	Raises Team's Def by 1		--%																	
+Clangorous Soul	775	Dragon	Status	5	8	0	101%	None	0	Selected	User Loses 33% HP; Raises All of User's Stats by 1		100%																	
+Body Press	776	Fighting	Physical	10	16	80	100%	4.17	0	Selected	Uses User's Def Stat for Damage Instead of Atk Stat		100%														99			89
+Decorate	777	Fairy	Status	15	24	0	101%	None	0	Selected	Raises Target's Atk and Sp. Atk by 2		100%																	
+Drum Beating	778	Grass	Physical	10	16	80	100%	4.17	0	Selected	Lowers Foe's Spd by 1		100%																	
+Snap Trap	779	Grass	Physical	15	24	35	100%	4.17	0	Selected																				
+Pyro Ball	780	Fire	Physical	5	8	120	90%	4.17	0	Selected	Burns Foe		10%																	
+Behemoth Blade	781	Steel	Physical	5	8	100	100%	4.17	0	Selected	100% Damage if Foe is Dynamaxed		100%																	
+Behemoth Bash	782	Steel	Physical	5	8	100	100%	4.17	0	Selected	100% Damage if Foe is Dynamaxed		100%																	
+Aura Wheel	783	Electric	Physical	10	16	110	100%	4.17	0	Selected	Raises User's Spd by 1; Changes to Dark-Type if in Hangry Mode		100%																	
+Breaking Swipe	784	Dragon	Physical	15	24	60	100%	4.17	0	Adjacent Foes	Lowers All Foe's Atk by 1		100%													99				222
+Branch Poke	785	Grass	Physical	40	64	40	100%	4.17	0	Selected																				
+Overdrive	786	Electric	Special	10	16	80	100%	4.17	0	Adjacent Foes																				
+Apple Acid	787	Grass	Special	10	16	80	100%	4.17	0	Selected	Lowers Foe's Sp. Def by 1		100%																	
+Grav Apple	788	Grass	Physical	10	16	80	100%	4.17	0	Selected	Lowers Foe's Def by 1; 120 BP if in Gravity		100%																	
+Spirit Break	789	Fairy	Physical	15	24	75	100%	4.17	0	Selected	Lowers Foe's Sp. Atk by 1		100%																	
+Strange Steam	790	Fairy	Special	10	16	90	95%	4.17	0	Selected	Confuses Foe		20%																	
+Life Dew	791	Water	Status	10	16	0	101%	None	0	All Allies	Heals All Allies 25% HP		100%																	
+Obstruct	792	Dark	Status	10	16	0	100%	None	4	Selected	Protects User from Attacks; Lowers Foe's Def by 2 if Direct Contact is Made	Success: 1 / ((Successive Use)-1)^3)	100%																	
+False Surrender	793	Dark	Physical	10	16	80	101%	4.17	0	Selected																				
+Meteor Assault	794	Fighting	Physical	5	8	150	100%	4.17	0	Selected	User Can Not Attack Next Turn																			
+Eternabeam	795	Dragon	Special	5	8	160	90%	4.17	0	Selected	User Can Not Attack Next Turn		100%																	
+Steel Beam	796	Steel	Special	5	8	140	95%	4.17	0	Selected																				
+Expanding Force	797	Psychic	Special	10	16	80	100%	4.17	0	Adjacent Foes	50% Damage in Psychic Terrain		100%																	218
+Steel Roller	798	Steel	Physical	5	8	130	100%	4.17	0	Selected																				
+Scale Shot	799	Dragon	Physical	20	32	25	90%	4.17	0	Selected	Hits 2-5 Times; Raises User's Spd by 1; Lowers User's Def by 1		100%																	200
+Meteor Beam	800	Rock	Special	10	16	120	90%	4.17	0	Selected	Raises User's Sp. Atk by 1; Attacks Next Turn		100%																	220
+Shell Side Arm	801	Poison	Special	10	16	90	100%	4.17	0	Selected	Poisons Foe		20%																	
+Misty Explosion	802	Fairy	Special	5	8	100	100%	4.17	0	Selected	User Faints; 50% Damage in Misty Terrain		100%																	201
+Grassy Glide	803	Grass	Physical	20	32	55	100%	4.17	0	Selected	1 Priority in Grassy Terrain		100%																	194
+Rising Voltage	804	Electric	Special	20	32	70	100%	4.17	0	Selected																				
+Terrain Pulse	805	Normal	Special	10	16	50	100%	4.17	0	Selected																				
+Skitter Smack	806	Bug	Physical	10	16	70	90%	4.17	0	Selected	Lowers Foe's Sp. Atk by 1		100%																	219
+Burning Jealousy	807	Fire	Special	5	8	70	100%	4.17	0	Adjacent Foes	Burns Foe if They Raised a Stat This Turn		100%																	195
+Lash Out	808	Dark	Physical	5	8	75	100%	4.17	0	Selected	100% Damage if User Had a Stat Lowered This Turn		100%																	199
+Poltergeist	809	Ghost	Physical	5	8	110	90%	4.17	0	Selected																				198
+Corrosive Gas	810	Poison	Status	40	64	0	100%	None	0	Selected	Removes Foe's Held Item		100%																	
+Coaching	811	Fighting	Status	10	16	0	101%	None	0	Selected	Raises Team's Atk and Def by 1		100%																	213
+Flip Turn	812	Water	Physical	20	32	60	100%	4.17	0	Selected	User Switches Out		100%																	
+Triple Axel	813	Ice	Physical	10	16	20	90%	4.17	0	Selected																				212
+Dual Wingbeat	814	Flying	Physical	10	16	40	90%	4.17	0	Selected	Hits 2 Times		100%																	197
+Scorching Sands	815	Ground	Special	10	16	70	100%	4.17	0	Selected	Burns Foe		30%																	215
+Jungle Healing	816	Grass	Status	10	16	0	101%	None	0	All Allies	Heals All Allies 25% HP; Heals Statuses		100%																	
+Wicked Blow	817	Dark	Physical	5	8	75	100%	100	0	Selected																				
+Surging Strikes	818	Water	Physical	5	8	25	100%	100	0	Selected	Hits 3 Times		100%																	
+Thunder Cage	819	Electric	Special	15	24	80	90%	4.17	0	Selected																				
+Dragon Energy	820	Dragon	Special	5	8	150	100%	4.17	0	Adjacent Foes	BP = (Current HP * 150) / Max HP		100%																	
+Freezing Glare	821	Psychic	Special	10	16	90	100%	4.17	0	Selected	Freezes Foe		10%																	
+Fiery Wrath	822	Dark	Special	10	16	90	100%	4.17	0	Adjacent Foes	Flinches Foe		20%																	
+Thunderous Kick	823	Fighting	Physical	10	16	90	100%	4.17	0	Selected	Lowers Foe's Def by 1		100%																	
+Glacial Lance	824	Ice	Physical	5	8	120	100%	4.17	0	Adjacent Foes																				
+Astral Barrage	825	Ghost	Special	5	8	120	100%	4.17	0	Adjacent Foes																				
+Eerie Spell	826	Psychic	Special	5	8	80	100%	4.17	0	Selected	Foe's Last Move Loses 3 PP		100%																	
+Dire Claw	827	Poison	Physical	15	24	80	100%	4.17	0	Selected	Poisons, Paralyzes, or Sleeps All Foes		50%																	
+Psyshield Bash	828	Psychic	Physical	10	16	70	90%	4.17	0	Selected	Raises User's Def by 1		100%																	
+Power Shift	829	Normal	Status	10	16	0	101%	None	0	Selected																				
+Stone Axe	830	Rock	Physical	15	24	65	90%	4.17	0	Selected	Activates Stealth Rocks		100%																	
+Springtide Storm	831	Fairy	Special	5	8	100	80%	4.17	0	Adjacent Foes	Lowers Foe's Atk by 1		30%																	
+Mystical Power	832	Psychic	Special	10	16	70	90%	4.17	0	Selected	Raises User's Sp. Atk by 1		100%																	
+Raging Fury	833	Fire	Physical	10	16	120	100%	4.17	0	Selected	Uses Same Move for 2-3 Turns; Confuses User After		100%																	
+Wave Crash	834	Water	Physical	10	16	120	100%	4.17	0	Selected																				
+Chloroblast	835	Grass	Special	5	8	150	95%	4.17	0	Selected	User Loses 50% HP		100%																	
+Mountain Gale	836	Ice	Physical	10	16	100	85%	4.17	0	Selected	Flinches Foe		30%																	
+Victory Dance	837	Fighting	Status	10	16	0	101%	None	0	Selected	Raises User's Atk, Spd, Def by 1		100%																	
+Headlong Rush	838	Ground	Physical	5	8	120	100%	4.17	0	Selected	Lowers User's Def and Sp. Def by 1		100%																	
+Barb Barrage	839	Poison	Physical	10	16	60	100%	4.17	0	Selected	Poisons Foe; 100% Damage if Foe is Poisoned		50%																	
+Esper Wing	840	Psychic	Special	10	16	80	100%	4.17	0	Selected	Raises User's Spd by 1		100%																	
+Bitter Malice	841	Ghost	Special	10	16	75	100%	4.17	0	Selected	Lowers Foe's Atk by 1		100%																	
+Shelter	842	Steel	Status	10	16	0	101%	None	0	Selected	Raises User's Def by 2		100%																	
+Triple Arrows	843	Fighting	Physical	10	16	90	100%	4.17	0	Selected	Lowers Foe's Def by 1 (50%); Flinches Foe (30%)		65%																	
+Infernal Parade	844	Ghost	Special	15	24	60	100%	4.17	0	Selected	100% Damage if Foe is Statused; Burns Foe		30%																	
+Ceaseless Edge	845	Dark	Physical	15	24	65	90%	4.17	0	Selected	Activates Spikes		100%																	
+Bleakwind Storm	846	Flying	Special	10	16	100	80%	4.17	0	Adjacent Foes	Lowers All Foe's Spd by 1; 100% Accuracy in Rain		30%																	
+Wildbolt Storm	847	Electric	Special	10	16	100	80%	4.17	0	Adjacent Foes	100% Accuracy in Rain; Paralyzes Foe		20%																	
+Sandsear Storm	848	Ground	Special	10	16	100	80%	4.17	0	Adjacent Foes	100% Accuracy in Rain; Burns Foe		20%																	
+Lunar Blessing	849	Psychic	Status	5	8	0	101%	None	0	All Allies	Heals All Allies 25% HP; Heals Statuses		100%																	
+Take Heart	850	Psychic	Status	15	24	0	101%	None	0	Selected	Raises User's Sp. Atk and Sp. Def by 1; User Recovers from Statuses		100%																	
+Tera Blast	851	Normal	Special	10	16	80	100%	4.17	0	Selected	Move Type is the Tera Type; Inflicts Higher of Physical or Special		100%																	171
+Tera Blast (Stellar)	851										Super Effective to Terastallized; Lowers User's Atk and Sp. Atk by 1		100%																	171
+Silk Trap	852	Bug	Status	10	16	0	101%	None	4	Selected	Protects User from Attacks; Lowers Foe's Spd by 1 if Direct Contact is Made	Success: 1 / ((Successive Use)-1)^3)	100%																	
+Axe Kick	853	Fighting	Physical	10	16	120	90%	4.17	0	Selected	50% Recoil if Miss; Confuses Foe		30%																	
+Last Respects	854	Ghost	Physical	10	16	50	100%	4.17	0	Selected	BP = 50 + (Fainted Ally * 50)		100%																	
+Lumina Crash	855	Psychic	Special	10	16	80	100%	4.17	0	Selected	Lowers Foe's Sp. Def by 2		100%																	
+Order Up	856	Dragon	Physical	10	16	80	100%	4.17	0	Selected	Raises Atk if Curly, Def if Droopy, Spd if Stretchy by 1		100%																	
+Jet Punch	857	Water	Physical	15	24	60	100%	4.17	1	Selected																				
+Spicy Extract	858	Grass	Status	15	24	0	101%	None	0	Selected	Raises Target's Atk by 2; Lowers Target's Def by 2		100%																	
+Spin Out	859	Steel	Physical	5	8	100	100%	4.17	0	Selected	Lowers User's Spd by 2		100%																	
+Population Bomb	860	Normal	Physical	10	16	20	90%	4.17	0	Selected																				
+Ice Spinner	861	Ice	Physical	15	24	80	100%	4.17	0	Selected	Destroys Terrains		100%																	124
+Glaive Rush	862	Dragon	Physical	5	8	120	100%	4.17	0	Selected	Attacks on User Can Not miss and Deal 100% Damage Next Turn		100%																	
+Revival Blessing	863	Normal	Status	1	1	0	101%	None	0	Selected	Heals a Fainted Party Ally to 50% HP		100%																	
+Salt Cure	864	Rock	Physical	15	24	40	100%	4.17	0	Selected	Deals 1/8 HP Every Turn; Deals 1/4 HP if Water or Steel-Type		100%																	
+Triple Dive	865	Water	Physical	10	16	30	95%	4.17	0	Selected	Hits 3 Times		100%																	
+Mortal Spin	866	Poison	Physical	15	24	30	100%	4.17	0	Adjacent Foes	Poisons Foe		100%																	
+Doodle	867	Normal	Status	10	16	0	100%	None	0	Selected	Changes Team's Ability to Target's Ability		100%																	
+Fillet Away	868	Normal	Status	10	16	0	101%	None	0	Selected	User Loses 50% HP; Raises User's Atk, Sp. Atk, Spd by 2		100%																	
+Kowtow Cleave	869	Dark	Physical	10	16	85	101%	4.17	0	Selected																				
+Flower Trick	870	Grass	Physical	10	16	70	101%	100	0	Selected																				
+Torch Song	871	Fire	Special	10	16	80	100%	4.17	0	Selected	Raises User's Sp. Atk by 1		100%																	
+Aqua Step	872	Water	Physical	10	16	80	100%	4.17	0	Selected	Raises User's Spd by 1		100%																	
+Raging Bull	873	Normal	Physical	10	16	90	100%	4.17	0	Selected																				
+Make It Rain	874	Steel	Special	5	8	120	100%	4.17	0	Adjacent Foes	Lowers User's Sp. Atk by 1; User Gains Extra Money		100%																	
+Psyblade	875	Psychic	Physical	15	24	80	100%	4.17	0	Selected																				
+Hydro Steam	876	Water	Special	15	24	80	100%	4.17	0	Selected	50% Damage in Harsh Sunlight		100%																	
+Ruination	877	Dark	Special	10	16	0	90%	4.17	0	Selected																				
+Collision Course	878	Fighting	Physical	5	8	100	100%	4.17	0	Selected	33% Damage if Foe is Weak to Fighting-Type		100%																	
+Electro Drift	879	Electric	Special	5	8	100	100%	4.17	0	Selected	33% Damage if Foe is Weak to Electric-Type																			
+Shed Tail	880	Normal	Status	10	16	0	101%	None	0	Selected																				
+Chilly Reception	881	Ice	Status	10	16	0	101%	None	0	All	Switches Out User; Actvates Snowstorm		100%																	
+Tidy Up	882	Normal	Status	10	16	0	101%	None	0	Selected	Removes Trapping Moves; Raises User's Atk and Spd by 1		100%																	
+Snowscape	883	Ice	Status	10	16	0	101%	None	0	All	Activates Snowstorm		100%																	52
+Pounce	884	Bug	Physical	20	32	50	100%	4.17	0	Selected	Lowers Foe's Spd by 1		100%																	21
+Trailblaze	885	Grass	Physical	20	32	50	100%	4.17	0	Selected	Raises User's Spd by 1		100%																	20
+Chilling Water	886	Water	Special	20	32	50	100%	4.17	0	Selected	Lowers Foe's Atk by 1		100%																	22
+Hyper Drill	887	Normal	Physical	5	8	100	100%	4.17	0	Selected	Ignores Any Protect Moves		100%																	
+Twin Beam	888	Psychic	Special	10	16	40	100%	4.17	0	Selected	Hits 2 Times		100%																	
+Rage Fist	889	Ghost	Physical	10	16	50	100%	4.17	0	Selected																				
+Armor Cannon	890	Fire	Special	5	8	120	100%	4.17	0	Selected	Lowers User's Def and Sp. Def by 1		100%																	
+Bitter Blade	891	Fire	Physical	10	16	90	100%	4.17	0	Selected	50% Lifesteal		100%																	
+Double Shock	892	Electric	Physical	5	8	120	100%	4.17	0	Selected	User Loses Electric-Type; Fails if User is Not a Electric-Type		100%																	
+Gigaton Hammer	893	Steel	Physical	5	8	160	100%	4.17	0	Selected	Can Not Use this Move Twice in a Row		100%																	
+Comeuppance	894	Dark	Physical	10	16	0	100%	4.17	0	Selected	Attacks Foe that Last Damaged User with 150% Damage Recieved		100%																	
+Aqua Cutter	895	Water	Physical	20	32	70	100%	12.5	0	Selected																				
+Blazing Torque	896	Fire	Physical	10	16	80	100%	4.17	0	Selected	Burns Foe		30%																	
+Wicked Torque	897	Dark	Physical	10	16	80	100%	4.17	0	Selected	Sleeps Foe		10%																	
+Noxious Torque	898	Poison	Physical	10	16	80	100%	4.17	0	Selected	Poisons Foe		30%																	
+Combat Torque	899	Fighting	Physical	10	16	100	100%	4.17	0	Selected	Paralyzes Foe		30%																	
+Magical Torque	900	Fairy	Physical	10	16	100	100%	4.17	0	Selected	Confuses Foe		30%																	
+Blood Moon	901	Normal	Special	5	8	140	100%	4.17	0	Selected	Can Not Use this Move Twice in a Row		100%																	
+Matcha Gotcha	902	Grass	Special	15	24	80	90%	4.17	0	Adjacent Foes	50% Lifesteal; Burns Foe		20%																	
+Syrup Bomb	903	Grass	Special	10	16	60	85%	4.17	0	Selected	Lowers Foe's Spd by 1 for 3 Turns		100%																	
+Ivy Cudgel	904	Grass	Physical	10	16	100	100%	4.17	0	Selected	Move Type Depends on Mask Worn by User		100%																	
+Electro Shot	905	Electric	Special	10	16	130	100%	4.17	0	Selected	Raises User's Sp. Atk by 1; Attacks Next Turn; No Charge in Rain		100%																	
+Tera Starstorm	906	Normal	Special	5	8	120	100%	4.17	0	Selected																				
+Fickle Beam	907	Dragon	Special	5	8	80	100%	4.17	0	Selected	100% Damage		30%																	
+Burning Bulwark	908	Fire	Status	10	16	0	101%	None	4	Selected	Protects User from Attacks; Burns Foe if Direct Contact is Made	Success: 1 / ((Successive Use)-1)^3)	100%																	
+Thunderclap	909	Electric	Special	5	8	70	100%	4.17	1	Selected																				
+Mighty Cleave	910	Rock	Physical	5	8	95	100%	4.17	0	Selected	Ignores Any Protect Moves		100%																	
+Tachyon Cutter	911	Steel	Special	10	16	50	101%	4.17	0	Selected	Hits 2 Times		100%																	
+Hard Press	912	Steel	Physical	10	16	0	100%	4.17	0	Selected	Higher Power the Higher the Foe's HP		100%																	225
+Dragon Cheer	913	Dragon	Status	15	24	0	101%	None	0	Selected	Raises Ally's Critical Hit Rate by 1; Raise by 2 if Dragon-Type; Can not be Used Multiple Times		100%																	226
+Alluring Voice	914	Fairy	Special	10	16	80	100%	4.17	0	Selected	Confuses Foe		100%																	227
+Temper Flare	915	Fire	Physical	10	16	75	100%	4.17	0	Selected																				207
+Supercell Slam	916	Electric	Physical	15	24	100	95%	4.17	0	Selected																				210
+Psychic Noise	917	Psychic	Special	10	16	75	100%	4.17	0	Selected	Prevents Foe From Healing for 2 Turns		100%																	228
+Upper Hand	918	Fighting	Physical	15	24	65	100%	4.17	3	Selected																				229
+Malignant Chain	919	Poison	Special	5	8	100	100%	4.17	0	Selected	Badly Poisons Foe		40%																	
+G-Max Wildfire	G1	Fire	Physical	10	16	--	101%	4.17	0	Selected	Inflicts 1/6 HP to All Non-Fire Type Foes for 4 Turns		--%																	
+G-Max Malodor	G10	Poison	Physical	10	16	--	101%	4.17	0	Selected	Poisons All Foes		--%																	
+G-Max Stonesurge	G11	Water	Physical	10	16	--	101%	4.17	0	Selected	Activates Stealth Rocks		--%																	
+G-Max Wind Rage	G12	Flying	Physical	10	16	--	101%	4.17	0	Selected	Destroys Protective Barriers		--%																	
+G-Max Stun Shock	G13	Electric	Physical	10	16	--	101%	4.17	0	Selected	Poisons or Paralyzes All Foes		--%																	
+G-Max Finale	G14	Fairy	Physical	10	16	--	101%	4.17	0	Selected	Heals 1/6 HP to Team		--%																	
+G-Max Depletion	G15	Dragon	Physical	10	16	--	101%	4.17	0	Selected	Foe's Last Move Loses 4 PP		--%																	
+G-Max Gravitas	G16	Psychic	Physical	10	16	--	101%	4.17	0	Selected	Activates Gravity		--%																	
+G-Max Volcalith	G17	Rock	Physical	10	16	--	101%	4.17	0	Selected	Inflicts 1/6 HP to All Non-Rock Type Foes for 4 Turns		--%																	
+G-Max Sandblast	G18	Ground	Physical	10	16	--	101%	4.17	0	Selected	Traps All Foes		--%																	
+G-Max Snooze	G19	Dark	Physical	10	16	--	101%	4.17	0	Selected	All Foes Fall Asleep Next Turn		50%																	
+G-Max Befuddle	G2	Bug	Physical	10	16	--	101%	4.17	0	Selected	Poisons, Paralyzes, or Sleeps All Foes		--%																	
+G-Max Tartness	G20	Grass	Physical	10	16	--	101%	4.17	0	Selected	Lowers All Foe's Evasion by 1		--%																	
+G-Max Sweetness	G21	Grass	Physical	10	16	--	101%	4.17	0	Selected	Heals Team's Status Conditions		--%																	
+G-Max Smite	G22	Fairy	Physical	10	16	--	101%	4.17	0	Selected	Confuses All Foes		--%																	
+G-Max Steelsurge	G23	Steel	Physical	10	16	--	101%	4.17	0	Selected	Activates Sharp Steel		--%																	
+G-Max Meltdown	G24	Steel	Physical	10	16	--	101%	4.17	0	Selected	Torments all Foes		--%																	
+G-Max Foam Burst	G25	Water	Physical	10	16	--	101%	4.17	0	Selected	Lowers All Foe's Spd by 2		--%																	
+G-Max Centiferno	G26	Fire	Physical	10	16	--	101%	4.17	0	Selected	Traps All Foes		--%																	
+G-Max Vine Lash	G27	Grass	Physical	10	16	--	101%	4.17	0	Selected	Inflicts 1/6 HP to All Non-Grass Type Foes for 4 Turns		--%																	
+G-Max Cannonade	G28	Water	Physical	10	16	--	101%	4.17	0	Selected	Inflicts 1/6 HP to All Non-Water Type Foes for 4 Turns		--%																	
+G-Max Drum Solo	G29	Grass	Physical	10	16	--	101%	4.17	0	Selected	Ignores Abilities		--%																	
+G-Max Volt Crash	G3	Electric	Physical	10	16	--	101%	4.17	0	Selected	Paralyzes All Foe		--%																	
+G-Max Fireball	G30	Fire	Physical	10	16	--	101%	4.17	0	Selected	Ignores Abilities		--%																	
+G-Max Hydrosnipe	G31	Water	Physical	10	16	--	101%	4.17	0	Selected	Ignores Abilities		--%																	
+G-Max One Blow	G32	Dark	Physical	10	16	--	101%	4.17	0	Selected	Ignores and Removes Any Protect Moves		--%																	
+G-Max Rapid Blow	G33	Water	Physical	10	16	--	101%	4.17	0	Selected	Ignores and Removes Any Protect Moves		--%																	
+G-Max Gold Rush	G4	Normal	Physical	10	16	--	101%	4.17	0	Selected	Confuses All Foes; User Gains Extra Money		--%																	
+G-Max Chi Strike	G5	Fighting	Physical	10	16	--	101%	4.17	0	Selected	Raises Team's Critical Hit Ratio		--%																	
+G-Max Terror	G6	Ghost	Physical	10	16	--	101%	4.17	0	Selected	Prevents All Foes from Escaping		--%																	
+G-Max Resonance	G7	Ice	Physical	10	16	--	101%	4.17	0	Selected	Activates Aurora Veil		--%																	
+G-Max Cuddle	G8	Normal	Physical	10	16	--	101%	4.17	0	Selected	Infatuates All Foes		--%																	
+G-Max Replenish	G9	Normal	Physical	10	16	--	101%	4.17	0	Selected	Recycles All Used Berries		50%																	

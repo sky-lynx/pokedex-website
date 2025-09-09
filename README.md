@@ -9,4 +9,5 @@
 
 ## Live Demo
 
-Live Demo: `https://sky-lynx.github.io/pokedex-website/pokedex-website2/src/`
+Pokemon Dex: `https://sky-lynx.github.io/pokedex-website/pokedex-website2/src/`
+Move Dex: `https://sky-lynx.github.io/pokedex-website/pokedex-website2/src/moveDex.html`

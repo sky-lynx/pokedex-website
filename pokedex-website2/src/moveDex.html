@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move Dex</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/moveDex.css">
+</head>
+<body>
+    <header>
+        <h1>Move Dex</h1>
+    </header>
+    <main>
+        <div class="search-container">
+            <input id="search-box" type="text" placeholder="Search moves by name...">
+            <span id="move-filters">
+                <!-- Filter button and dropdown will be rendered here -->
+            </span>
+        </div>
+        <div class="table-container">
+            <table class="moves-table">
+                <tbody id="moves-list">
+                    <!-- Move data will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Move Details Modal -->
+    <div id="move-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" aria-label="Close">&times;</button>
+            <div id="move-modal-body">
+                <!-- Move details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Move Dex</p>
+    </footer>
+
+    <!-- Load scripts as modules -->
+    <script src="scripts/moveDex.js" type="module"></script>
+</body>
+</html>

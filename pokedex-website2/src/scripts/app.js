@@ -9,6 +9,13 @@ pokemonListEl.classList.add('pokemon-grid');
 // Stat names in order for your API
 const STAT_NAMES = ['HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed'];
 
+// Move category colors
+const CATEGORY_COLORS = {
+    Physical: '#C92112',
+    Special: '#4F5870',
+    Status: '#8C888C'
+};
+
 // Type color mapping
 const TYPE_COLORS = {
     Normal: '#A8A77A',
@@ -74,6 +81,8 @@ function isColorDark(color) {
 let allPokemonData = null;
 // Cache loaded abilities data
 let allAbilitiesData = null;
+// Cache loaded moves data
+let allMovesData = null;
 // Cache current filter state
 let filtersEnabled = false; // Track if filters have been used
 
@@ -213,7 +222,48 @@ async function parseTSVData(tsvText) {
             gender: [ // Column CI, CJ - Gender ratios
                 parseFloat(values[87]) || 0, // Male
                 parseFloat(values[88]) || 0  // Female
-            ]
+            ],
+            moves: {
+                levelUp: values[107],
+                tm: values[108],
+                egg: values[109],
+                evolution: values[110],
+                reminder: values[111]
+            }
+        };
+        return obj;
+    });
+
+    // Filter out any null entries and ensure we have valid data
+    return data.filter(item => item !== null);
+}
+
+// Function to parse moves TSV data into an array of objects
+async function parseMovesData(tsvText) {
+    const lines = tsvText.trim().split('\n');
+    // Skip first line, use second line as headers
+    const headers = lines[1].split('\t');
+
+    // Start from line 3 (index 2)
+    const data = lines.slice(2).map(line => {
+        const values = line.split('\t');
+        // Skip empty lines or lines with insufficient data
+        if (!values || values.length < 12 || !values[0]) {
+            return null;
+        }
+        const obj = {
+            name: values[0], // Column A - Move Name
+            id: values[1], // Column B - Move ID
+            type: values[2], // Column C - Type
+            category: values[3], // Column D - Category
+            pp: values[4] + "-" + values[5], // Column E - PP
+            power: values[6] || '-', // Column F - Power
+            accuracy: values[7] || '-', // Column G - Accuracy
+            critRate: values[8] || '-', // Column H - Crit Rate
+            priority: values[9] || '0', // Column I - Priority
+            target: values[10] || '-', // Column J - Target
+            effect: values[11] || '-', // Column K - Effect
+            chance: values[13] || '-' // Column L - Chance
         };
         return obj;
     });
@@ -471,7 +521,6 @@ async function fetchPokemonList(filter = '', typeFilterArr = null, typingFilterA
             if (!Array.isArray(allPokemonData) || allPokemonData.length === 0) {
                 throw new Error('No Pokemon data found or invalid data format');
             }
-            console.log('Loaded Pokemon data:', allPokemonData[0]); // Debug log
         }
 
         // Clear the list before filtering
@@ -636,7 +685,6 @@ async function fetchPokemonList(filter = '', typeFilterArr = null, typingFilterA
 
     // Filter to show only base forms (where noformid is not 0)
     const baseForms = filtered.filter(pokemon => pokemon.noformid !== 0);
-    console.log('Base forms:', baseForms);
 
     // Render base forms
     baseForms.forEach(pokemon => {
@@ -693,8 +741,28 @@ async function fetchAbilitiesData() {
 }
 
 // Show Pokemon details in modal
+// Fetch moves data from TSV
+async function fetchMovesData() {
+    if (!allMovesData) {
+        try {
+            const isGitHubPages = window.location.hostname === 'sky-lynx.github.io' || window.location.pathname.includes('/pokedex-website/');
+            const baseUrl = isGitHubPages ? '/pokedex-website' : '';
+            const res = await fetch(`${baseUrl}/api/moves.tsv`);
+            if (!res.ok) {
+                throw new Error(`Failed to fetch moves.tsv: ${res.status}`);
+            }
+            const tsvText = await res.text();
+            allMovesData = await parseMovesData(tsvText);
+        } catch (error) {
+            console.error('Error loading moves data:', error);
+            return [];
+        }
+    }
+    return allMovesData;
+}
+
 async function showPokemonDetails(pokemonName) {
-    if (!allPokemonData || !allAbilitiesData) {
+    if (!allPokemonData || !allAbilitiesData || !allMovesData) {
         await Promise.all([
             fetchPokemonList(
                 currentFilters.search,
@@ -702,7 +770,8 @@ async function showPokemonDetails(pokemonName) {
                 currentFilters.typing,
                 currentFilters.generations
             ),
-            fetchAbilitiesData()
+            fetchAbilitiesData(),
+            fetchMovesData()
         ]);
     }
 
@@ -1036,10 +1105,469 @@ async function showPokemonDetails(pokemonName) {
                 </div>
             </div>
             ${availabilityHTML}
+
+            <div class="info-section" style="grid-column: 1 / -1; margin-top: 24px;">
+                <style>
+                    .moves-table th {
+                        padding: 8px;
+                        border-bottom: 2px solid #ddd;
+                    }
+                    .move-category-btn.active {
+                        background: #4CAF50 !important;
+                        color: white;
+                        border-color: #45a049 !important;
+                    }
+                    .move-category-btn:hover {
+                        background: #f8f8f8;
+                    }
+                    .move-category-btn.active:hover {
+                        background: #45a049 !important;
+                    }
+                    .moves-table th:nth-child(1) { width: 8%; }  /* Level */
+                    .moves-table th:nth-child(2) { width: 15%; } /* Move */
+                    .moves-table th:nth-child(3) { width: 10%; } /* Type */
+                    .moves-table th:nth-child(4) { width: 10%; } /* Category */
+                    .moves-table th:nth-child(5) { width: 7%; }  /* PP */
+                    .moves-table th:nth-child(6) { width: 10%; } /* Power */
+                    .moves-table th:nth-child(7) { width: 10%; } /* Accuracy */
+                    .moves-table th:nth-child(8) { width: 10%; } /* Crit Rate */
+                    .moves-table th:nth-child(9) { width: 10%; } /* Priority */
+                    .moves-table th:nth-child(10) { width: 10%; } /* Target */
+                    .moves-table td {
+                        padding: 8px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                </style>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 16px;">
+                    <h3 style="margin-bottom: 8px;">Moves</h3>
+                    <div class="moves-buttons" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button id="level-up-btn" class="move-category-btn active" style="padding: 8px 16px; border-radius: 8px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-size: 0.9em;">Level Moves</button>
+                        <button id="tm-btn" class="move-category-btn" style="padding: 8px 16px; border-radius: 8px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-size: 0.9em;">TM Moves</button>
+                        <button id="egg-btn" class="move-category-btn" style="padding: 8px 16px; border-radius: 8px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-size: 0.9em;">Egg Moves</button>
+                        <button id="evolution-btn" class="move-category-btn" style="padding: 8px 16px; border-radius: 8px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-size: 0.9em;">Evolution Moves</button>
+                        <button id="reminder-btn" class="move-category-btn" style="padding: 8px 16px; border-radius: 8px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-size: 0.9em;">Reminder Moves</button>
+                    </div>
+                </div>
+
+
+                <div id="level-up-section">
+                    <h4>Level-up Moves</h4>
+                    <div style="overflow-x: auto;">
+                        <table class="moves-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+                        <style>
+                            tr {
+                                transition: background-color 0.1s ease-out;
+                                background-color: transparent;
+                            }
+                            tr:hover {
+                                background-color: #f0f0f0;
+                            }
+                        </style>
+                        <thead>
+                            <tr style="background: #f5f5f5;">
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Level</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Move</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Type</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Category</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">PP</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Power</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Accuracy</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Crit Rate</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Priority</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Target</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${(() => {
+                                const levelMoves = pokemon.moves.levelUp?.split('|').filter(move => move) || [];
+                                console.log('Parsed moves:', levelMoves); // Debug log
+
+                                if (levelMoves.length === 0) {
+                                    return `
+                                        <tr>
+                                            <td colspan="10" style="padding: 12px; text-align: center; color: #888;">
+                                                No moves found
+                                            </td>
+                                        </tr>
+                                    `;
+                                }
+
+                                return levelMoves.map(moveData => {
+                                    const [moveId, level] = moveData.split('-');
+                                    const move = allMovesData?.find(m => m.id === moveId);
+                                    if (!move) return '';
+                                    
+                                    // Helper function to format move values
+                                    const formatMoveValue = (value) => {
+                                        return (!value) ? '-' : value;
+                                    };
+                                    
+                                    const encodedMoveName = encodeURIComponent(move.name);
+                                    return `
+                                        <tr style="border-bottom: 1px solid #eee;">
+                                            <td style="padding: 8px;">${level}</td>
+                                            <td style="padding: 8px;"><a href="moveDex.html?name=${encodedMoveName}" style="color: #2196F3; text-decoration: none; cursor: pointer; hover: { text-decoration: underline; }">${move.name}</a></td>
+                                            <td style="padding: 8px;">
+                                                <div class="type-pill" style="background-color: ${getTypeColor(move.type)}; margin: 0 auto; display: flex; justify-content: center; align-items: center; min-width: 40px;">
+                                                    ${move.type}
+                                                </div>
+                                            </td>
+                                            <td style="padding: 8px;">
+                                                <div class="type-pill" style="background-color: ${CATEGORY_COLORS[move.category]}; margin: 0 auto; display: flex; justify-content: center; align-items: center; min-width: 40px;">
+                                                    ${move.category}
+                                                </div>
+                                            </td>
+                                            <td style="padding: 8px;">${move.pp}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseInt(move.power))}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseInt(move.accuracy))}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseFloat(move.critRate))}</td>
+                                            <td style="padding: 8px;">${move.priority}</td>
+                                            <td style="padding: 8px;">${move.target}</td>
+                                        </tr>
+                                    `;
+                                }).join('');
+                            })()}
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+                <div id="tm-section">
+                    <h4>TM Moves</h4>
+                    <div style="overflow-x: auto;">
+                        <table class="moves-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+                        <style>
+                            tr {
+                                transition: background-color 0.1s ease-out;
+                                background-color: transparent;
+                            }
+                            tr:hover {
+                                background-color: #f0f0f0;
+                            }
+                        </style>
+                        <thead>
+                            <tr style="background: #f5f5f5;">
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Level</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Move</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Type</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Category</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">PP</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Power</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Accuracy</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Crit Rate</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Priority</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Target</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${(() => {
+                                const tmMoves = pokemon.moves.tm?.split('|').filter(move => move) || [];
+                                console.log('Parsed moves:', tmMoves); // Debug log
+
+                                if (tmMoves.length === 0) {
+                                    return `
+                                        <tr>
+                                            <td colspan="10" style="padding: 12px; text-align: center; color: #888;">
+                                                No moves found
+                                            </td>
+                                        </tr>
+                                    `;
+                                }
+
+                                return tmMoves.map(moveData => {
+                                    const [moveId, level] = moveData.split('-');
+                                    const move = allMovesData?.find(m => m.id === moveId);
+                                    if (!move) return '';
+                                    
+                                    // Helper function to format move values
+                                    const formatMoveValue = (value) => {
+                                        return (!value) ? '-' : value;
+                                    };
+                                    
+                                    const encodedMoveName = encodeURIComponent(move.name);
+                                    return `
+                                        <tr style="border-bottom: 1px solid #eee;">
+                                            <td style="padding: 8px;">${level}</td>
+                                            <td style="padding: 8px;"><a href="moveDex.html?name=${encodedMoveName}" style="color: #2196F3; text-decoration: none; cursor: pointer; hover: { text-decoration: underline; }">${move.name}</a></td>
+                                            <td style="padding: 8px;">
+                                                <div class="type-pill" style="background-color: ${getTypeColor(move.type)}; margin: 0 auto; display: flex; justify-content: center; align-items: center; min-width: 40px;">
+                                                    ${move.type}
+                                                </div>
+                                            </td>
+                                            <td style="padding: 8px;">
+                                                <div class="type-pill" style="background-color: ${CATEGORY_COLORS[move.category]}; margin: 0 auto; display: flex; justify-content: center; align-items: center; min-width: 40px;">
+                                                    ${move.category}
+                                                </div>
+                                            </td>
+                                            <td style="padding: 8px;">${move.pp}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseInt(move.power))}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseInt(move.accuracy))}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseFloat(move.critRate))}</td>
+                                            <td style="padding: 8px;">${move.priority}</td>
+                                            <td style="padding: 8px;">${move.target}</td>
+                                        </tr>
+                                    `;
+                                }).join('');
+                            })()}
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+                <div id="egg-section">
+                    <h4>Egg Moves</h4>
+                    <div style="overflow-x: auto;">
+                        <table class="moves-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+                        <style>
+                            tr {
+                                transition: background-color 0.1s ease-out;
+                                background-color: transparent;
+                            }
+                            tr:hover {
+                                background-color: #f0f0f0;
+                            }
+                        </style>
+                        <thead>
+                            <tr style="background: #f5f5f5;">
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Level</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Move</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Type</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Category</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">PP</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Power</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Accuracy</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Crit Rate</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Priority</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Target</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${(() => {
+                                const eggMoves = pokemon.moves.egg?.split('|').filter(move => move) || [];
+                                console.log('Parsed moves:', eggMoves); // Debug log
+
+                                if (eggMoves.length === 0) {
+                                    return `
+                                        <tr>
+                                            <td colspan="10" style="padding: 12px; text-align: center; color: #888;">
+                                                No moves found
+                                            </td>
+                                        </tr>
+                                    `;
+                                }
+
+                                return eggMoves.map(moveData => {
+                                    const [moveId, level] = moveData.split('-');
+                                    const move = allMovesData?.find(m => m.id === moveId);
+                                    if (!move) return '';
+                                    
+                                    // Helper function to format move values
+                                    const formatMoveValue = (value) => {
+                                        return (!value) ? '-' : value;
+                                    };
+                                    
+                                    const encodedMoveName = encodeURIComponent(move.name);
+                                    return `
+                                        <tr style="border-bottom: 1px solid #eee;">
+                                            <td style="padding: 8px;">${level}</td>
+                                            <td style="padding: 8px;"><a href="moveDex.html?name=${encodedMoveName}" style="color: #2196F3; text-decoration: none; cursor: pointer; hover: { text-decoration: underline; }">${move.name}</a></td>
+                                            <td style="padding: 8px;">
+                                                <div class="type-pill" style="background-color: ${getTypeColor(move.type)}; margin: 0 auto; display: flex; justify-content: center; align-items: center; min-width: 40px;">
+                                                    ${move.type}
+                                                </div>
+                                            </td>
+                                            <td style="padding: 8px;">
+                                                <div class="type-pill" style="background-color: ${CATEGORY_COLORS[move.category]}; margin: 0 auto; display: flex; justify-content: center; align-items: center; min-width: 40px;">
+                                                    ${move.category}
+                                                </div>
+                                            </td>
+                                            <td style="padding: 8px;">${move.pp}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseInt(move.power))}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseInt(move.accuracy))}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseFloat(move.critRate))}</td>
+                                            <td style="padding: 8px;">${move.priority}</td>
+                                            <td style="padding: 8px;">${move.target}</td>
+                                        </tr>
+                                    `;
+                                }).join('');
+                            })()}
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+                <div id="evolution-section">
+                    <h4>Evolution Moves</h4>
+                    <div style="overflow-x: auto;">
+                        <table class="moves-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+                        <style>
+                            tr {
+                                transition: background-color 0.1s ease-out;
+                                background-color: transparent;
+                            }
+                            tr:hover {
+                                background-color: #f0f0f0;
+                            }
+                        </style>
+                        <thead>
+                            <tr style="background: #f5f5f5;">
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Level</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Move</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Type</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Category</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">PP</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Power</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Accuracy</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Crit Rate</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Priority</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Target</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${(() => {
+                                const evoMoves = pokemon.moves.evolution?.split('|').filter(move => move) || [];
+                                console.log('Parsed moves:', evoMoves); // Debug log
+
+                                if (evoMoves.length === 0) {
+                                    return `
+                                        <tr>
+                                            <td colspan="10" style="padding: 12px; text-align: center; color: #888;">
+                                                No moves found
+                                            </td>
+                                        </tr>
+                                    `;
+                                }
+
+                                return evoMoves.map(moveData => {
+                                    const [moveId, level] = moveData.split('-');
+                                    const move = allMovesData?.find(m => m.id === moveId);
+                                    if (!move) return '';
+                                    
+                                    // Helper function to format move values
+                                    const formatMoveValue = (value) => {
+                                        return (!value) ? '-' : value;
+                                    };
+                                    
+                                    return `
+                                        <tr style="border-bottom: 1px solid #eee;">
+                                            <td style="padding: 8px;">${level}</td>
+                                            <td style="padding: 8px;">${move.name}</td>
+                                            <td style="padding: 8px;">
+                                                <div class="type-pill" style="background-color: ${getTypeColor(move.type)}; margin: 0 auto; display: flex; justify-content: center; align-items: center; min-width: 40px;">
+                                                    ${move.type}
+                                                </div>
+                                            </td>
+                                            <td style="padding: 8px;">
+                                                <div class="type-pill" style="background-color: ${CATEGORY_COLORS[move.category]}; margin: 0 auto; display: flex; justify-content: center; align-items: center; min-width: 40px;">
+                                                    ${move.category}
+                                                </div>
+                                            </td>
+                                            <td style="padding: 8px;">${move.pp}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseInt(move.power))}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseInt(move.accuracy))}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseFloat(move.critRate))}</td>
+                                            <td style="padding: 8px;">${move.priority}</td>
+                                            <td style="padding: 8px;">${move.target}</td>
+                                        </tr>
+                                    `;
+                                }).join('');
+                            })()}
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+                <div id="reminder-section">
+                    <h4>Reminder Moves</h4>
+                    <div style="overflow-x: auto;">
+                        <table class="moves-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
+                        <style>
+                            tr {
+                                transition: background-color 0.1s ease-out;
+                                background-color: transparent;
+                            }
+                            tr:hover {
+                                background-color: #f0f0f0;
+                            }
+                        </style>
+                        <thead>
+                            <tr style="background: #f5f5f5;">
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Level</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Move</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Type</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Category</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">PP</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Power</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Accuracy</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Crit Rate</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Priority</th>
+                                <th style="padding: 8px; border-bottom: 2px solid #ddd;">Target</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${(() => {
+                                const reminderMoves = pokemon.moves.reminder?.split('|').map(move => move.trim()).filter(move => move) || [];
+                                console.log('Parsed moves:', reminderMoves); // Debug log
+
+                                if (reminderMoves.length === 0) {
+                                    return `
+                                        <tr>
+                                            <td colspan="10" style="padding: 12px; text-align: center; color: #888;">
+                                                No moves found
+                                            </td>
+                                        </tr>
+                                    `;
+                                }
+
+                                return reminderMoves.map(moveData => {
+                                    const [moveId, level] = moveData.split('-');
+                                    const move = allMovesData?.find(m => m.id === moveId);
+                                    if (!move) return '';
+                                    
+                                    // Helper function to format move values
+                                    const formatMoveValue = (value) => {
+                                        return (!value) ? '-' : value;
+                                    };
+                                    
+                                    const encodedMoveName = encodeURIComponent(move.name);
+                                    return `
+                                        <tr style="border-bottom: 1px solid #eee;">
+                                            <td style="padding: 8px;">${level}</td>
+                                            <td style="padding: 8px;"><a href="moveDex.html?name=${encodedMoveName}" style="color: #2196F3; text-decoration: none; cursor: pointer; hover: { text-decoration: underline; }">${move.name}</a></td>
+                                            <td style="padding: 8px;">
+                                                <div class="type-pill" style="background-color: ${getTypeColor(move.type)}; margin: 0 auto; display: flex; justify-content: center; align-items: center; min-width: 40px;">
+                                                    ${move.type}
+                                                </div>
+                                            </td>
+                                            <td style="padding: 8px;">
+                                                <div class="type-pill" style="background-color: ${CATEGORY_COLORS[move.category]}; margin: 0 auto; display: flex; justify-content: center; align-items: center; min-width: 40px;">
+                                                    ${move.category}
+                                                </div>
+                                            </td>
+                                            <td style="padding: 8px;">${move.pp}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseInt(move.power))}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseInt(move.accuracy))}</td>
+                                            <td style="padding: 8px;">${formatMoveValue(parseFloat(move.critRate))}</td>
+                                            <td style="padding: 8px;">${move.priority}</td>
+                                            <td style="padding: 8px;">${move.target}</td>
+                                        </tr>
+                                    `;
+                                }).join('');
+                            })()}
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
         </div>
 
     `;
     modal.style.display = 'flex';
+
+    // Set up moves toggle functionality
+    setupMoveTables();
     
     // Trigger stat bar animations after a short delay to ensure elements are rendered
     setTimeout(() => {
@@ -1490,12 +2018,101 @@ function updateFilters() {
     );
 }
 
+// Set up moves toggle functionality
+function setupMoveTables() {
+    const levelUpBtn = document.getElementById('level-up-btn');
+    const tmBtn = document.getElementById('tm-btn');
+    const eggBtn = document.getElementById('egg-btn');
+    const reminderBtn = document.getElementById('reminder-btn');
+    const evolutionBtn = document.getElementById('evolution-btn');
+    const levelUpSection = document.getElementById('level-up-section');
+    const tmSection = document.getElementById('tm-section');
+    const eggSection = document.getElementById('egg-section');
+    const reminderSection = document.getElementById('reminder-section');
+    const evolutionSection = document.getElementById('evolution-section');
+
+    if (levelUpBtn && tmBtn && eggBtn && reminderBtn && evolutionBtn && levelUpSection && tmSection && eggSection && reminderSection && evolutionSection) {
+        // Initial state
+        tmSection.style.display = 'none';
+        eggSection.style.display = 'none';
+        reminderSection.style.display = 'none';
+        evolutionSection.style.display = 'none';
+        levelUpSection.style.display = 'block';
+        levelUpBtn.classList.add('active');
+        
+        function showSection(activeSection, activeBtn) {
+            // Hide all sections and remove active class from all buttons
+            [levelUpSection, tmSection, eggSection, reminderSection, evolutionSection].forEach(section => {
+                section.style.display = 'none';
+            });
+            [levelUpBtn, tmBtn, eggBtn, reminderBtn, evolutionBtn].forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show active section and add active class to button
+            activeSection.style.display = 'block';
+            activeBtn.classList.add('active');
+        }
+
+        levelUpBtn.addEventListener('click', () => {
+            showSection(levelUpSection, levelUpBtn);
+        });
+
+        tmBtn.addEventListener('click', () => {
+            showSection(tmSection, tmBtn);
+        });
+
+        eggBtn.addEventListener('click', () => {
+            showSection(eggSection, eggBtn);
+        });
+
+        reminderBtn.addEventListener('click', () => {
+            showSection(reminderSection, reminderBtn);
+        });
+
+        evolutionBtn.addEventListener('click', () => {
+            showSection(evolutionSection, evolutionBtn);
+        });
+    }
+}
+
+// Check URL for pokemon name parameter
+function checkUrlForPokemon() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pokemonName = urlParams.get('name');
+    if (pokemonName) {
+        // Decode the URL-encoded name and format it
+        const decodedName = decodeURIComponent(pokemonName);
+        // Format each word to have first letter uppercase
+        const formattedName = decodedName.split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join(' ');
+        
+        // Wait for data to be loaded before showing details
+        const checkDataAndShow = async () => {
+            if (!allPokemonData) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                await checkDataAndShow();
+            } else {
+                const pokemon = allPokemonData.find(p => p.name === formattedName);
+                if (pokemon) {
+                    showPokemonDetails(formattedName);
+                }
+            }
+        };
+        checkDataAndShow();
+    }
+}
+
 // Initialize the page
 function init() {
     renderTypeFilters();
     initTypeFilter();
     initSearch();
-    fetchPokemonList();
+    fetchPokemonList().then(() => {
+        // Check for pokemon name in URL after data is loaded
+        checkUrlForPokemon();
+    });
 }
 
 init();
