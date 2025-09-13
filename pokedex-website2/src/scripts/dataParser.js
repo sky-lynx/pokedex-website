@@ -1,0 +1,122 @@
+// dataLoader.js
+let pokemonData = null; // cached Pokémon data
+let movesData = null;   // cached Moves data
+
+// -----------------------------
+// Pokémon Data
+// -----------------------------
+export async function parseTSVData() {
+    // If cached, return immediately
+    if (pokemonData) return pokemonData;
+
+    const response = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTwDxqxofxdx7M2HU-pMFBFBcMDI6mIVBeVim1sxIC_zalARL4Z7DVNiPkhGwY4ZKmVpC9FETrjZtOH/pub?gid=1685697799&output=tsv");
+    const tsvText = await response.text();
+
+    const lines = tsvText.trim().split('\n');
+    const headers = lines[1].split('\t');
+
+    const data = lines.slice(2).map(line => {
+        const values = line.split('\t');
+        if (!values || values.length < 79 || !values[0]) return null;
+
+        return {
+            id: parseInt(values[0], 10) || 0,
+            noformid: parseInt(values[1], 10) || 0,
+            name: values[2] || 'Unknown',
+            classification: values[3],
+            type: [values[4], values[5]].filter(t => t && t.trim()),
+            availability: values.slice(6, 52),
+            baseStats: [
+                parseInt(values[52], 10),
+                parseInt(values[53], 10),
+                parseInt(values[54], 10),
+                parseInt(values[55], 10),
+                parseInt(values[56], 10),
+                parseInt(values[57], 10)
+            ],
+            color: values[59],
+            shape: values[60],
+            abilities: [values[62], values[63]].filter(a => a && a.trim()),
+            hability: [values[64]].filter(h => h && h.trim()),
+            catchRate: parseInt(values[66], 10),
+            eggGroup: [values[68], values[69]].filter(e => e && e.trim()),
+            eggCycle: parseInt(values[70], 10),
+            levelRate: values[72],
+            height: parseFloat(values[74]),
+            weight: parseFloat(values[76]),
+            baseFriendship: parseInt(values[78], 10),
+            yield: [
+                parseInt(values[79], 10),
+                parseInt(values[80], 10),
+                parseInt(values[81], 10),
+                parseInt(values[82], 10),
+                parseInt(values[83], 10),
+                parseInt(values[84], 10),
+                parseInt(values[85], 10)
+            ],
+            gender: [
+                parseFloat(values[87]) || 0,
+                parseFloat(values[88]) || 0
+            ],
+            moves: {
+                levelUp: values[107],
+                tm: values[108],
+                egg: values[109],
+                evolution: values[110],
+                reminder: values[111]
+            }
+        };
+    });
+
+    pokemonData = data.filter(item => item !== null);
+    return pokemonData;
+}
+
+// -----------------------------
+// Moves Data
+// -----------------------------
+export async function parseMovesData() {
+    if (movesData) return movesData;
+
+    const response = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTwDxqxofxdx7M2HU-pMFBFBcMDI6mIVBeVim1sxIC_zalARL4Z7DVNiPkhGwY4ZKmVpC9FETrjZtOH/pub?gid=1813387196&output=tsv");
+    const tsvText = await response.text();
+
+    const lines = tsvText.trim().split('\n');
+    const headers = lines[1].split('\t');
+
+    const data = lines.slice(2).map(line => {
+        const values = line.split('\t');
+        if (!values || values.length < 12 || !values[0]) return null;
+
+        return {
+            name: values[0],
+            id: values[1],
+            type: values[2],
+            category: values[3],
+            pp: values[4] + "-" + values[5],
+            power: values[6] || '-',
+            accuracy: values[7] || '-',
+            critRate: values[8] || '-',
+            priority: values[9] || '0',
+            target: values[10] || '-',
+            effect: values[11] || '-',
+            chance: values[13] || '-'
+        };
+    });
+
+    movesData = data.filter(item => item !== null);
+    return movesData;
+}
+
+// -----------------------------
+// Optional: export cached arrays directly
+// -----------------------------
+export { pokemonData, movesData };
+
+// -----------------------------
+// Auto-fetch on page load
+// -----------------------------
+window.addEventListener('DOMContentLoaded', async () => {
+    await parseTSVData();
+    await parseMovesData();
+});

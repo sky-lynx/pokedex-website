@@ -1,137 +1,63 @@
+// Import constants from constants.js
+import {
+    STAT_NAMES,
+    CATEGORY_COLORS,
+    TYPE_COLORS,
+    GENERATION_RANGES,
+    getTypeColor,
+    isColorDark,
+    POKEMON_SHAPES,
+    POKEMON_COLORS,
+    YIELD_NAMES,
+    EGG_GROUPS,
+    gameHeadersWithColors
+} from './constants.js';
+
+import { parseTSVData, parseMovesData } from './dataParser.js';
+import { getPokemonGeneration } from './utils.js';
+import { moveTableStates, toggleMoveTable, setupMoveTables } from './moveTable.js';
+import { renderTypeFilters } from './templates.js';
+
+/******************************************************************************
+ * SECTION 1: DOM Elements and Basic Setup
+ ******************************************************************************/
+
+// DOM Elements
 const pokemonListEl = document.getElementById('pokemon-list');
 const modal = document.getElementById('pokemon-modal');
 const modalBody = document.getElementById('modal-body');
 const closeBtn = document.querySelector('.close-btn');
 
-// Apply grid layout to the pokemon list container
+// Initial DOM setup
 pokemonListEl.classList.add('pokemon-grid');
 
-// Stat names in order for your API
-const STAT_NAMES = ['HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed'];
+// Links to tsv files
+const dataTsvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTwDxqxofxdx7M2HU-pMFBFBcMDI6mIVBeVim1sxIC_zalARL4Z7DVNiPkhGwY4ZKmVpC9FETrjZtOH/pub?gid=1685697799&output=tsv';
+const movesTsvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTwDxqxofxdx7M2HU-pMFBFBcMDI6mIVBeVim1sxIC_zalARL4Z7DVNiPkhGwY4ZKmVpC9FETrjZtOH/pub?gid=1813387196&output=tsv';
 
-// Move category colors
-const CATEGORY_COLORS = {
-    Physical: '#C92112',
-    Special: '#4F5870',
-    Status: '#8C888C'
-};
+/******************************************************************************
+ * SECTION 2: Global State Variables
+ ******************************************************************************/
 
-// Type color mapping
-const TYPE_COLORS = {
-    Normal: '#A8A77A',
-    Fire: '#EE8130',
-    Water: '#6390F0',
-    Electric: '#F7D02C',
-    Grass: '#7AC74C',
-    Ice: '#96D9D6',
-    Fighting: '#C22E28',
-    Poison: '#A33EA1',
-    Ground: '#E2BF65',
-    Flying: '#A98FF3',
-    Psychic: '#F95587',
-    Bug: '#A6B91A',
-    Rock: '#B6A136',
-    Ghost: '#735797',
-    Dragon: '#6F35FC',
-    Dark: '#705746',
-    Steel: '#B7B7CE',
-    Fairy: '#D685AD'
-};
+// Data Cache
+let allPokemonData = null;       // Pokemon data from data.tsv
+let allAbilitiesData = null;     // Pokemon abilities from abilities.tsv
+let allMovesData = null;         // Pokemon moves from moves.tsv
 
-function getTypeColor(type) {
-    return TYPE_COLORS[type] || '#AAA';
-}
+// Track UI state 
+let filtersEnabled = false;      // Track if filters are in use
 
-// Generation ranges
-const GENERATION_RANGES = {
-    gen1: [1, 151],
-    gen2: [152, 251],
-    gen3: [252, 386],
-    gen4: [387, 493],
-    gen5: [494, 649],
-    gen6: [650, 721],
-    gen7: [722, 809],
-    gen8: [810, 905],
-    gen9: [906, 1025]
-};
+/******************************************************************************
+ * SECTION 3: Data Loading Functions
+ ******************************************************************************/
 
-function getPokemonGeneration(pokemonId) {
-    for (const [gen, [min, max]] of Object.entries(GENERATION_RANGES)) {
-        if (pokemonId >= min && pokemonId <= max) {
-            return gen;
-        }
-    }
-    return null;
-}
+// Duplicate declarations removed to avoid errors
 
-// Helper function to determine if a color is dark (needs white text)
-function isColorDark(color) {
-    // Convert hex to RGB
-    const hex = color.replace('#', '');
-    const r = parseInt(hex.substr(0, 2), 16);
-    const g = parseInt(hex.substr(2, 2), 16);
-    const b = parseInt(hex.substr(4, 2), 16);
-    
-    // Calculate perceived brightness (YIQ equation)
-    const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-    return yiq < 128; // Return true if color is dark
-}
+/******************************************************************************
+ * SECTION 5: UI Functions
+ ******************************************************************************/
 
-// Cache loaded pokemon data
-let allPokemonData = null;
-// Cache loaded abilities data
-let allAbilitiesData = null;
-// Cache loaded moves data
-let allMovesData = null;
-// Cache current filter state
-let filtersEnabled = false; // Track if filters have been used
-
-// All possible shapes
-const POKEMON_SHAPES = [
-    'Bipedal+Tail',
-    'Bipedal+Tailless',
-    'Quadruped',
-    'Head',
-    'Head+Arms',
-    'Head+Base',
-    'Head+Legs',
-    '1 Pair of Wings',
-    '2+ Pair of Wings',
-    'Insectoid',
-    'Serpentine',
-    'Tentacles',
-    'Multiple Bodies',
-    'Fins'
-];
-
-// All possible colors
-const POKEMON_COLORS = [
-    'Red',
-    'Blue',
-    'Yellow',
-    'Green',
-    'Black',
-    'Brown',
-    'Purple',
-    'Gray',
-    'White',
-    'Pink'
-];
-
-// Names for yield stats
-const YIELD_NAMES = ['XP', 'HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed', 'Friendship'];
-
-// All possible egg groups
-const EGG_GROUPS = [
-    'Monster', 'Human-Like',
-    'Water 1', 'Water 3',
-    'Bug', 'Mineral',
-    'Flying', 'Amorphous',
-    'Field', 'Water 2',
-    'Fairy', 'Ditto',
-    'Grass', 'Dragon',
-    'No Eggs Discovered'
-];
+window.toggleMoveTable = toggleMoveTable;
 
 let currentFilters = {
     search: '',
@@ -171,353 +97,26 @@ let currentFilters = {
     }
 };
 
-// Function to parse TSV data into an array of objects
-async function parseTSVData(tsvText) {
-    const lines = tsvText.trim().split('\n');
-    // Skip first line, use second line as headers
-    const headers = lines[1].split('\t');
+/******************************************************************************
+ * SECTION 4: Data Processing Functions
+ ******************************************************************************/
 
-    // Start from line 3 (index 2)
-    const data = lines.slice(2).map(line => {
-        const values = line.split('\t');
-        // Skip empty lines or lines with insufficient data
-        if (!values || values.length < 79 || !values[0]) {
-            return null;
-        }
-        const obj = {
-            id: parseInt(values[0], 10) || 0, // Column A - Dex #
-            noformid: parseInt(values[1], 10) || 0,
-            name: values[2] || 'Unknown', // Column B - Pokemon
-            classification: values[3], // Column C - Classification
-            type: [values[4], values[5]].filter(t => t && t.trim()), // Column D, E - Types
-            availability: values.slice(6, 52), // Column F-AY - Availability
-            baseStats: [ // Column AZ-BE - Stats
-                parseInt(values[52], 10), // HP
-                parseInt(values[53], 10), // ATK
-                parseInt(values[54], 10), // DEF
-                parseInt(values[55], 10), // SP. ATK
-                parseInt(values[56], 10), // SP. DEF
-                parseInt(values[57], 10)  // SPD
-            ],
-            color: values[59], // Column BG - Color
-            shape: values[60], // Column BH - Shape
-            abilities: [values[62], values[63]].filter(a => a && a.trim()), // Column BJ, BK - Abilities
-            hability: [values[64]].filter(h => h && h.trim()), // Column BL - Hidden Ability
-            catchRate: parseInt(values[66], 10), // Column BN - Catch Rate
-            eggGroup: [values[68], values[69]].filter(e => e && e.trim()), // Column BP, BQ - Egg Groups
-            eggCycle: parseInt(values[70], 10), // Column BR - Egg Cycles
-            levelRate: values[72], // Column BT - Level Rate
-            height: parseFloat(values[74]), // Column BV - Height
-            weight: parseFloat(values[76]), // Column BX - Weight
-            baseFriendship: parseInt(values[78], 10), // Column BZ - Base Friendship
-            yield: [ // Column CA-CG - Yields
-                parseInt(values[79], 10), // XP
-                parseInt(values[80], 10), // HP
-                parseInt(values[81], 10), // ATK
-                parseInt(values[82], 10), // DEF
-                parseInt(values[83], 10), // SP. ATK
-                parseInt(values[84], 10), // SP. DEF
-                parseInt(values[85], 10)  // SPE
-            ],
-            gender: [ // Column CI, CJ - Gender ratios
-                parseFloat(values[87]) || 0, // Male
-                parseFloat(values[88]) || 0  // Female
-            ],
-            moves: {
-                levelUp: values[107],
-                tm: values[108],
-                egg: values[109],
-                evolution: values[110],
-                reminder: values[111]
-            }
-        };
-        return obj;
-    });
+/**
+ * Parses TSV data into an array of Pokemon objects
+ * @param {string} tsvText - Raw TSV file content
+ * @returns {Array} Array of Pokemon objects
+ */
 
-    // Filter out any null entries and ensure we have valid data
-    return data.filter(item => item !== null);
-}
-
-// Function to parse moves TSV data into an array of objects
-async function parseMovesData(tsvText) {
-    const lines = tsvText.trim().split('\n');
-    // Skip first line, use second line as headers
-    const headers = lines[1].split('\t');
-
-    // Start from line 3 (index 2)
-    const data = lines.slice(2).map(line => {
-        const values = line.split('\t');
-        // Skip empty lines or lines with insufficient data
-        if (!values || values.length < 12 || !values[0]) {
-            return null;
-        }
-        const obj = {
-            name: values[0], // Column A - Move Name
-            id: values[1], // Column B - Move ID
-            type: values[2], // Column C - Type
-            category: values[3], // Column D - Category
-            pp: values[4] + "-" + values[5], // Column E - PP
-            power: values[6] || '-', // Column F - Power
-            accuracy: values[7] || '-', // Column G - Accuracy
-            critRate: values[8] || '-', // Column H - Crit Rate
-            priority: values[9] || '0', // Column I - Priority
-            target: values[10] || '-', // Column J - Target
-            effect: values[11] || '-', // Column K - Effect
-            chance: values[13] || '-' // Column L - Chance
-        };
-        return obj;
-    });
-
-    // Filter out any null entries and ensure we have valid data
-    return data.filter(item => item !== null);
-}
-
-// Render type filter checkboxes inside a dropdown
-function renderTypeFilters() {
-    const typeFiltersEl = document.getElementById('type-filters');
-    if (!typeFiltersEl) return;
-    typeFiltersEl.innerHTML = `
-        <div style="display:inline-block;position:relative;text-align:left;">
-            <button id="type-filter-btn" style="padding:7px 16px;border-radius:8px;border:1px solid #bbb;background:#f8f8f8;cursor:pointer;font-size:1em;">
-                Filters
-            </button>
-            <div id="type-filter-dropdown" style="display:none;position:absolute;left:0;top:110%;background:#fff;border:1px solid #bbb;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.10);padding:16px;z-index:20;min-width:300px;text-align:left;">
-                <div id="filter-buttons" style="display:flex;gap:12px;margin-bottom:16px;">
-                    <button id="type-filter-select-all" style="padding:4px 12px;border-radius:6px;border:1px solid #bbb;background:#e3f2fd;cursor:pointer;font-size:0.95em;flex:1;">Select All</button>
-                    <button id="type-filter-deselect-all" style="padding:4px 12px;border-radius:6px;border:1px solid #bbb;background:#f8bbd0;cursor:pointer;font-size:0.95em;flex:1;">Deselect All</button>
-                </div>
-
-                <div id="basestat-buttons" style="display:none;margin-bottom:16px;">
-                    <button id="basestat-clear" style="width:100%;padding:4px 12px;border-radius:6px;border:1px solid #bbb;background:#f8bbd0;cursor:pointer;font-size:0.95em;">Clear All Stats</button>
-                </div>
-                
-                <div style="display:flex;gap:10px;margin-bottom:16px;">
-                    <select id="filter-category" style="padding:4px 12px;border-radius:6px;border:1px solid #ccc;background:#fff;cursor:pointer;font-size:0.95em;flex:1;">
-                        <option value="types">Types</option>
-                        <option value="typing">Typing</option>
-                        <option value="generation">Generation</option>
-                        <option value="shape">Shape</option>
-                        <option value="color">Color</option>
-                        <option value="basestats">Base Stats</option>
-                        <option value="yields">Yields & Friendship</option>
-                        <option value="breeding">Breeding</option>
-                        <option value="additionalInfo">Additional Information</option>
-                    </select>
-                </div>
-
-                <div id="types-section" class="filter-section" style="display:block;">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-                        <div style="font-weight:600;color:#666;">Types</div>
-                        <button id="type-logic-toggle" style="padding:4px 12px;border-radius:6px;border:1px solid #ccc;background:#fff;cursor:pointer;font-size:0.9em;color:#666;display:flex;align-items:center;gap:4px;">
-                            <span>AND</span>
-                            <div style="width:32px;height:16px;background:#ccc;border-radius:8px;position:relative;transition:background 0.3s">
-                                <div style="width:14px;height:14px;background:#fff;border-radius:50%;position:absolute;left:1px;top:1px;transition:left 0.3s"></div>
-                            </div>
-                        </button>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:6px;">
-                    ${Object.keys(TYPE_COLORS).map(type =>
-                        `<label style="display:inline-flex;align-items:center;gap:2px;margin-bottom:4px;">
-                            <input type="checkbox" class="type-filter-checkbox" value="${type}" checked>
-                            <span style="background:${getTypeColor(type)};color:#fff;padding:2px 10px;border-radius:12px;font-size:0.95em;">${type}</span>
-                        </label>`
-                    ).join('')}
-                    </div>
-                </div>
-
-                <div id="typing-section" class="filter-section" style="display:none;">
-                    <div style="font-weight:600;margin-bottom:8px;color:#666;">Typing</div>
-                    <div style="display:flex;flex-direction:column;gap:8px;">
-                        <label style="display:flex;align-items:center;gap:8px;">
-                            <input type="checkbox" class="typing-filter-checkbox" value="monotype" checked>
-                            <span style="color:#666;">Monotype</span>
-                        </label>
-                        <label style="display:flex;align-items:center;gap:8px;">
-                            <input type="checkbox" class="typing-filter-checkbox" value="dualtype" checked>
-                            <span style="color:#666;">Dual-type</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div id="generation-section" class="filter-section" style="display:none;">
-                    <div style="font-weight:600;margin-bottom:8px;color:#666;">Generation</div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                        ${Array.from({length: 9}, (_, i) => i + 1).map(gen =>
-                        `<label style="display:flex;align-items:center;gap:4px;min-width:45%;">
-                            <input type="checkbox" class="gen-filter-checkbox" value="gen${gen}" checked>
-                            <span style="color:#666;">Gen ${gen}</span>
-                        </label>`
-                        ).join('')}
-                    </div>
-                </div>
-
-                <div id="shape-section" class="filter-section" style="display:none;">
-                    <div style="font-weight:600;margin-bottom:8px;color:#666;">Shape</div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                        ${POKEMON_SHAPES.map(shape =>
-                        `<label style="display:flex;align-items:center;gap:4px;min-width:45%;">
-                            <input type="checkbox" class="shape-filter-checkbox" value="${shape}" checked>
-                            <span style="color:#666;">${shape.replace(/\+/g, ' + ')}</span>
-                        </label>`
-                        ).join('')}
-                    </div>
-                </div>
-
-                <div id="color-section" class="filter-section" style="display:none;">
-                    <div style="font-weight:600;margin-bottom:8px;color:#666;">Color</div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                        ${POKEMON_COLORS.map(color =>
-                        `<label style="display:flex;align-items:center;gap:4px;min-width:45%;">
-                            <input type="checkbox" class="color-filter-checkbox" value="${color}" checked>
-                            <span style="color:#666;">${color}</span>
-                        </label>`
-                        ).join('')}
-                    </div>
-                </div>
-
-                <div id="basestats-section" class="filter-section" style="display:none;">
-                    <div style="font-weight:600;margin-bottom:12px;color:#666;">Base Stats</div>
-                    <div style="display:flex;flex-direction:column;gap:12px;">
-                        ${STAT_NAMES.map((stat, index) =>
-                        `<div style="display:flex;flex-direction:column;gap:4px;">
-                            <div style="color:#666;font-size:0.9em;">${stat}</div>
-                            <div style="display:flex;gap:8px;">
-                                <div style="display:flex;flex:1;gap:4px;align-items:center;">
-                                    <input type="number" min="0" max="255" 
-                                           class="basestat-filter-input" 
-                                           data-stat-index="${index}"
-                                           data-minmax="min"
-                                           placeholder="Min"
-                                           style="width:60px;padding:4px 8px;border-radius:4px;border:1px solid #ccc;">
-                                </div>
-                                <div style="display:flex;flex:1;gap:4px;align-items:center;">
-                                    <input type="number" min="0" max="255"
-                                           class="basestat-filter-input"
-                                           data-stat-index="${index}"
-                                           data-minmax="max"
-                                           placeholder="Max"
-                                           style="width:60px;padding:4px 8px;border-radius:4px;border:1px solid #ccc;">
-                                </div>
-                            </div>
-                        </div>`
-                        ).join('')}
-                    </div>
-                </div>
-
-                <div id="yields-section" class="filter-section" style="display:none;">
-                    <div style="font-weight:600;margin-bottom:12px;color:#666;">Yields & Friendship</div>
-                    <div style="display:flex;flex-direction:column;gap:12px;">
-                        ${YIELD_NAMES.map((stat, index) =>
-                        `<div style="display:flex;flex-direction:column;gap:4px;">
-                            <div style="color:#666;font-size:0.9em;">${stat}</div>
-                            <div style="display:flex;gap:8px;">
-                                <div style="display:flex;flex:1;gap:4px;align-items:center;">
-                                    <input type="number" min="0" 
-                                           class="yields-filter-input" 
-                                           data-stat-index="${index}"
-                                           data-minmax="min"
-                                           placeholder="Min"
-                                           style="width:60px;padding:4px 8px;border-radius:4px;border:1px solid #ccc;">
-                                </div>
-                                <div style="display:flex;flex:1;gap:4px;align-items:center;">
-                                    <input type="number" min="0"
-                                           class="yields-filter-input"
-                                           data-stat-index="${index}"
-                                           data-minmax="max"
-                                           placeholder="Max"
-                                           style="width:60px;padding:4px 8px;border-radius:4px;border:1px solid #ccc;">
-                                </div>
-                            </div>
-                        </div>`
-                        ).join('')}
-                    </div>
-                </div>
-
-                <div id="additionalInfo-section" class="filter-section" style="display:none;">
-                    <div style="font-weight:600;margin-bottom:12px;color:#666;">Additional Information</div>
-                    <div style="display:flex;flex-direction:column;gap:12px;">
-                        ${[
-                            { label: 'Height (m)', field: 'height', decimal: true },
-                            { label: 'Weight (kg)', field: 'weight', decimal: true },
-                            { label: 'Catch Rate', field: 'catchRate', decimal: false },
-                            { label: 'National Dex #', field: 'dexNumber', decimal: false }
-                        ].map(({ label, field, decimal }) =>
-                        `<div style="display:flex;flex-direction:column;gap:4px;">
-                            <div style="color:#666;font-size:0.9em;">${label}</div>
-                            <div style="display:flex;gap:8px;">
-                                <div style="display:flex;flex:1;gap:4px;align-items:center;">
-                                    <input type="number" min="0" ${decimal ? 'step="any"' : ''} 
-                                           class="additionalInfo-filter-input" 
-                                           data-field="${field}"
-                                           data-minmax="min"
-                                           placeholder="Min"
-                                           style="width:60px;padding:4px 8px;border-radius:4px;border:1px solid #ccc;">
-                                </div>
-                                <div style="display:flex;flex:1;gap:4px;align-items:center;">
-                                    <input type="number" min="0" ${decimal ? 'step="any"' : ''}
-                                           class="additionalInfo-filter-input"
-                                           data-field="${field}"
-                                           data-minmax="max"
-                                           placeholder="Max"
-                                           style="width:60px;padding:4px 8px;border-radius:4px;border:1px solid #ccc;">
-                                </div>
-                            </div>
-                        </div>`
-                        ).join('')}
-                    </div>
-                </div>
-
-                <div id="breeding-section" class="filter-section" style="display:none;">
-                    <div style="font-weight:600;margin-bottom:12px;color:#666;">Breeding</div>
-                    <div style="display:flex;flex-direction:column;gap:12px;">
-                        <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                            ${EGG_GROUPS.map(group =>
-                            `<label style="display:flex;align-items:center;gap:4px;min-width:45%;">
-                                <input type="checkbox" class="eggGroup-filter-checkbox" value="${group}" checked>
-                                <span style="color:#666;">${group}</span>
-                            </label>`
-                            ).join('')}
-                        </div>
-                        <hr style="border:none;border-top:1px solid #ddd;margin:8px 0;">
-                        <div style="display:flex;flex-direction:column;gap:4px;">
-                            <div style="color:#666;font-size:0.9em;">Egg Cycles</div>
-                            <div style="display:flex;gap:8px;">
-                                <div style="display:flex;flex:1;gap:4px;align-items:center;">
-                                    <input type="number" min="0" 
-                                           class="breeding-filter-input" 
-                                           data-field="eggCycles"
-                                           data-minmax="min"
-                                           placeholder="Min"
-                                           style="width:60px;padding:4px 8px;border-radius:4px;border:1px solid #ccc;">
-                                </div>
-                                <div style="display:flex;flex:1;gap:4px;align-items:center;">
-                                    <input type="number" min="0"
-                                           class="breeding-filter-input"
-                                           data-field="eggCycles"
-                                           data-minmax="max"
-                                           placeholder="Max"
-                                           style="width:60px;padding:4px 8px;border-radius:4px;border:1px solid #ccc;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// Fetch Pokemon data from TSV file
+// Fetch Pokemon data from TSV filedata
 async function fetchPokemonList(filter = '', typeFilterArr = null, typingFilterArr = null, genFilterArr = null, shapeFilterArr = null, colorFilterArr = null, baseStatsFilter = null, yieldsFilter = null) {
     let filtered = [];
     try {
         if (!allPokemonData) {
-            const res = await fetch('../../api/data.tsv');
+            const res = await fetch(dataTsvUrl);
             if (!res.ok) {
                 throw new Error(`Failed to fetch data.tsv: ${res.status}`);
             }
-            const tsvText = await res.text();
-            allPokemonData = await parseTSVData(tsvText);
+            allPokemonData = await parseTSVData();
             if (!Array.isArray(allPokemonData) || allPokemonData.length === 0) {
                 throw new Error('No Pokemon data found or invalid data format');
             }
@@ -729,8 +328,7 @@ async function fetchAbilitiesData() {
             if (!res.ok) {
                 throw new Error(`Failed to fetch abilities.tsv: ${res.status}`);
             }
-            const tsvText = await res.text();
-            allAbilitiesData = await parseTSVData(tsvText);
+            allAbilitiesData = await parseTSVData();
             console.log('Loaded abilities data:', allAbilitiesData); // Debug log
         } catch (error) {
             console.error('Error loading abilities data:', error);
@@ -747,12 +345,12 @@ async function fetchMovesData() {
         try {
             const isGitHubPages = window.location.hostname === 'sky-lynx.github.io' || window.location.pathname.includes('/pokedex-website/');
             const baseUrl = isGitHubPages ? '/pokedex-website' : '';
-            const res = await fetch(`${baseUrl}/api/moves.tsv`);
+            const res = await fetch(movesTsvUrl);
             if (!res.ok) {
                 throw new Error(`Failed to fetch moves.tsv: ${res.status}`);
             }
             const tsvText = await res.text();
-            allMovesData = await parseMovesData(tsvText);
+            allMovesData = await parseMovesData();
         } catch (error) {
             console.error('Error loading moves data:', error);
             return [];
@@ -1153,8 +751,13 @@ async function showPokemonDetails(pokemonName) {
 
 
                 <div id="level-up-section">
-                    <h4>Level-up Moves</h4>
-                    <div style="overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <h4 style="margin: 0;">Level-up Moves</h4>
+                        <button onclick="window.toggleMoveTable('levelUp')" style="padding: 4px 8px; background: none; border: none; cursor: pointer; font-size: 1.2em;">
+                            <span id="levelUp-collapse-icon">${moveTableStates.levelUp ? '▼' : '▲'}</span>
+                        </button>
+                    </div>
+                    <div id="levelUp-table-container" style="overflow-x: auto; display: ${moveTableStates.levelUp ? 'none' : 'block'};">
                         <table class="moves-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
                         <style>
                             tr {
@@ -1235,8 +838,13 @@ async function showPokemonDetails(pokemonName) {
                 </div>
 
                 <div id="tm-section">
-                    <h4>TM Moves</h4>
-                    <div style="overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <h4 style="margin: 0;">TM Moves</h4>
+                        <button onclick="window.toggleMoveTable('tm')" style="padding: 4px 8px; background: none; border: none; cursor: pointer; font-size: 1.2em;">
+                            <span id="tm-collapse-icon">${moveTableStates.tm ? '▼' : '▲'}</span>
+                        </button>
+                    </div>
+                    <div id="tm-table-container" style="overflow-x: auto; display: ${moveTableStates.tm ? 'none' : 'block'};">
                         <table class="moves-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
                         <style>
                             tr {
@@ -1317,8 +925,13 @@ async function showPokemonDetails(pokemonName) {
                 </div>
 
                 <div id="egg-section">
-                    <h4>Egg Moves</h4>
-                    <div style="overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <h4 style="margin: 0;">Egg Moves</h4>
+                        <button onclick="window.toggleMoveTable('egg')" style="padding: 4px 8px; background: none; border: none; cursor: pointer; font-size: 1.2em;">
+                            <span id="egg-collapse-icon">${moveTableStates.egg ? '▼' : '▲'}</span>
+                        </button>
+                    </div>
+                    <div id="egg-table-container" style="overflow-x: auto; display: ${moveTableStates.egg ? 'none' : 'block'};">
                         <table class="moves-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
                         <style>
                             tr {
@@ -1399,8 +1012,13 @@ async function showPokemonDetails(pokemonName) {
                 </div>
 
                 <div id="evolution-section">
-                    <h4>Evolution Moves</h4>
-                    <div style="overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <h4 style="margin: 0;">Evolution Moves</h4>
+                        <button onclick="window.toggleMoveTable('evolution')" style="padding: 4px 8px; background: none; border: none; cursor: pointer; font-size: 1.2em;">
+                            <span id="evolution-collapse-icon">${moveTableStates.evolution ? '▼' : '▲'}</span>
+                        </button>
+                    </div>
+                    <div id="evolution-table-container" style="overflow-x: auto; display: ${moveTableStates.evolution ? 'none' : 'block'};">
                         <table class="moves-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
                         <style>
                             tr {
@@ -1480,8 +1098,13 @@ async function showPokemonDetails(pokemonName) {
                 </div>
 
                 <div id="reminder-section">
-                    <h4>Reminder Moves</h4>
-                    <div style="overflow-x: auto;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <h4 style="margin: 0;">Reminder Moves</h4>
+                        <button onclick="window.toggleMoveTable('reminder')" style="padding: 4px 8px; background: none; border: none; cursor: pointer; font-size: 1.2em;">
+                            <span id="reminder-collapse-icon">${moveTableStates.reminder ? '▼' : '▲'}</span>
+                        </button>
+                    </div>
+                    <div id="reminder-table-container" style="overflow-x: auto; display: ${moveTableStates.reminder ? 'none' : 'block'};">
                         <table class="moves-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9em;">
                         <style>
                             tr {
@@ -1702,6 +1325,10 @@ window.onclick = (e) => {
         modal.style.display = 'none';
     }
 };
+
+/******************************************************************************
+ * SECTION 6: Event Handlers
+ ******************************************************************************/
 
 // Handle filters dropdown
 function initTypeFilter() {
@@ -2018,64 +1645,6 @@ function updateFilters() {
     );
 }
 
-// Set up moves toggle functionality
-function setupMoveTables() {
-    const levelUpBtn = document.getElementById('level-up-btn');
-    const tmBtn = document.getElementById('tm-btn');
-    const eggBtn = document.getElementById('egg-btn');
-    const reminderBtn = document.getElementById('reminder-btn');
-    const evolutionBtn = document.getElementById('evolution-btn');
-    const levelUpSection = document.getElementById('level-up-section');
-    const tmSection = document.getElementById('tm-section');
-    const eggSection = document.getElementById('egg-section');
-    const reminderSection = document.getElementById('reminder-section');
-    const evolutionSection = document.getElementById('evolution-section');
-
-    if (levelUpBtn && tmBtn && eggBtn && reminderBtn && evolutionBtn && levelUpSection && tmSection && eggSection && reminderSection && evolutionSection) {
-        // Initial state
-        tmSection.style.display = 'none';
-        eggSection.style.display = 'none';
-        reminderSection.style.display = 'none';
-        evolutionSection.style.display = 'none';
-        levelUpSection.style.display = 'block';
-        levelUpBtn.classList.add('active');
-        
-        function showSection(activeSection, activeBtn) {
-            // Hide all sections and remove active class from all buttons
-            [levelUpSection, tmSection, eggSection, reminderSection, evolutionSection].forEach(section => {
-                section.style.display = 'none';
-            });
-            [levelUpBtn, tmBtn, eggBtn, reminderBtn, evolutionBtn].forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show active section and add active class to button
-            activeSection.style.display = 'block';
-            activeBtn.classList.add('active');
-        }
-
-        levelUpBtn.addEventListener('click', () => {
-            showSection(levelUpSection, levelUpBtn);
-        });
-
-        tmBtn.addEventListener('click', () => {
-            showSection(tmSection, tmBtn);
-        });
-
-        eggBtn.addEventListener('click', () => {
-            showSection(eggSection, eggBtn);
-        });
-
-        reminderBtn.addEventListener('click', () => {
-            showSection(reminderSection, reminderBtn);
-        });
-
-        evolutionBtn.addEventListener('click', () => {
-            showSection(evolutionSection, evolutionBtn);
-        });
-    }
-}
-
 // Check URL for pokemon name parameter
 function checkUrlForPokemon() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -2103,6 +1672,10 @@ function checkUrlForPokemon() {
         checkDataAndShow();
     }
 }
+
+/******************************************************************************
+ * SECTION 7: Initialization
+ ******************************************************************************/
 
 // Initialize the page
 function init() {

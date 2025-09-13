@@ -26,6 +26,9 @@ const closeBtn = document.querySelector('.close-btn');
 let allMovesData = null;
 let filtersEnabled = false;
 
+// Track collapsed state of the pokemon list
+let pokemonTableCollapsed = false;
+
 let currentFilters = {
     search: '',
     types: Object.keys(TYPE_COLORS),  // start with all types selected
@@ -33,6 +36,17 @@ let currentFilters = {
     power: { min: '', max: '' },
     accuracy: { min: '', max: '' },
     priority: { min: '', max: '' }
+};
+
+// Function to toggle pokemon table visibility
+window.togglePokemonTable = function() {
+    pokemonTableCollapsed = !pokemonTableCollapsed;
+    const container = document.getElementById('pokemon-table-container');
+    const icon = document.getElementById('pokemon-table-collapse-icon');
+    if (container && icon) {
+        container.style.display = pokemonTableCollapsed ? 'none' : 'block';
+        icon.textContent = pokemonTableCollapsed ? '▼' : '▲';
+    }
 };
 
 // Function to parse moves TSV data into an array of objects - using the same one from app.js
@@ -315,8 +329,13 @@ function showMoveDetails(moveName) {
             </div>
             <hr>
             <div class="pokemon-list">
-                <h3>Pokémon that can learn ${move.name}</h3>
-                <div class="pokemon-table-container">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <h3 style="margin: 0;">Pokémon that can learn ${move.name}</h3>
+                    <button onclick="window.togglePokemonTable()" style="background: none; border: none; cursor: pointer; font-size: 1.2em; display: inline-flex; align-items: center; padding: 0 8px; height: 24px;">
+                        <span id="pokemon-table-collapse-icon" style="line-height: 1;">${pokemonTableCollapsed ? '▼' : '▲'}</span>
+                    </button>
+                </div>
+                <div id="pokemon-table-container" class="pokemon-table-container" style="display: ${pokemonTableCollapsed ? 'none' : 'block'};">
                     <table class="pokemon-table">
                         <thead>
                             <tr>
