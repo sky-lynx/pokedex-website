@@ -9,8 +9,12 @@ export async function parseTSVData() {
     // If cached, return immediately
     if (pokemonData) return pokemonData;
 
-    const response = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTwDxqxofxdx7M2HU-pMFBFBcMDI6mIVBeVim1sxIC_zalARL4Z7DVNiPkhGwY4ZKmVpC9FETrjZtOH/pub?gid=1685697799&output=tsv");
-    const tsvText = await response.text();
+    try {
+        const isGitHubPages = window.location.hostname === 'sky-lynx.github.io' || window.location.pathname.includes('/pokedex-website/');
+        const baseUrl = isGitHubPages ? '/pokedex-website' : '';
+        const response = await fetch(`${baseUrl}/api/data.tsv`);
+        if (!response.ok) throw new Error('Failed to fetch data.tsv');
+        const tsvText = await response.text();
 
     const lines = tsvText.trim().split('\n');
     const headers = lines[1].split('\t');
@@ -68,8 +72,12 @@ export async function parseTSVData() {
         };
     });
 
-    pokemonData = data.filter(item => item !== null);
-    return pokemonData;
+        pokemonData = data.filter(item => item !== null);
+        return pokemonData;
+    } catch (error) {
+        console.error('Error parsing TSV data:', error);
+        return [];
+    }
 }
 
 // -----------------------------
@@ -78,10 +86,14 @@ export async function parseTSVData() {
 export async function parseMovesData() {
     if (movesData) return movesData;
 
-    const response = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTwDxqxofxdx7M2HU-pMFBFBcMDI6mIVBeVim1sxIC_zalARL4Z7DVNiPkhGwY4ZKmVpC9FETrjZtOH/pub?gid=1813387196&output=tsv");
-    const tsvText = await response.text();
+    try {
+        const isGitHubPages = window.location.hostname === 'sky-lynx.github.io' || window.location.pathname.includes('/pokedex-website/');
+        const baseUrl = isGitHubPages ? '/pokedex-website' : '';
+        const response = await fetch(`${baseUrl}/api/moves.tsv`);
+        if (!response.ok) throw new Error('Failed to fetch moves.tsv');
+        const tsvText = await response.text();
 
-    const lines = tsvText.trim().split('\n');
+        const lines = tsvText.trim().split('\n');
     const headers = lines[1].split('\t');
 
     const data = lines.slice(2).map(line => {
@@ -104,8 +116,12 @@ export async function parseMovesData() {
         };
     });
 
-    movesData = data.filter(item => item !== null);
-    return movesData;
+        movesData = data.filter(item => item !== null);
+        return movesData;
+    } catch (error) {
+        console.error('Error parsing moves data:', error);
+        return [];
+    }
 }
 
 // -----------------------------

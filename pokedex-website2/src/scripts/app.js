@@ -112,7 +112,9 @@ async function fetchPokemonList(filter = '', typeFilterArr = null, typingFilterA
     let filtered = [];
     try {
         if (!allPokemonData) {
-            const res = await fetch(dataTsvUrl);
+            const isGitHubPages = window.location.hostname === 'sky-lynx.github.io' || window.location.pathname.includes('/pokedex-website/');
+            const baseUrl = isGitHubPages ? '/pokedex-website' : '';
+            const res = await fetch(`${baseUrl}/api/data.tsv`);            
             if (!res.ok) {
                 throw new Error(`Failed to fetch data.tsv: ${res.status}`);
             }
@@ -345,7 +347,7 @@ async function fetchMovesData() {
         try {
             const isGitHubPages = window.location.hostname === 'sky-lynx.github.io' || window.location.pathname.includes('/pokedex-website/');
             const baseUrl = isGitHubPages ? '/pokedex-website' : '';
-            const res = await fetch(movesTsvUrl);
+            const res = await fetch(`${baseUrl}/api/moves.tsv`);
             if (!res.ok) {
                 throw new Error(`Failed to fetch moves.tsv: ${res.status}`);
             }
@@ -423,56 +425,6 @@ async function showPokemonDetails(pokemonName) {
     const hiddenAbilities = pokemon.hability.map(ability => {
         return `<button class="ability-btn" tabindex="0" style="background: #fff3e0; color: #ef6c00;" data-ability="${ability}" data-hidden="true">${ability}</button>`;
     });
-
-    // Game headers for availability section
-    const gameHeadersWithColors = [
-        { text: 'R', color: '#FF1111' },     // Red
-        { text: 'G', color: '#1111FF' },     // Blue
-        { text: 'B', color: '#11FF11' },     // Green
-        { text: 'Y', color: '#FFD733' },     // Yellow
-        { text: 'G', color: '#DAA520' },     // Gold
-        { text: 'S', color: '#C0C0C0' },     // Silver
-        { text: 'C', color: '#4FD9FF' },     // Crystal
-        { text: 'R', color: '#A00000' },     // Ruby
-        { text: 'S', color: '#0000A0' },     // Sapphire
-        { text: 'E', color: '#00A000' },     // Emerald
-        { text: 'FR', color: '#FF7327' },    // FireRed
-        { text: 'LG', color: '#00DD00' },    // LeafGreen
-        { text: 'D', color: '#5060B0' },     // Diamond
-        { text: 'P', color: '#FF99CC' },     // Pearl
-        { text: 'PL', color: '#999999' },    // Platinum
-        { text: 'HG', color: '#B69E00' },    // HeartGold
-        { text: 'SS', color: '#C0C0E1' },    // SoulSilver
-        { text: 'B', color: '#444444' },     // Black
-        { text: 'W', color: '#E1E1E1' },     // White
-        { text: 'B2', color: '#444444' },    // Black 2
-        { text: 'W2', color: '#E1E1E1' },    // White 2
-        { text: 'X', color: '#87CEEB' },     // Sky Blue
-        { text: 'Y', color: '#B22222' },     // Blood Red
-        { text: 'OA', color: '#A00000' },    // Omega Ruby
-        { text: 'AS', color: '#0000A0' },    // Alpha Sapphire
-        { text: 'S', color: '#FF8C00' },     // Sun
-        { text: 'M', color: '#4169E1' },     // Moon
-        { text: 'US', color: '#FF8C00' },    // Ultra Sun
-        { text: 'UM', color: '#4169E1' },    // Ultra Moon
-        { text: 'LGP', color: '#FFD700' },   // Pikachu Yellow
-        { text: 'LGE', color: '#D2B48C' },   // Eevee Tan
-        { text: 'SW', color: '#1E90FF' },    // Whirlpool Blue
-        { text: 'SH', color: '#CD5C5C' },    // Ruby Red
-        { text: 'SW\nIoA', color: '#F4A460' }, // Sandy Yellow
-        { text: 'SH\nIoA', color: '#F4A460' }, // Sandy Yellow
-        { text: 'SW\nCT', color: '#90EE90' }, // Desaturated Green
-        { text: 'SH\nCT', color: '#90EE90' }, // Desaturated Green
-        { text: 'BD', color: '#4F97D3' },    // Brilliant Diamond
-        { text: 'SP', color: '#F2A2E8' },    // Shining Pearl
-        { text: 'PLA', color: '#4682B4' },   // Old Blue
-        { text: 'S', color: '#FF2400' },     // Scarlet
-        { text: 'V', color: '#8F00FF' },     // Violet
-        { text: 'S\nTM', color: '#008080' }, // Teal
-        { text: 'V\nTM', color: '#008080' }, // Teal
-        { text: 'S\nID', color: '#4B0082' }, // Indigo
-        { text: 'T\nID', color: '#4B0082' }  // Indigo
-    ];
 
     const gameHeaders = gameHeadersWithColors.map(h => h.text);
 
@@ -785,7 +737,7 @@ async function showPokemonDetails(pokemonName) {
                         <tbody>
                             ${(() => {
                                 const levelMoves = pokemon.moves.levelUp?.split('|').filter(move => move) || [];
-                                console.log('Parsed moves:', levelMoves); // Debug log
+                                console.log('Parsed Level Up moves:', levelMoves); // Debug log
 
                                 if (levelMoves.length === 0) {
                                     return `
@@ -872,7 +824,7 @@ async function showPokemonDetails(pokemonName) {
                         <tbody>
                             ${(() => {
                                 const tmMoves = pokemon.moves.tm?.split('|').filter(move => move) || [];
-                                console.log('Parsed moves:', tmMoves); // Debug log
+                                console.log('Parsed TM moves:', tmMoves); // Debug log
 
                                 if (tmMoves.length === 0) {
                                     return `
@@ -959,7 +911,7 @@ async function showPokemonDetails(pokemonName) {
                         <tbody>
                             ${(() => {
                                 const eggMoves = pokemon.moves.egg?.split('|').filter(move => move) || [];
-                                console.log('Parsed moves:', eggMoves); // Debug log
+                                console.log('Parsed Egg moves:', eggMoves); // Debug log
 
                                 if (eggMoves.length === 0) {
                                     return `
@@ -1046,7 +998,7 @@ async function showPokemonDetails(pokemonName) {
                         <tbody>
                             ${(() => {
                                 const evoMoves = pokemon.moves.evolution?.split('|').filter(move => move) || [];
-                                console.log('Parsed moves:', evoMoves); // Debug log
+                                console.log('Parsed Evolution moves:', evoMoves); // Debug log
 
                                 if (evoMoves.length === 0) {
                                     return `
@@ -1132,7 +1084,7 @@ async function showPokemonDetails(pokemonName) {
                         <tbody>
                             ${(() => {
                                 const reminderMoves = pokemon.moves.reminder?.split('|').map(move => move.trim()).filter(move => move) || [];
-                                console.log('Parsed moves:', reminderMoves); // Debug log
+                                console.log('Parsed Reminder moves:', reminderMoves); // Debug log
 
                                 if (reminderMoves.length === 0) {
                                     return `
@@ -1191,6 +1143,8 @@ async function showPokemonDetails(pokemonName) {
 
     // Set up moves toggle functionality
     setupMoveTables();
+    
+    console.log('%c----------------- Modal Content Loaded -----------------', 'font-weight: bold; font-size: 14px; color: #2196F3; background-color: #e3f2fd; padding: 5px; border-radius: 3px;');
     
     // Trigger stat bar animations after a short delay to ensure elements are rendered
     setTimeout(() => {

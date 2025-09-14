@@ -1,5 +1,6 @@
 
 import { TYPE_COLORS, getTypeColor, isColorDark, CATEGORY_COLORS} from './constants.js';
+import { parseTSVData, parseMovesData } from './dataParser.js';
 
 // Column configurations
 const COLUMN_CONFIG = [
@@ -49,82 +50,6 @@ window.togglePokemonTable = function() {
     }
 };
 
-// Function to parse moves TSV data into an array of objects - using the same one from app.js
-async function parseMovesData(tsvText) {
-    const lines = tsvText.trim().split('\n');
-    // Skip first line, use second line as headers
-    const headers = lines[1].split('\t');
-
-    // Start from line 3 (index 2)
-    const data = lines.slice(2).map(line => {
-        const values = line.split('\t');
-        // Skip empty lines or lines with insufficient data
-        if (!values || values.length < 12 || !values[0]) {
-            return null;
-        }
-        const obj = {
-            name: values[0], // Column A - Move Name
-            id: values[1], // Column B - Move ID
-            type: values[2], // Column C - Type
-            category: values[3], // Column D - Category
-            pp: values[4] + "-" + values[5], // Column E - PP
-            power: values[6] || '-', // Column F - Power
-            accuracy: values[7] || '-', // Column G - Accuracy
-            critRate: values[8] || '-', // Column H - Crit Rate
-            priority: values[9] || '0', // Column I - Priority
-            target: values[10] || '-', // Column J - Target
-            effect: values[11] || '-', // Column K - Effect
-            chance: values[13] || '-' // Column L - Chance
-        };
-        return obj;
-    });
-
-    // Filter out any null entries and ensure we have valid data
-    return data.filter(item => item !== null);
-}
-
-// Parse Pokemon TSV data into an array of objects
-async function parseTSVData() {
-    try {
-        const isGitHubPages = window.location.hostname === 'sky-lynx.github.io' || window.location.pathname.includes('/pokedex-website/');
-        const baseUrl = isGitHubPages ? '/pokedex-website' : '';
-        const res = await fetch(`${baseUrl}/api/data.tsv`);
-        if (!res.ok) throw new Error('Failed to fetch data.tsv');
-        
-        const text = await res.text();
-        const lines = text.trim().split('\n');
-        // Skip first line, use second line as headers
-        const headers = lines[1].split('\t');
-        
-        // Start from line 3 (index 2)
-        return lines.slice(2).map(line => {
-            const values = line.split('\t');
-            if (!values || values.length < 80) return null;
-            
-            return {
-                dexNum: values[0],
-                name: values[2],
-                type1: values[4],
-                type2: values[5] || '',
-                baseHP: values[52],
-                baseAtk: values[53],
-                baseDef: values[54],
-                baseSpA: values[55],
-                baseSpD: values[56],
-                baseSpE: values[57],
-                levelUpMoves: values[107],
-                tmMoves: values[108],
-                eggMoves: values[109],
-                evolutionMoves: values[110],
-                reminderMoves: values[111]
-            };
-        }).filter(item => item !== null);
-    } catch (error) {
-        console.error('Error parsing TSV data:', error);
-        return [];
-    }
-}
-
 // Fetch moves data from TSV
 async function fetchMovesData() {
     if (allMovesData) {
@@ -139,7 +64,7 @@ async function fetchMovesData() {
             throw new Error(`Failed to fetch moves.tsv: ${res.status}`);
         }
         const tsvText = await res.text();
-        allMovesData = await parseMovesData(tsvText);
+        allMovesData = await parseMovesData();
         return allMovesData;
     } catch (error) {
         console.error('Error loading moves data:', error);
@@ -378,11 +303,11 @@ async function loadPokemonForMove(moveName) {
         for (const pokemon of data) {
             // Check each move source (Level Up, TM, Egg Move, Evolution, Move Reminder)
             const moveInfo = [
-                { moves: pokemon.levelUpMoves || '', type: 'Level' },
-                { moves: pokemon.tmMoves || '', type: 'TM' },
-                { moves: pokemon.eggMoves || '', type: 'EM' },
-                { moves: pokemon.evolutionMoves || '', type: 'EV' },
-                { moves: pokemon.reminderMoves || '', type: 'RE' }
+                { moves: pokemon.moves.levelUp || '', type: 'Level' },
+                { moves: pokemon.moves.tm || '', type: 'TM' },
+                { moves: pokemon.moves.egg || '', type: 'EM' },
+                { moves: pokemon.moves.evolution || '', type: 'EV' },
+                { moves: pokemon.moves.reminder || '', type: 'RE' }
             ];
 
             let foundMethod = '';
@@ -410,16 +335,15 @@ async function loadPokemonForMove(moveName) {
 
             if (foundMethod) {
                 pokemonList.push({
-                    dexNum: pokemon.dexNum,
+                    id: pokemon.id,
                     name: pokemon.name,
-                    type1: pokemon.type1,
-                    type2: pokemon.type2,
-                    hp: pokemon.baseHP,
-                    atk: pokemon.baseAtk,
-                    def: pokemon.baseDef,
-                    spa: pokemon.baseSpA,
-                    spd: pokemon.baseSpD,
-                    spe: pokemon.baseSpE,
+                    type: pokemon.type,
+                    hp: pokemon.baseStats[0],
+                    atk: pokemon.baseStats[1],
+                    def: pokemon.baseStats[2],
+                    spa: pokemon.baseStats[3],
+                    spd: pokemon.baseStats[4],
+                    spe: pokemon.baseStats[5],
                     learnMethod: foundMethod
                 });
             }
@@ -433,17 +357,16 @@ async function loadPokemonForMove(moveName) {
         }
         
         // Sort Pokémon by Dex number
-        pokemonList.sort((a, b) => parseInt(a.dexNum) - parseInt(b.dexNum));
+        pokemonList.sort((a, b) => parseInt(a.id) - parseInt(b.id));
         
         tableBody.innerHTML = pokemonList.map(pokemon => {
             const encodedPokemonName = encodeURIComponent(pokemon.name);
             return `
             <tr>
-                <td>#${pokemon.dexNum.padStart(3, '0')}</td>
+                <td>#${String(pokemon.id).padStart(3, '0')}</td>
                 <td><a href="index.html?name=${encodedPokemonName}" style="color: #2196F3; text-decoration: none; cursor: pointer; hover: { text-decoration: underline; }">${pokemon.name}</a></td>
                 <td>
-                    <div class="type-pill" style="background-color: ${getTypeColor(pokemon.type1)};">${pokemon.type1}</div>
-                    ${pokemon.type2 ? `<div class="type-pill" style="background-color: ${getTypeColor(pokemon.type2)};">${pokemon.type2}</div>` : ''}
+                    ${pokemon.type.map(type => `<div class="type-pill" style="background-color: ${getTypeColor(type)};">${type}</div>`).join('')}
                 </td>
                 <td>${pokemon.learnMethod}</td>
                 <td>${pokemon.hp}</td>
