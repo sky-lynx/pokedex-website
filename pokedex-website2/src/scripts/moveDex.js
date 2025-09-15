@@ -1,6 +1,17 @@
 
 import { TYPE_COLORS, getTypeColor, isColorDark, CATEGORY_COLORS} from './constants.js';
-import { parseTSVData, parseMovesData } from './dataParser.js';
+import { parseTSVData, parseMovesData, currentDataSource } from './dataParser.js';
+
+// Function to display data source
+function displayDataSource() {
+    const dataSourceDiv = document.createElement('div');
+    dataSourceDiv.style.textAlign = 'center';
+    dataSourceDiv.style.padding = '8px';
+    dataSourceDiv.style.backgroundColor = '#f0f0f0';
+    dataSourceDiv.style.borderBottom = '1px solid #ccc';
+    dataSourceDiv.textContent = `Current Data Source: ${currentDataSource}`;
+    document.body.insertBefore(dataSourceDiv, document.body.firstChild);
+}
 
 // Column configurations
 const COLUMN_CONFIG = [
@@ -577,6 +588,7 @@ function checkUrlForMove() {
 // Initialize page
 async function init() {
     allMovesData = await fetchMovesData();
+    displayDataSource();
     renderMoveFilters();
     setupEventListeners();
     displayMoves(allMovesData);

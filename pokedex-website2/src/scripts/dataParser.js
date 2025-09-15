@@ -1,19 +1,58 @@
 // dataLoader.js
 let pokemonData = null; // cached Pokémon data
 let movesData = null;   // cached Moves data
+const dataTsvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTwDxqxofxdx7M2HU-pMFBFBcMDI6mIVBeVim1sxIC_zalARL4Z7DVNiPkhGwY4ZKmVpC9FETrjZtOH/pub?gid=1685697799&output=tsv';
+const movesTsvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTwDxqxofxdx7M2HU-pMFBFBcMDI6mIVBeVim1sxIC_zalARL4Z7DVNiPkhGwY4ZKmVpC9FETrjZtOH/pub?gid=1813387196&output=tsv';
+const controlPanelUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT91AhjLXEf0LGvk-ck5jcQJOzEHIaBajUKI92zfHkrg1I4SrTnABPLXyveLTNRKegrImW49xxmY8L3/pub?output=tsv&gid=1239106350';
+
+// Function to check control panel setting
+async function shouldUseThirdParty() {
+    try {
+        const response = await fetch(controlPanelUrl);
+        if (!response.ok) throw new Error('Failed to fetch control panel data');
+        const tsvText = await response.text();
+        const lines = tsvText.trim().split('\n');
+        if (lines.length > 0) {
+            const cells = lines[0].split('\t');
+            if (cells.length > 1) {
+                const useThirdParty = cells[1].trim().toLowerCase() === 'true';
+                currentDataSource = useThirdParty ? 'Third Party TSV' : 'Local TSV';
+                return useThirdParty;
+            }
+        }
+        currentDataSource = 'Local TSV';
+        return false;
+    } catch (error) {
+        console.error('Error checking control panel:', error);
+        currentDataSource = 'Local TSV';
+        return false;
+    }
+}
 
 // -----------------------------
 // Pokémon Data
 // -----------------------------
+// Variable to track data source
+export let currentDataSource = '';
+
 export async function parseTSVData() {
     // If cached, return immediately
     if (pokemonData) return pokemonData;
 
     try {
-        const isGitHubPages = window.location.hostname === 'sky-lynx.github.io' || window.location.pathname.includes('/pokedex-website/');
-        const baseUrl = isGitHubPages ? '/pokedex-website' : '';
-        const response = await fetch(`${baseUrl}/api/data.tsv`);
-        if (!response.ok) throw new Error('Failed to fetch data.tsv');
+        const useThirdParty = await shouldUseThirdParty();
+        let response;
+        
+        if (useThirdParty) {
+            response = await fetch(dataTsvUrl);
+            if (!response.ok) throw new Error('Failed to fetch third-party data.tsv');
+        } else {
+            const isGitHubPages = window.location.hostname === 'sky-lynx.github.io' || window.location.pathname.includes('/pokedex-website/');
+            const baseUrl = isGitHubPages ? '/pokedex-website' : '';
+            response = await fetch(`${baseUrl}/api/data.tsv`);
+            if (!response.ok) throw new Error('Failed to fetch local data.tsv');
+        }
+        
         const tsvText = await response.text();
 
     const lines = tsvText.trim().split('\n');
@@ -87,10 +126,19 @@ export async function parseMovesData() {
     if (movesData) return movesData;
 
     try {
-        const isGitHubPages = window.location.hostname === 'sky-lynx.github.io' || window.location.pathname.includes('/pokedex-website/');
-        const baseUrl = isGitHubPages ? '/pokedex-website' : '';
-        const response = await fetch(`${baseUrl}/api/moves.tsv`);
-        if (!response.ok) throw new Error('Failed to fetch moves.tsv');
+        const useThirdParty = await shouldUseThirdParty();
+        let response;
+        
+        if (useThirdParty) {
+            response = await fetch(movesTsvUrl);
+            if (!response.ok) throw new Error('Failed to fetch third-party moves.tsv');
+        } else {
+            const isGitHubPages = window.location.hostname === 'sky-lynx.github.io' || window.location.pathname.includes('/pokedex-website/');
+            const baseUrl = isGitHubPages ? '/pokedex-website' : '';
+            response = await fetch(`${baseUrl}/api/moves.tsv`);
+            if (!response.ok) throw new Error('Failed to fetch local moves.tsv');
+        }
+        
         const tsvText = await response.text();
 
         const lines = tsvText.trim().split('\n');

@@ -13,10 +13,21 @@ import {
     gameHeadersWithColors
 } from './constants.js';
 
-import { parseTSVData, parseMovesData } from './dataParser.js';
+import { parseTSVData, parseMovesData, currentDataSource } from './dataParser.js';
 import { getPokemonGeneration } from './utils.js';
 import { moveTableStates, toggleMoveTable, setupMoveTables } from './moveTable.js';
 import { renderTypeFilters } from './templates.js';
+
+// Function to display data source
+function displayDataSource() {
+    const dataSourceDiv = document.createElement('div');
+    dataSourceDiv.style.textAlign = 'center';
+    dataSourceDiv.style.padding = '8px';
+    dataSourceDiv.style.backgroundColor = '#f0f0f0';
+    dataSourceDiv.style.borderBottom = '1px solid #ccc';
+    dataSourceDiv.textContent = `Current Data Source: ${currentDataSource}`;
+    document.body.insertBefore(dataSourceDiv, document.body.firstChild);
+}
 
 /******************************************************************************
  * SECTION 1: DOM Elements and Basic Setup
@@ -361,6 +372,18 @@ async function fetchMovesData() {
     return allMovesData;
 }
 
+let dexEntriesData;
+
+async function fetchDexEntries() {
+    if (dexEntriesData) return;
+    
+    const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vT91AhjLXEf0LGvk-ck5jcQJOzEHIaBajUKI92zfHkrg1I4SrTnABPLXyveLTNRKegrImW49xxmY8L3/pub?output=tsv&gid=0');
+    const text = await response.text();
+    
+    // Parse TSV data
+    dexEntriesData = text.split('\n').map(line => line.split('\t'));
+}
+
 async function showPokemonDetails(pokemonName) {
     if (!allPokemonData || !allAbilitiesData || !allMovesData) {
         await Promise.all([
@@ -371,8 +394,11 @@ async function showPokemonDetails(pokemonName) {
                 currentFilters.generations
             ),
             fetchAbilitiesData(),
-            fetchMovesData()
+            fetchMovesData(),
+            fetchDexEntries()
         ]);
+    } else if (!dexEntriesData) {
+        await fetchDexEntries();
     }
 
     console.log('Looking for pokemon:', pokemonName); // Debug log
@@ -478,6 +504,109 @@ async function showPokemonDetails(pokemonName) {
     `;
 
     const abilityDescriptions = [...regularAbilities, ...hiddenAbilities].join('');
+
+    // Find dex entries for this Pokemon
+    let dexEntries = Array(42).fill('No Dex Entry'); // Create array for all game entries (including up to Scarlet/Violet)
+    
+    if (dexEntriesData) {
+        const entry = dexEntriesData.find(row => 
+            row[0] === pokemon.id.toString() && 
+            row[1] === (pokemon.noformid || '0').toString()
+        );
+        
+        if (entry) {
+            // Fill the array with entries from index 6 to 43
+            for (let i = 0; i < 38; i++) {
+                dexEntries[i] = entry[i + 6]?.trim() || 'No Dex Entry';
+            }
+        }
+    }
+
+    // Function to handle generation button clicks
+    function handleGenButtonClick(btn) {
+        const gen = parseInt(btn.getAttribute('data-gen'));
+        const entriesContainer = document.getElementById('dex-entries-container');
+        
+        document.querySelectorAll('.gen-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Define games and their indices for each generation
+        const genGames = {
+            1: [
+                { name: 'Red', index: 0, color: gameHeadersWithColors[0].color },
+                { name: 'Green', index: 1, color: gameHeadersWithColors[2].color },
+                { name: 'Blue', index: 2, color: gameHeadersWithColors[1].color },
+                { name: 'Yellow', index: 3, color: gameHeadersWithColors[3].color }
+            ],
+            2: [
+                { name: 'Gold', index: 4, color: gameHeadersWithColors[4].color },
+                { name: 'Silver', index: 5, color: gameHeadersWithColors[5].color },
+                { name: 'Crystal', index: 6, color: gameHeadersWithColors[6].color }
+            ],
+            3: [
+                { name: 'Ruby', index: 7, color: gameHeadersWithColors[7].color },
+                { name: 'Sapphire', index: 8, color: gameHeadersWithColors[8].color },
+                { name: 'Emerald', index: 9, color: gameHeadersWithColors[9].color },
+                { name: 'FireRed', index: 10, color: gameHeadersWithColors[10].color },
+                { name: 'LeafGreen', index: 11, color: gameHeadersWithColors[11].color }
+            ],
+            4: [
+                { name: 'Diamond', index: 12, color: gameHeadersWithColors[12].color },
+                { name: 'Pearl', index: 13, color: gameHeadersWithColors[13].color },
+                { name: 'Platinum', index: 14, color: gameHeadersWithColors[14].color },
+                { name: 'HeartGold', index: 15, color: gameHeadersWithColors[15].color },
+                { name: 'SoulSilver', index: 16, color: gameHeadersWithColors[16].color }
+            ],
+            5: [
+                { name: 'Black', index: 17, color: gameHeadersWithColors[17].color },
+                { name: 'White', index: 18, color: gameHeadersWithColors[18].color },
+                { name: 'Black 2', index: 19, color: gameHeadersWithColors[19].color },
+                { name: 'White 2', index: 20, color: gameHeadersWithColors[20].color }
+            ],
+            6: [
+                { name: 'X', index: 21, color: gameHeadersWithColors[21].color },
+                { name: 'Y', index: 22, color: gameHeadersWithColors[22].color },
+                { name: 'Omega Ruby', index: 23, color: gameHeadersWithColors[23].color },
+                { name: 'Alpha Sapphire', index: 24, color: gameHeadersWithColors[24].color }
+            ],
+            7: [
+                { name: 'Sun', index: 25, color: gameHeadersWithColors[25].color },
+                { name: 'Moon', index: 26, color: gameHeadersWithColors[26].color },
+                { name: 'Ultra Sun', index: 27, color: gameHeadersWithColors[27].color },
+                { name: 'Ultra Moon', index: 28, color: gameHeadersWithColors[28].color },
+                { name: "Let's Go Pikachu", index: 29, color: gameHeadersWithColors[29].color },
+                { name: "Let's Go Eevee", index: 30, color: gameHeadersWithColors[30].color }
+            ],
+            8: [
+                { name: 'Sword', index: 31, dexIndex: 31, color: gameHeadersWithColors[31].color },
+                { name: 'Shield', index: 32, dexIndex: 32, color: gameHeadersWithColors[32].color },
+                { name: 'Brilliant Diamond', index: 37, dexIndex: 33, color: gameHeadersWithColors[37].color },
+                { name: 'Shining Pearl', index: 38, dexIndex: 34, color: gameHeadersWithColors[38].color },
+                { name: 'Legends Arceus', index: 39, dexIndex: 35, color: gameHeadersWithColors[39].color }
+            ],
+            9: [
+                { name: 'Scarlet', index: 40, dexIndex: 36, color: gameHeadersWithColors[40].color },
+                { name: 'Violet', index: 41, dexIndex: 37, color: gameHeadersWithColors[41].color }
+            ]
+        };
+
+        // Generate HTML for the selected generation's entries
+        const games = genGames[gen] || [];
+        // Hide the loading text and show the entries
+        document.getElementById('dex-entry-text').style.display = 'none';
+        entriesContainer.innerHTML = games.map(game => {
+            // Check availability using the index, and use dexIndex for dex entries
+            const availability = pokemon.availability[game.index];
+            const isAvailable = availability === 'TRUE' || availability === 'FALSE';
+            return `
+                <div class="game-entry" style="margin: 0; padding: 16px; background: #fff; border-radius: 8px; border: 1px solid #ccc; position: relative;">
+                    ${!isAvailable ? `<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.6) 100%); border-radius: 8px; pointer-events: none;"></div>` : ''}
+                    <h4 style="margin: 0 0 8px 0; padding-bottom: 8px; border-bottom: 2px solid ${!isAvailable ? '#000' : game.color}; color: ${!isAvailable ? '#000' : game.color}; position: relative;">${game.name}</h4>
+                    <p style="margin: 0; line-height: 1.5; position: relative;">${dexEntries[game.dexIndex || game.index]}</p>
+                </div>`;
+        }).join('');
+        entriesContainer.style.display = 'grid';
+    }
 
     modalBody.innerHTML = `
         <div style="text-align: center; margin-bottom: 24px;">
@@ -591,21 +720,25 @@ async function showPokemonDetails(pokemonName) {
                         <span style="font-size: 1.1em;">${pokemon.gender[0]}% ♂ / ${pokemon.gender[1]}% ♀</span>
                     </div>
                 </div>
+
+                <hr>
+
+                
             </div>
 
             <div>
                 <div class="stats-container">
                 <h3>Base Stats</h3>
                     ${STAT_NAMES.map((statName, index) => `
-                        <div class="stat">
-                            <div class="stat-name">${statName}</div>
-                            <div class="stat-bar">
-                                ${pokemon.baseStats[index] > 0 ?
-                            `<div class="stat-fill" style="width: 0%; transition: width 1s ease-out;" data-width="${(pokemon.baseStats[index] / 280) * 100}">
-                                        ${pokemon.baseStats[index]}
-                                    </div>` :
+                    <div class="stat" style="display: grid; grid-template-columns: 100px 1fr; gap: 12px; align-items: center;">
+                        <div class="stat-name" style="text-align: right; color: #666; font-size: 0.9em;">${statName}</div>
+                        <div class="stat-bar" style="position: relative; height: 24px; background: #f5f5f5; border-radius: 4px; overflow: hidden;">
+                            ${pokemon.baseStats[index] > 0 ?
+                            `<div class="stat-fill" style="width: 0%; height: 100%; background: #4CAF50; transition: width 1s ease-out; display: flex; align-items: center; padding-left: 8px; color: white;" data-width="${(pokemon.baseStats[index] / 280) * 100}">
+                                ${pokemon.baseStats[index]}
+                            </div>` :
                             `<div style="padding: 4px 8px; color: #000;">${pokemon.baseStats[index]}</div>`
-                        }
+                            }
                             </div>
                         </div>
                     `).join('')}
@@ -615,47 +748,175 @@ async function showPokemonDetails(pokemonName) {
 
                 <div class="stats-container">
                 <h3>Yield Information</h3>
-                    <div class="stat">
-                        <div class="stat-name">Base Experience</div>
-                        <div class="stat-bar">
+                    <div class="stat" style="display: grid; grid-template-columns: 100px 1fr; gap: 12px; align-items: center;">
+                        <div class="stat-name" style="text-align: right; color: #666; font-size: 0.9em;">Base EXP</div>
+                        <div class="stat-bar" style="position: relative; height: 24px; background: #f5f5f5; border-radius: 4px; overflow: hidden;">
                             ${pokemon.yield[0] > 0 ?
-                            `<div class="stat-fill" style="width: 0%; transition: width 1s ease-out; background: linear-gradient(to right, #9575cd, #5e35b1); text-align: left; padding-left: 8px;" data-width="${(pokemon.yield[0] / 700) * 100}">
+                            `<div class="stat-fill" style="width: 0%; height: 100%; background: linear-gradient(to right, #9575cd, #5e35b1); transition: width 1s ease-out; display: flex; align-items: center; padding-left: 8px; color: white;" data-width="${(pokemon.yield[0] / 700) * 100}">
                                     ${pokemon.yield[0]}
                             </div>` :
-                            `<div style="padding: 4px 8px; color: #000; text-align: left;">${pokemon.yield[0]}</div>`
+                            `<div style="padding: 4px 8px; color: #000;">${pokemon.yield[0]}</div>`
                             }
                         </div>
                     </div>
 
                     ${['HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed'].map((stat, index) => `
-                        <div class="stat">
-                            <div class="stat-name">${stat} EV</div>
-                            <div class="stat-bar">
-                                ${pokemon.yield[index + 1] > 0 ?
-                                `<div class="stat-fill" style="width: 0%; transition: width 1s ease-out; background: linear-gradient(to right, #81c784, #43a047);" data-width="${(pokemon.yield[index + 1] / 4) * 100}">
-                                     ${pokemon.yield[index + 1]}
-                                </div>` :
-                                `<div style="padding: 4px 8px; color: #000;">${pokemon.yield[index + 1]}</div>`
-                                }
+                    <div class="stat" style="display: grid; grid-template-columns: 100px 1fr; gap: 12px; align-items: center;">
+                        <div class="stat-name" style="text-align: right; color: #666; font-size: 0.9em;">${stat} EV</div>
+                        <div class="stat-bar" style="position: relative; height: 24px; background: #f5f5f5; border-radius: 4px; overflow: hidden;">
+                            ${pokemon.yield[index + 1] > 0 ?
+                            `<div class="stat-fill" style="width: 0%; height: 100%; background: linear-gradient(to right, #81c784, #43a047); transition: width 1s ease-out; display: flex; align-items: center; padding-left: 8px; color: white;" data-width="${(pokemon.yield[index + 1] / 4) * 100}">
+                                ${pokemon.yield[index + 1]}
+                            </div>` :
+                            `<div style="padding: 4px 8px; color: #000;">${pokemon.yield[index + 1]}</div>`
+                            }
                             </div>
                         </div>
                     `).join('')}
 
-                    <div class="stat">
-                        <div class="stat-name">Base Friendship</div>
-                        <div class="stat-bar">
+                    <div class="stat" style="display: grid; grid-template-columns: 100px 1fr; gap: 12px; align-items: center;">
+                        <div class="stat-name" style="text-align: right; color: #666; font-size: 0.9em;">Base Friendship</div>
+                        <div class="stat-bar" style="position: relative; height: 24px; background: #f5f5f5; border-radius: 4px; overflow: hidden;">
                             ${pokemon.baseFriendship > 0 ?
-                            `<div class="stat-fill" style="width: 0%; transition: width 1s ease-out; background: linear-gradient(to right, #cd75aeff, #b13579ff); text-align: left; padding-left: 8px;" data-width="${(pokemon.baseFriendship / 255) * 100}">
+                            `<div class="stat-fill" style="width: 0%; height: 100%; background: linear-gradient(to right, #cd75aeff, #b13579ff); transition: width 1s ease-out; display: flex; align-items: center; padding-left: 8px; color: white;" data-width="${(pokemon.baseFriendship / 255) * 100}">
                                     ${pokemon.baseFriendship}
                             </div>` :
-                            `<div style="padding: 4px 8px; color: #000; text-align: left;">${pokemon.baseFriendship}</div>`
+                            `<div style="padding: 4px 8px; color: #000;">${pokemon.baseFriendship}</div>`
                             }
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
+        </div>
+
+            <div class="dex-entries-section info-section">
+                <h3>Pokédex Entries</h3>
+                <style>
+                    .gen-btn {
+                        transition: all 0.3s ease;
+                        padding: 8px 16px;
+                        border-radius: 8px;
+                        border: 1px solid #000;
+                        background: #fff;
+                        cursor: pointer;
+                        font-size: 0.9em;
+                        color: #000;
+                    }
+                    .gen-btn.active {
+                        color: white !important;
+                        border-color: transparent !important;
+                    }
+                    .gen-btn[data-gen="1"].active {
+                        background: linear-gradient(to right, #FF1111, #1111FF) !important;
+                    }
+                    .gen-btn[data-gen="2"].active {
+                        background: linear-gradient(to right, #DAA520, #C0C0C0) !important;
+                    }
+                    .gen-btn[data-gen="3"].active {
+                        background: linear-gradient(to right, #A00000, #0000A0) !important;
+                    }
+                    .gen-btn[data-gen="4"].active {
+                        background: linear-gradient(to right, #5060B0, #F0A0A0) !important;
+                    }
+                    .gen-btn[data-gen="5"].active {
+                        background: linear-gradient(to right, #444444, #E0E0E0) !important;
+                    }
+                    .gen-btn[data-gen="6"].active {
+                        background: linear-gradient(to right, #025DA6, #BD2943) !important;
+                    }
+                    .gen-btn[data-gen="7"].active {
+                        background: linear-gradient(to right, #F1912B, #5599CA) !important;
+                    }
+                    .gen-btn[data-gen="8"].active {
+                        background: linear-gradient(to right, #00A1E9, #E60012) !important;
+                    }
+                    .gen-btn[data-gen="9"].active {
+                        background: linear-gradient(to right, #FF6B00, #9949CC) !important;
+                    }
+                    .gen-btn:hover:not(.active) {
+                        background: #f8f8f8;
+                    }
+                    .gen-btn.active:hover {
+                        filter: brightness(0.9);
+                    }
+                    .game-entry {
+                        margin-bottom: 16px;
+                        padding: 12px;
+                        background: #fff;
+                        border-radius: 8px;
+                        border: 1px solid #e0e0e0;
+                    }
+                    .game-entry h4 {
+                        margin: 0 0 8px 0;
+                        color: var(--game-color);
+                        font-size: 1.1em;
+                    }
+                    .game-entry p {
+                        margin: 0;
+                        line-height: 1.5;
+                    }
+                </style>
+                <div style="padding: 16px; background: #f8f9fa; border-radius: 12px;">
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+                        <button class="gen-btn" data-gen="1">Generation 1</button>
+                        <button class="gen-btn" data-gen="2">Generation 2</button>
+                        <button class="gen-btn" data-gen="3">Generation 3</button>
+                        <button class="gen-btn" data-gen="4">Generation 4</button>
+                        <button class="gen-btn" data-gen="5">Generation 5</button>
+                        <button class="gen-btn" data-gen="6">Generation 6</button>
+                        <button class="gen-btn" data-gen="7">Generation 7</button>
+                        <button class="gen-btn" data-gen="8">Generation 8</button>
+                        <button class="gen-btn active" data-gen="9">Generation 9</button>
+                    </div>
+                    <div id="dex-entries-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[2].color}">Blue</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[3].color}">Yellow</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[4].color}">Gold</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[5].color}">Silver</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[6].color}">Crystal</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[7].color}">Ruby</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[8].color}">Sapphire</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[9].color}">Emerald</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[10].color}">FireRed</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[11].color}">LeafGreen</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[12].color}">Diamond</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[13].color}">Pearl</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[14].color}">Platinum</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[15].color}">HeartGold</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[16].color}">SoulSilver</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[17].color}">Black</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[18].color}">White</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[19].color}">Black 2</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[20].color}">White 2</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[21].color}">X</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[22].color}">Y</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[23].color}">Omega Ruby</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[24].color}">Alpha Sapphire</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[25].color}">Sun</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[26].color}">Moon</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[27].color}">Ultra Sun</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[28].color}">Ultra Moon</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[29].color}">Let's Go Pikachu</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[30].color}">Let's Go Eevee</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[31].color}">Sword</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[32].color}">Shield</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[37].color}">Brilliant Diamond</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[38].color}">Shining Pearl</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[39].color}">Legends Arceus</button>
+                        <button class="entry-version-btn" data-color="${gameHeadersWithColors[40].color}">Scarlet</button>
+                        <button id="violet-btn" class="entry-version-btn" data-color="${gameHeadersWithColors[41].color}">Violet</button>
+                    </div>
+                    <div id="dex-entry-text" style="font-style: italic; line-height: 1.6;">
+                        Fetching dex entries...
+                    </div>
+                </div>
+            </div>
+
             ${availabilityHTML}
 
+
+            
             <div class="info-section" style="grid-column: 1 / -1; margin-top: 24px;">
                 <style>
                     .moves-table th {
@@ -672,6 +933,20 @@ async function showPokemonDetails(pokemonName) {
                     }
                     .move-category-btn.active:hover {
                         background: #45a049 !important;
+                    }
+                    .entry-version-btn {
+                        transition: all 0.3s ease;
+                    }
+                    .entry-version-btn.active {
+                        background-color: var(--game-color) !important;
+                        color: white !important;
+                        border-color: var(--game-color) !important;
+                    }
+                    .entry-version-btn:hover:not(.active) {
+                        background: #f8f8f8;
+                    }
+                    .entry-version-btn.active:hover {
+                        filter: brightness(0.9);
                     }
                     .moves-table th:nth-child(1) { width: 8%; }  /* Level */
                     .moves-table th:nth-child(2) { width: 15%; } /* Move */
@@ -1154,6 +1429,120 @@ async function showPokemonDetails(pokemonName) {
             fill.style.width = targetWidth + '%';
         });
 
+        // Set up generation button click handlers
+        document.querySelectorAll('.gen-btn').forEach(btn => {
+            btn.addEventListener('click', () => handleGenButtonClick(btn));
+        });
+
+        // Show Gen 9 entries by default
+        const gen9Btn = document.querySelector('.gen-btn[data-gen="9"]');
+        if (gen9Btn) {
+            handleGenButtonClick(gen9Btn);
+        }
+        document.querySelectorAll('.entry-version-btn').forEach(btn => {
+            const gameColor = btn.getAttribute('data-color');
+            btn.style.setProperty('--game-color', gameColor);
+            
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.gen-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const gen = parseInt(btn.getAttribute('data-gen'));
+                const entriesContainer = document.getElementById('dex-entries-container');
+                entriesContainer.style.display = 'block';
+
+                // Define games and their indices for each generation
+                const genGames = {
+                    1: [
+                        { name: 'Red', index: 0, color: gameHeadersWithColors[0].color },
+                        { name: 'Blue', index: 2, color: gameHeadersWithColors[2].color },
+                        { name: 'Green', index: 1, color: gameHeadersWithColors[1].color },
+                        { name: 'Yellow', index: 3, color: gameHeadersWithColors[3].color }
+                    ],
+                    2: [
+                        { name: 'Gold', index: 4, color: gameHeadersWithColors[4].color },
+                        { name: 'Silver', index: 5, color: gameHeadersWithColors[5].color },
+                        { name: 'Crystal', index: 6, color: gameHeadersWithColors[6].color }
+                    ],
+                    3: [
+                        { name: 'Ruby', index: 7, color: gameHeadersWithColors[7].color },
+                        { name: 'Sapphire', index: 8, color: gameHeadersWithColors[8].color },
+                        { name: 'Emerald', index: 9, color: gameHeadersWithColors[9].color },
+                        { name: 'FireRed', index: 10, color: gameHeadersWithColors[10].color },
+                        { name: 'LeafGreen', index: 11, color: gameHeadersWithColors[11].color }
+                    ],
+                    4: [
+                        { name: 'Diamond', index: 12, color: gameHeadersWithColors[12].color },
+                        { name: 'Pearl', index: 13, color: gameHeadersWithColors[13].color },
+                        { name: 'Platinum', index: 14, color: gameHeadersWithColors[14].color },
+                        { name: 'HeartGold', index: 15, color: gameHeadersWithColors[15].color },
+                        { name: 'SoulSilver', index: 16, color: gameHeadersWithColors[16].color }
+                    ],
+                    5: [
+                        { name: 'Black', index: 17, color: gameHeadersWithColors[17].color },
+                        { name: 'White', index: 18, color: gameHeadersWithColors[18].color },
+                        { name: 'Black 2', index: 19, color: gameHeadersWithColors[19].color },
+                        { name: 'White 2', index: 20, color: gameHeadersWithColors[20].color }
+                    ],
+                    6: [
+                        { name: 'X', index: 21, color: gameHeadersWithColors[21].color },
+                        { name: 'Y', index: 22, color: gameHeadersWithColors[22].color },
+                        { name: 'Omega Ruby', index: 23, color: gameHeadersWithColors[23].color },
+                        { name: 'Alpha Sapphire', index: 24, color: gameHeadersWithColors[24].color }
+                    ],
+                    7: [
+                        { name: 'Sun', index: 25, color: gameHeadersWithColors[25].color },
+                        { name: 'Moon', index: 26, color: gameHeadersWithColors[26].color },
+                        { name: 'Ultra Sun', index: 27, color: gameHeadersWithColors[27].color },
+                        { name: 'Ultra Moon', index: 28, color: gameHeadersWithColors[28].color },
+                        { name: "Let's Go Pikachu", index: 29, color: gameHeadersWithColors[29].color },
+                        { name: "Let's Go Eevee", index: 30, color: gameHeadersWithColors[30].color }
+                    ],
+                    8: [
+                        { name: 'Sword', index: 31, color: gameHeadersWithColors[31].color },
+                        { name: 'Shield', index: 32, color: gameHeadersWithColors[32].color },
+                        { name: 'Brilliant Diamond', index: 33, color: gameHeadersWithColors[37].color },
+                        { name: 'Shining Pearl', index: 34, color: gameHeadersWithColors[38].color },
+                        { name: 'Legends Arceus', index: 35, color: gameHeadersWithColors[39].color }
+                    ],
+                    9: [
+                        { name: 'Scarlet', index: 36, color: gameHeadersWithColors[40].color },
+                        { name: 'Violet', index: 37, color: gameHeadersWithColors[41].color }
+                    ]
+                };
+
+                // Generate HTML for the selected generation's entries
+                const games = genGames[gen] || [];
+                entriesContainer.innerHTML = games.map(game => `
+                    <div class="game-entry">
+                        <h4 style="--game-color: ${game.color}">${game.name}</h4>
+                        <p>${dexEntries[game.index]}</p>
+                    </div>
+                `).join('');
+            });
+        });
+
+        // Handle dex entry version toggle for Scarlet/Violet
+        const scarletBtn = document.getElementById('scarlet-btn');
+        const violetBtn = document.getElementById('violet-btn');
+        const dexEntryText = document.getElementById('dex-entry-text');
+
+        if (scarletBtn && violetBtn && dexEntryText) {
+            dexEntryText.textContent = scarletEntry;
+
+            scarletBtn.addEventListener('click', () => {
+                scarletBtn.classList.add('active');
+                violetBtn.classList.remove('active');
+                dexEntryText.textContent = dexEntries[36]; // Index 36 is Scarlet
+            });
+
+            violetBtn.addEventListener('click', () => {
+                violetBtn.classList.add('active');
+                scarletBtn.classList.remove('active');
+                dexEntryText.textContent = violetEntry;
+            });
+        }
+
         // Set up form switcher after elements are rendered
         if (hasMultipleForms) {
             const formSelect = modalBody.querySelector('.form-select');
@@ -1632,14 +2021,15 @@ function checkUrlForPokemon() {
  ******************************************************************************/
 
 // Initialize the page
-function init() {
+async function init() {
     renderTypeFilters();
     initTypeFilter();
     initSearch();
-    fetchPokemonList().then(() => {
-        // Check for pokemon name in URL after data is loaded
-        checkUrlForPokemon();
-    });
+    await fetchPokemonList();
+    // Display data source after data is loaded
+    displayDataSource();
+    // Check for pokemon name in URL after data is loaded
+    checkUrlForPokemon();
 }
 
 init();
