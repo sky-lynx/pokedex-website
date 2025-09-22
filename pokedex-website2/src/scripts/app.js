@@ -597,12 +597,28 @@ async function showPokemonDetails(pokemonName) {
         entriesContainer.innerHTML = games.map(game => {
             // Check availability using the index, and use dexIndex for dex entries
             const availability = pokemon.availability[game.index];
+            const entry = dexEntries[game.dexIndex || game.index];
             const isAvailable = availability === 'TRUE' || availability === 'FALSE';
+            const hasNoEntry = entry === 'No Dex Entry';
+            
+            // Determine which gradient to show
+            let gradientOverlay = '';
+            if (!availability || availability === '') {
+                // Case 2: Not available in game (dark gray gradient)
+                gradientOverlay = `<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(93, 93, 93, 0.6) 0%, rgba(83, 83, 83, 0.8) 100%); border-radius: 8px; pointer-events: none;"></div>`;
+            } else if (isAvailable && hasNoEntry) {
+                // Case 1: Available but no dex entry (brown gradient)
+                gradientOverlay = `<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(96, 51, 34, 0.6) 0%, rgba(84, 46, 33, 0.8) 100%); border-radius: 8px; pointer-events: none;"></div>`;
+            }
+            
+            // Determine if we should use black text based on whether there's a gradient
+            const useBlackText = (!availability || availability === '') || (isAvailable && hasNoEntry);
+            
             return `
                 <div class="game-entry" style="margin: 0; padding: 16px; background: #fff; border-radius: 8px; border: 1px solid #ccc; position: relative;">
-                    ${!isAvailable ? `<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.6) 100%); border-radius: 8px; pointer-events: none;"></div>` : ''}
-                    <h4 style="margin: 0 0 8px 0; padding-bottom: 8px; border-bottom: 2px solid ${!isAvailable ? '#000' : game.color}; color: ${!isAvailable ? '#000' : game.color}; position: relative;">${game.name}</h4>
-                    <p style="margin: 0; line-height: 1.5; position: relative;">${dexEntries[game.dexIndex || game.index]}</p>
+                    ${gradientOverlay}
+                    <h4 style="margin: 0 0 8px 0; padding-bottom: 8px; border-bottom: 2px solid ${useBlackText ? '#000' : game.color}; color: ${useBlackText ? '#000' : game.color}; position: relative;">${game.name}</h4>
+                    <p style="margin: 0; line-height: 1.5; position: relative; color: ${useBlackText ? '#000' : 'inherit'};">${entry}</p>
                 </div>`;
         }).join('');
         entriesContainer.style.display = 'grid';
