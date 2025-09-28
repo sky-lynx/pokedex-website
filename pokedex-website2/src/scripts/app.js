@@ -1431,6 +1431,7 @@ async function showPokemonDetails(pokemonName) {
 
     `;
     modal.style.display = 'flex';
+    document.body.classList.add('modal-open');
 
     // Set up moves toggle functionality
     setupMoveTables();
@@ -1682,6 +1683,7 @@ closeBtn.onclick = () => modal.style.display = 'none';
 window.onclick = (e) => {
     if (e.target === modal) {
         modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
     }
 };
 
@@ -1696,6 +1698,78 @@ function initTypeFilter() {
     const selectAllBtn = document.getElementById('type-filter-select-all');
     const deselectAllBtn = document.getElementById('type-filter-deselect-all');
     const filterCategory = document.getElementById('filter-category');
+
+    // Function to show filter dropdown
+    function showFilterDropdown() {
+        if (!typeFilterDropdown) return;
+        
+        // Create overlay if it doesn't exist
+        let overlay = document.querySelector('.filter-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'filter-overlay';
+            document.body.appendChild(overlay);
+            
+            // Add close button to dropdown if it doesn't exist
+            if (!typeFilterDropdown.querySelector('.close-filter-btn')) {
+                const closeBtn = document.createElement('button');
+                closeBtn.className = 'close-filter-btn';
+                closeBtn.innerHTML = '×';
+                closeBtn.setAttribute('aria-label', 'Close filters');
+                typeFilterDropdown.insertBefore(closeBtn, typeFilterDropdown.firstChild);
+                
+                // Close on button click
+                closeBtn.addEventListener('click', hideFilterDropdown);
+            }
+        }
+        
+        // Move dropdown into overlay and show it
+        overlay.appendChild(typeFilterDropdown);
+        typeFilterDropdown.style.display = 'block';
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        
+        // Close on overlay click
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                hideFilterDropdown();
+            }
+        });
+
+        // Add escape key listener
+        document.addEventListener('keydown', handleEscapeKey);
+    }
+    
+    // Function to hide filter dropdown
+    function hideFilterDropdown() {
+        const overlay = document.querySelector('.filter-overlay');
+        if (overlay) {
+            overlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+            // Move dropdown back to its original container
+            document.getElementById('type-filters').appendChild(typeFilterDropdown);
+            typeFilterDropdown.style.display = 'none';
+        }
+        // Remove escape key listener
+        document.removeEventListener('keydown', handleEscapeKey);
+    }
+
+    // Handle escape key
+    function handleEscapeKey(e) {
+        if (e.key === 'Escape') {
+            hideFilterDropdown();
+        }
+    }
+
+    // Add event listener for showing dropdown
+    typeFilterBtn.addEventListener('click', () => {
+        // Toggle the dropdown
+        if (document.querySelector('.filter-overlay')?.classList.contains('active')) {
+            hideFilterDropdown();
+        } else {
+            showFilterDropdown();
+        }
+    });
     
     const sections = [
         {
